@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'css/teacher.css' %}">
+    <link rel="stylesheet" href="{% static 'css/kafedra.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-5.2.2-dist/css/bootstrap.min.css' %}">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+        <link rel="icon" href="{% static 'img/title_logo.png' %}">
+</head>
+<body>
+    {% include 'kafedra/includes/search.html' %}
+
+
+    {% include 'kafedra/includes/navbar.html' %}
+    <section class="container-fluid p-0">
+        {% block content %}
+
+
+
+        {% endblock %}
+    </section>
+    {% include 'kafedra/includes/footer.html' %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{% static 'bootstrap-5.2.2-dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/kafedra.js' %}"></script>
+</body>
+</html>

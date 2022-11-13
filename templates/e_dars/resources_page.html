@@ -1,0 +1,92 @@
+{% extends 'e_dars/base.html' %}
+{% load static %}
+
+{% block title %}Resource{% endblock %}
+
+
+{% block content %}
+
+
+{% include 'e_dars/includes/navbar2.html' %}
+
+<section class="cards mt-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <div class="title_img p-3 mb-5">
+                    <h1>Elektron Kitoblar</h1>
+                </div>
+            </div>
+        </div>
+        <div class="owl-carousel carousel owl-theme col justify-content-center">
+            {% for book in books %}
+            <div class="w-75 back ">
+                <img class="img_resize img-fluid mx-auto" src="{{ book.book_pic.url }}" alt="">
+                <div class="overlay">
+                    <div class="overlay-text">
+                        <h4 class="fw-bold">{{ book.book_title }}</h4>
+                        <a href="/media/{{ book.book_file }}" download class="btn text-white btn-warning hvr-bounce-to-right ">Yuklab olish</a>
+                    </div>
+                </div>
+                <div class="hover"></div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="cards mt-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <div class="title_img p-3 mb-5">
+                    <h1>Taqdimotlar</h1>
+                </div>
+            </div>
+        </div>
+        <div class="owl-carousel carousel owl-theme col justify-content-center">
+            {% for exposure in exposures %}
+            <div class="w-75 back ">
+                <img class="img-fluid mx-auto" src="{{ exposure.presentation_pic.url }}" alt="">
+                <div class="overlay">
+                    <div class="overlay-text">
+                        <h4 class="fw-bold">{{exposure.presentation_title}}</h4>
+                        <a href="/media/{{ exposure.presentation_file }}" download class="btn text-white btn-warning hvr-bounce-to-right ">Yuklab olish</a>
+                    </div>
+                </div>
+                <div class="hover"></div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="cards mt-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <div class="title_img p-3 mb-5">
+                    <h1>Internet Resurslari</h1>
+                </div>
+            </div>
+        </div>
+        <div class="owl-carousel carousel owl-theme col justify-content-center">
+            {% for useful_link in useful_links %}
+            <div class="w-75 back ">
+                <img class="img-fluid mx-auto" src="/media/{{ useful_link.site_intro }}" alt="">
+                <div class="overlay">
+                    <div class="overlay-text">
+                        <h4 class="fw-bold">{{useful_link.site_title}}</h4>
+                        <a target="_blank" href="{{ useful_link.site_url }}" class="btn text-white btn-warning hvr-bounce-to-right ">Xavola</a>
+                    </div>
+                </div>
+                <div class="hover"></div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% include 'e_dars/includes/footer.html' %}
+
+{% endblock %}

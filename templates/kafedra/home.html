@@ -1,0 +1,720 @@
+{% extends 'kafedra/base.html' %}
+{% load static %}
+
+
+
+{% block title %} Bosh sahifa {% endblock %}
+
+{% block content %}
+
+<section class="header_content position-relative">
+    <div class="bg_text d-none d-md-block">
+        <img class="img_text" src="{% static 'img/att_logo.png' %}" alt="">
+    </div>
+    <div class="container_new">
+        <div class="row align-items-center pt-5 pt-lg-0">
+            <div class="col-12 col-lg-7">
+                <h1 class="display-6 text_color  fw-bold text-center text-lg-start"> ​​Erishilgan yutuqlarga mahliyo bo'lib o'tirish
+                    taraqqiyot yo'lidagi eng katta g'ovdir.</h1>
+                <p class="fw-bold first_color text-center text-lg-start">Shavkat Mirziyoyev</p>
+                <div class="gap-4 justify-content-center text-center text-lg-start">
+                    <a href="#" download
+                        class="btn text-white btn-warning first_bg hvr-bounce-to-right py-3 mx-2 mt-3 px-5">Fan
+                        dasturi</a>
+                    <a href="#" download
+                        class="btn text-white btn-warning first_bg hvr-bounce-to-right py-3 mx-2 mt-3 px-5">Uslubiy
+                        ko'rsatma</a>
+                </div>
+            </div>
+            <div class="col-12 col-lg-5">
+                <script src="{% static 'js/anim.js' %}"></script>
+
+                <lottie-player src="{% static 'anim.json' %}" background="transparent" speed="1"
+                    style="width: 100%; height: 100%;" loop autoplay>
+                </lottie-player>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- header content end -->
+<!-- news section start -->
+<section class="yangiliklar">
+    <div class="container_new">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9">
+                <div class="row mt-3">
+                    <div id="news_title_1"
+                        class="col-6 cursor_pointer tran_time section_title_hover border_t border-end py-3 text-center mb-3">
+                        Vazirlik yangiliklari</div>
+                    <div id="news_title_2"
+                        class="col-6 cursor_pointer tran_time section_title_hover border_b py-3 text-center mb-3">
+                        Anonslar</div>
+                    <!-- vazirlik news card start -->
+                    <div id="news_row_1" class="row ">
+                        <!-- img card start -->
+                        <div class="col-12 col-lg-5">
+                            <img class="img-fluid w-100" src="{% static 'img/news.jpg' %}" alt="">
+                        </div>
+                        <div class="col-12 col-lg-7">
+                            <h5 class="yangiliklar_title hover_d_2">
+                                AKT vaziri IT Park Navoiy filialida yosh IT dasturchilar bilan ochiq muloqot
+                                o‘tkazdi
+                            </h5>
+                            <p class="yangiliklar_post">
+                                “Axborot-kommunikatsiya texnologiyalari sohasida IT-ta’lim xizmatlarini
+                                ko‘rsatish, dasturiy mahsulotlar ishlab chiqish hamda eksportga yo‘naltirish
+                                bo‘yicha startap loyihalar” tanlovi
+                            </p>
+                            <div class="time_see text-secondary d-flex gap-3 fs-12 justify-content-end">
+                                <div>
+                                    <span><i class="fa-solid fa-calendar-days"></i></span>
+                                    <span>14.10.2022</span>
+                                </div>
+                                <div>
+                                    <span><i class="fa-solid fa-eye"></i></span>
+                                    <span>244</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- img card end -->
+                        <div class="row mt-5">
+
+                            <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+                                <div class="card p-3 border-0">
+
+                                    <h5 class="yangiliklar_title">
+                                        AKT vaziri IT Parki
+                                    </h5>
+                                    <p class="yangiliklar_post">
+                                        Axborot texnologiyalari va kommunikatsiyalarini rivojlantirish vaziri
+                                        Sherzod
+                                        Shermatov Navoiy viloyatiga tashrifi doirasida IT Park Navoiy filiali
+                                        bilan
+                                        yaqindan tanishdi.
+                                    </p>
+                                    <div class="time_see text-secondary d-flex gap-3 fs-12 justify-content-end">
+                                        <div>
+                                            <span><i class="fa-solid fa-calendar-days"></i></span>
+                                            <span>14.10.2022</span>
+                                        </div>
+                                        <div>
+                                            <span><i class="fa-solid fa-eye"></i></span>
+                                            <span>244</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+                                <div class="card p-3 border-0">
+
+                                    <h5 class="yangiliklar_title">
+                                        AKT vaziri IT Park Navoiy filialida
+                                    </h5>
+                                    <p class="yangiliklar_post">
+                                        Axborot texnologiyalari va kommunikatsiyalarini rivojlantirish vaziri
+                                        Sherzod
+                                        Shermatov Navoiy viloyatiga tashrifi doirasida IT Park Navoiy filiali
+                                        bilan
+                                        yaqindan tanishdi.
+                                    </p>
+                                    <div class="time_see text-secondary d-flex gap-3 fs-12 justify-content-end">
+                                        <div>
+                                            <span><i class="fa-solid fa-calendar-days"></i></span>
+                                            <span>14.10.2022</span>
+                                        </div>
+                                        <div>
+                                            <span><i class="fa-solid fa-eye"></i></span>
+                                            <span>244</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+                                <div class="card p-3 border-0">
+
+                                    <h5 class="yangiliklar_title">
+                                        AKT vaziri IT Park Navoiy
+                                    </h5>
+                                    <p class="yangiliklar_post">
+                                        Axborot texnologiyalari va kommunikatsiyalarini rivojlantirish vaziri
+                                        Sherzod
+                                        Shermatov Navoiy viloyatiga tashrifi doirasida IT Park Navoiy filiali
+                                        bilan
+                                        yaqindan tanishdi.
+                                    </p>
+                                    <div class="time_see text-secondary d-flex gap-3 fs-12 justify-content-end">
+                                        <div>
+                                            <span><i class="fa-solid fa-calendar-days"></i></span>
+                                            <span>14.10.2022</span>
+                                        </div>
+                                        <div>
+                                            <span><i class="fa-solid fa-eye"></i></span>
+                                            <span>244</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- vazirlik news card end -->
+                    <!-- anons news card start -->
+                    <div id="news_row_2" class="row none">
+                        <!-- img card start -->
+                        <div class="col-12 col-lg-5">
+                            <img class="img-fluid w-100" src="{% static 'img/news.jpg' %}" alt="">
+                        </div>
+                        <div class="col-12 col-lg-7">
+                            <h5 class="yangiliklar_title hover_d_2">
+                                ZTE yangi BPO markazlar uchun 100 ming dollar ajratadi
+                            </h5>
+                            <p class="yangiliklar_post">
+                                25-oktabr kuni AKT haftaligining ikkinchi kunida Axborot texnologiyalari va
+                                kommunikatsiyalarini rivojlantirish vaziri Sherzod Shermatov, IT Park Uzbekistan
+                                direktori Farxod Ibragimov hamda ZTE Uzbekistan bosh direktori Van Guandun ...
+                            </p>
+                            <div class="time_see text-secondary d-flex gap-3 fs-12 justify-content-end">
+                                <div>
+                                    <span><i class="fa-solid fa-calendar-days"></i></span>
+                                    <span>14.10.2022</span>
+                                </div>
+                                <div>
+                                    <span><i class="fa-solid fa-eye"></i></span>
+                                    <span>244</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- img card end -->
+                        <div class="row mt-5">
+
+                            <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+                                <div class="card p-3 border-0">
+
+                                    <h5 class="yangiliklar_title">
+                                        AKT vaziri IT Parki
+                                    </h5>
+                                    <p class="yangiliklar_post">
+                                        Markaziy Osiyo mamlakatlarida 1 GHz dan past radiochastota spektridan
+                                        foydalanish istiqbollari”ga bag‘ishlangan sessiya bo‘lib o‘tdi
+                                    </p>
+                                    <div class="time_see text-secondary d-flex gap-3 fs-12 justify-content-end">
+                                        <div>
+                                            <span><i class="fa-solid fa-calendar-days"></i></span>
+                                            <span>14.10.2022</span>
+                                        </div>
+                                        <div>
+                                            <span><i class="fa-solid fa-eye"></i></span>
+                                            <span>244</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+                                <div class="card p-3 border-0">
+
+                                    <h5 class="yangiliklar_title">
+                                        AKT vaziri IT Park Navoiy filialida
+                                    </h5>
+                                    <p class="yangiliklar_post">
+                                        “2022 yilgi BMT Elektron hukumat tadqiqoti natijalari va hududiy
+                                        trendlari” xalqaro seminari tashkil etildi
+                                    </p>
+                                    <div class="time_see text-secondary d-flex gap-3 fs-12 justify-content-end">
+                                        <div>
+                                            <span><i class="fa-solid fa-calendar-days"></i></span>
+                                            <span>14.10.2022</span>
+                                        </div>
+                                        <div>
+                                            <span><i class="fa-solid fa-eye"></i></span>
+                                            <span>244</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+                                <div class="card p-3 border-0">
+
+                                    <h5 class="yangiliklar_title">
+                                        AKT vaziri IT Park Navoiy
+                                    </h5>
+                                    <p class="yangiliklar_post">
+                                        Axborot texnologiyalari va kommunikatsiyalarini rivojlantirish vaziri
+                                        Sherzod
+                                        Shermatov Navoiy viloyatiga tashrifi doirasida IT Park Navoiy filiali
+                                        bilan
+                                        yaqindan tanishdi.
+                                    </p>
+                                    <div class="time_see text-secondary d-flex gap-3 fs-12 justify-content-end">
+                                        <div>
+                                            <span><i class="fa-solid fa-calendar-days"></i></span>
+                                            <span>14.10.2022</span>
+                                        </div>
+                                        <div>
+                                            <span><i class="fa-solid fa-eye"></i></span>
+                                            <span>244</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- anons news card end -->
+
+                </div>
+            </div>
+            <div class="col-12 col-md-8 col-xl-3">
+                <!-- right menu start -->
+                <ul class="right_menu_ul">
+                    <li class="right_menu d-flex gap-3 align-items-center my-4">
+                        <div>
+                            <img src="{% static 'img/marifiy.png' %}" alt="">
+                        </div>
+                        <a href="#" class="text-uppercase hover_d_1">Ma'naviy Ma'rifiy ishlar</a>
+                    </li>
+                    <li class="right_menu d-flex gap-3 align-items-center my-4">
+                        <div>
+                            <img src="{% static 'img/uslibiy.png' %}" alt="">
+                        </div>
+                        <a href="#" class="text-uppercase hover_d_1">O'quv uslubiy ishlar</a>
+                    </li>
+                    <li class="right_menu d-flex gap-3 align-items-center my-4">
+                        <div>
+                            <img src="{% static 'img/ilmiyish.png' %}" alt="">
+                        </div>
+                        <a href="#" class="text-uppercase hover_d_1">Ilmiy tadqiqot ishlari</a>
+                    </li>
+                    <li class="right_menu d-flex gap-3 align-items-center my-4">
+                        <div>
+                            <img src="{% static 'img/clever.png' %}" alt="">
+                        </div>
+                        <a href="#" class="text-uppercase hover_d_1">Iqtidorli talabalar</a>
+                    </li>
+                    <li class="right_menu d-flex gap-3 align-items-center my-4">
+                        <div>
+                            <img src="{% static 'img/savol.png' %}" alt="">
+                        </div>
+                        <a href="#" class="text-uppercase hover_d_1">Kafedraga murojat</a>
+                    </li>
+                    <li class="right_menu d-flex gap-3 align-items-center my-4">
+                        <div>
+                            <img src="{% static 'img/darsjadvali.png' %}" alt="">
+                        </div>
+                        <a href="#" class="text-uppercase hover_d_1">Dars jadvali (o'qituvchilar)</a>
+                    </li>
+                    <li class="right_menu d-flex gap-3 align-items-center my-4">
+                        <div>
+                            <img src="{% static 'img/ustoz.png' %}" alt="">
+                        </div>
+                        <a href="#" class="text-uppercase hover_d_1">Ustoz shogird tizimi</a>
+                    </li>
+                    <li class="right_menu d-flex gap-3 align-items-center my-4">
+                        <div>
+                            <img src="{% static 'img/togarak.png' %}" alt="">
+                        </div>
+                        <a href="#" class="text-uppercase hover_d_1">To'garaklar</a>
+                    </li>
+                    <li class="right_menu d-flex gap-3 align-items-center my-4">
+                        <div>
+                            <img src="{% static 'img/kutubxona.png' %}" alt="">
+                        </div>
+                        <a href="#" class="text-uppercase hover_d_1">Kafedra kutubxonasi</a>
+                    </li>
+                </ul>
+                <!-- right menu end -->
+            </div>
+            <a href="#">
+                <button class="btn first_bg">Batafsil..</button>
+            </a>
+        </div>
+
+    </div>
+</section>
+<!-- news section end -->
+
+<!-- ta'lim yo'nalishlari start -->
+<section class="talim_yonalishi mt-100">
+    <div class="container_new">
+        <h4 class="section_title text-uppercase first_color fw-bold text-lg-center">
+            TA'LIM YO'NALISHLARI
+        </h4>
+        <div class="row mt-5">
+            <div class="col-12 col-sm-6 col-lg-4 talim_card border-end border-top px-md-3 py-3  px-xl-5">
+                <center>
+                    <div class="talim_circle_card mb-2">
+                        <img src="{% static 'img/att.png' %}" alt="">
+                    </div>
+                    <div class="talim_card_title">
+                        Bakalavriat
+                    </div>
+                    <a href="#" class="text-center d-block first_color mb-0">AXBOROT TIZIMLARI VA
+                        TEXNOLOGIYALARI</a>
+                </center>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 talim_card border-end border-top px-md-3 py-3  px-xl-5">
+                <center>
+                    <div class="talim_circle_card mb-2">
+                        <img src="{% static 'img/tjbakt.png' %}" alt="">
+                    </div>
+                    <div class="talim_card_title">
+                        Bakalavriat
+                    </div>
+                    <a href="#" class="text-center d-block first_color mb-0">TEXNOLOGIK JARAYONLARNI
+                        BOSHQARISHNING AXBOROT KOMMUNIKATSIYA TIZIMLARI</a>
+                </center>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 talim_card border-end border-top px-md-3 py-3  px-xl-5">
+                <center>
+                    <div class="talim_circle_card mb-2">
+                        <img src="{% static 'img/ina.png' %}" alt="">
+                    </div>
+                    <div class="talim_card_title">
+                        Bakalavriat
+                    </div>
+                    <a href="#" class="text-center d-block first_color mb-0">INFORMATIKA VA AXBOROT
+                        TEXNOLOGIYALARI</a>
+                </center>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 talim_card border-end border-top px-md-3 py-3  px-xl-5">
+                <center>
+                    <div class="talim_circle_card mb-2">
+                        <img src="{% static 'img/ktudt.png' %}" alt="">
+                    </div>
+                    <div class="talim_card_title">
+                        Magistratura
+                    </div>
+                    <a href="#" class="text-center d-block first_color mb-0">KOMPYUTER TIZIMLARI VA ULARNING
+                        DASTURIY TA'MINOTI</a>
+                </center>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 talim_card border-end border-top px-md-3 py-3  px-xl-5">
+                <center>
+                    <div class="talim_circle_card mb-2">
+                        <img src="{% static 'img/ina.png' %}" alt="">
+                    </div>
+                    <div class="talim_card_title">
+                        Tayanch doktorantura
+                    </div>
+                    <a href="#" class="text-center d-block first_color mb-0">INFORMATIKANI NAZARIY ASOSLARI</a>
+                </center>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 talim_card border-end border-top px-md-3 py-3  px-xl-5">
+                <center>
+                    <div class="talim_circle_card mb-2">
+                        <img src="{% static 'img/mmcud.png' %}" alt="">
+                    </div>
+                    <div class="talim_card_title">
+                        Tayanch doktorantura
+                    </div>
+                    <a href="#" class="text-center d-block first_color mb-0">MATEMATIK MODELLASHTIRISH. SONLI
+                        USLUBLAR VA DASTURLAR MAJMUI</a>
+                </center>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ta'lim yo'nalishlari end -->
+
+<!-- interaktiv xizmatlar start -->
+<section class="talim_yonalishi mt-100">
+    <div class="container_new">
+        <h4 class="section_title pb-3 text-uppercase border-bottom first_color fw-bold text-lg-center">
+            INTERAKTIV XIZMATLAR
+        </h4>
+        <div class="row">
+            <div class="col-12 col-md-6 col-xl-3 mt-3 p-3">
+                <div class="row">
+                    <div class="col-4 col-sm-3">
+                        <center>
+
+                            <div class="xizmat_card_circle">
+                                <img src="{% static 'img/website.png' %}" alt="">
+                            </div>
+                        </center>
+                    </div>
+                    <div class="col-8 col-sm-9 ps-xl-4 align_items_center">
+                        <a href="https://nammqi.uz/" class="text-uppercase hover_d_1 first_color">INSTITUT VEB
+                            SAYTI</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-12 col-md-6 col-xl-3  mt-3 p-3">
+                <div class="row">
+                    <div class="col-4 col-sm-3">
+                        <center>
+
+                            <div class="xizmat_card_circle">
+                                <img src="{% static 'img/user.png' %}" alt="">
+                            </div>
+                        </center>
+                    </div>
+                    <div class="col-8 col-sm-9 ps-xl-4 align_items_center">
+                        <a href="https://hemis.nammqi.uz/dashboard/login"
+                            class="text-uppercase hover_d_1 first_color">HEMIS OTM</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-12 col-md-6 col-xl-3 mt-3 p-3">
+                <div class="row">
+                    <div class="col-4 col-sm-3">
+                        <center>
+
+                            <div class="xizmat_card_circle">
+                                <img src="{% static 'img/group.png' %}" alt="">
+                            </div>
+                        </center>
+                    </div>
+                    <div class="col-8 col-sm-9 ps-xl-4 align_items_center">
+                        <a href="https://student.nammqi.uz/dashboard/login"
+                            class="text-uppercase hover_d_1 first_color">HEMIS STUDENT</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-12 col-md-6 col-xl-3 mt-3 p-3">
+                <div class="row">
+                    <div class="col-4 col-sm-3">
+                        <center>
+
+                            <div class="xizmat_card_circle">
+                                <img src="{% static 'img/kompxizmati.png' %}" alt="">
+                            </div>
+                        </center>
+                    </div>
+                    <div class="col-8 col-sm-9 ps-xl-4 align_items_center">
+                        <a href="https://nammqi.uz/raqamli-talim-texnalogiya-markazi"
+                            class="text-uppercase hover_d_1 first_color">KOMPYUTER XIZMATI</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-12 col-md-6 col-xl-3 mt-3 p-3">
+                <div class="row">
+                    <div class="col-4 col-sm-3">
+                        <center>
+
+                            <div class="xizmat_card_circle">
+                                <img src="{% static 'img/online-library.png' %}" alt="">
+                            </div>
+                        </center>
+                    </div>
+                    <div class="col-8 col-sm-9 ps-xl-4 align_items_center">
+                        <a href="#" class="text-uppercase hover_d_1 first_color">ELEKTRON KUTUBXONA</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-12 col-md-6 col-xl-3 mt-3 p-3">
+                <div class="row">
+                    <div class="col-4 col-sm-3">
+                        <center>
+
+                            <div class="xizmat_card_circle">
+                                <img src="{% static 'img/diplom.png' %}" alt="">
+                            </div>
+                        </center>
+                    </div>
+                    <div class="col-8 col-sm-9 ps-xl-4 align_items_center">
+                        <a href="#" class="text-uppercase hover_d_1 first_color">DIPLOM TEKSHIRISH</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-12 col-md-6 col-xl-3 mt-3 p-3">
+                <div class="row">
+                    <div class="col-4 col-sm-3">
+                        <center>
+
+                            <div class="xizmat_card_circle">
+                                <img src="{% static 'img/stipendiya.png' %}" alt="">
+                            </div>
+                        </center>
+                    </div>
+                    <div class="col-8 col-sm-9 ps-xl-4 align_items_center">
+                        <a href="#" class="text-uppercase hover_d_1 first_color">NOMDOR STIPENDIYALAR</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-12 col-md-6 col-xl-3 mt-3 p-3">
+                <div class="row">
+                    <div class="col-4 col-sm-3">
+                        <center>
+
+                            <div class="xizmat_card_circle">
+                                <img src="{% static 'img/virtual qabulxona.png' %}" alt="">
+                            </div>
+                        </center>
+                    </div>
+                    <div class="col-8 col-sm-9 ps-xl-4 align_items_center">
+                        <a href="#" class="text-uppercase hover_d_1 first_color">VIRTUAL QABULXONA</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- interaktiv xizmatlar end -->
+
+<!-- ko'rsatkichlar start -->
+<section class="progress_section mt-100">
+    <div class="container_new">
+        <h4 class="section_title pb-3 first_color border-bottom fw-bold text-uppercase text-lg-center">
+            Talabalar statistikasi
+        </h4>
+        <div class="row mt-5">
+            <div class="col-12 col-md-6 col-xl-3 border-bottom p-3">
+                <center>
+                    <div class="prog prog_1" data-progress="58" role="progressbar" aria-valuenow="99"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                </center>
+                <div class="text-center mt-3">
+                    <div class="talim_card_title px-4">
+                        <span class="talabalar_soni">508</span>
+                    </div>
+                    <h5>Axborot tizimlari va texnologiyalari</h5>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-xl-3 border-bottom p-3">
+                <center>
+                    <div class="prog prog_2" data-progress="29" role="progressbar" aria-valuenow="99"
+                        aria-valuemin="0" aria-valuemax="100" style="--value: 55"></div>
+                </center>
+                <div class="text-center mt-3">
+                    <div class="talim_card_title px-4">
+                        <span class="talabalar_soni">258</span>
+                    </div>
+                    <h5>Informatika va axborot texnologiyalari</h5>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-xl-3 border-bottom p-3">
+                <center>
+                    <div class="prog prog_3" data-progress="11" role="progressbar" aria-valuenow="99"
+                        aria-valuemin="0" aria-valuemax="100" style="--value: 55"></div>
+                </center>
+                <div class="text-center mt-3">
+                    <div class="talim_card_title px-4">
+                        <span class="talabalar_soni">98</span>
+                    </div>
+                    <h5>Texnologik jarayonlarni boshqarishning axborot-kommunikatsiya tizimlari-</h5>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-xl-3 border-bottom p-3">
+                <center>
+                    <div class="prog prog_4" data-progress="2" role="progressbar" aria-valuenow="99"
+                        aria-valuemin="0" aria-valuemax="100" style="--value: 55"></div>
+                </center>
+                <div class="text-center mt-3">
+                    <div class="talim_card_title px-4">
+                        <span class="talabalar_soni">10</span>
+                    </div>
+                    <h5>Kompyuter tizimlari va ularning dasturiy ta’minoti</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ko'rsatkichlar end -->
+
+<!-- hududiy boshqarmalar start -->
+<section class="location_control mt-100">
+    <div class="container_new">
+        <div class="row">
+            <div class="col-12 col-lg-6 mb-5 mb-lg-0">
+                <h4 class="section_title pb-3 first_color border-bottom fw-bold text-uppercase text-lg-center">
+                    HUDUDIY BOSHQARMALAR
+                </h4>
+                <iframe class="w-100 h-100"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.825941616226!2d71.62937922628976!3d41.007182764676436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38bb4b027d4f4989%3A0xd0ff22471ee90ac1!2sNamangan%20muhandislik-qurilish%20instituti!5e0!3m2!1suz!2s!4v1666782900719!5m2!1suz!2s"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="col-12 col-lg-6 mt-5 mt-lg-0">
+                <h4 class="section_title pb-3 first_color border-bottom fw-bold text-uppercase text-lg-center">
+                    FOYDALI HAVOLALAR
+                </h4>
+                <div class="row">
+                    <div class="col-12 col-md-6 mt-3">
+                        <div class="row">
+                            <div class="col-4 col-sm-3">
+                                <img class="useful_link_img" src="{% static 'img/press.png' %}" alt="">
+                            </div>
+                            <div class="col-8 col-sm-9 align_items_center">
+                                <a href="https://www.gov.uz/uz"
+                                    class="text-uppercase fs-12 hover_d_1 first_color">O’ZBEKISTON RESPUBLIKASI
+                                    HUKUMATI PORTALI</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 mt-3">
+                        <div class="row">
+                            <div class="col-4 col-sm-3">
+                                <img class="useful_link_img" src="{% static 'img/edu.png' %}" alt="">
+                            </div>
+                            <div class="col-8 col-sm-9 align_items_center">
+                                <a href="https://edu.uz/uz" class="text-uppercase fs-12 hover_d_1 first_color">
+                                    O‘ZBEKISTON RESPUBLIKASI OLIY VA O‘RTA MAXSUS TA'LIM VAZIRLIGI</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 mt-3">
+                        <div class="row">
+                            <div class="col-4 col-sm-3">
+                                <img class="useful_link_img" src="{% static 'img/gov_uz.png' %}" alt="">
+                            </div>
+                            <div class="col-8 col-sm-9 align_items_center">
+                                <a href="https://my.gov.uz/uz"
+                                    class="text-uppercase fs-12 hover_d_1 first_color">
+                                    Yagona interaktiv davlat xizmatlari portali</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 mt-3">
+                        <div class="row">
+                            <div class="col-4 col-sm-3">
+                                <img class="useful_link_img" src="{% static 'img/ziyo.png' %}" alt="">
+                            </div>
+                            <div class="col-8 col-sm-9 align_items_center">
+                                <a href="http://ziyonet.uz/uz"
+                                    class="text-uppercase fs-12 hover_d_1 first_color">
+                                    ZiyoNET ta'lim portlai</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 mt-3">
+                        <div class="row">
+                            <div class="col-4 col-sm-3">
+                                <img class="useful_link_img" src="{% static 'img/inavatsiya.png' %}" alt="">
+                            </div>
+                            <div class="col-8 col-sm-9 align_items_center">
+                                <a href="https://mininnovation.uz/"
+                                    class="text-uppercase fs-12 hover_d_1 first_color">
+                                    O'zbekiston Respublikasi
+                                    Innovatsion rivojlanish vazirligi</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 mt-3">
+                        <div class="row">
+                            <div class="col-4 col-sm-3">
+                                <img class="useful_link_img" src="{% static 'img/mits.jpg' %}" alt="">
+                            </div>
+                            <div class="col-8 col-sm-9 align_items_center">
+                                <a href="https://mitc.uz/uz"
+                                    class="text-uppercase fs-12 hover_d_1 first_color">O'ZBEKISTON
+                                    RESPUBLIKASI AXBOROT TEXNOLOGIYALARI VA KOMMUNIKATSIYALARINI RIVOJLANTIRISH
+                                    VAZIRLIGI</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- hududiy boshqarmalar end -->
+
+{% endblock %}
+

@@ -1,0 +1,22 @@
+{% extends 'kafedra/base.html' %}
+{% load static %}
+
+
+
+{% block title %} E-Darslar {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="themes_card shadow">
+        <ul>
+            {% for edars in edarslar %}
+            <li>
+                <a href="{% url 'edarslik' edars.subject_slug %}">{{ edars.subject_name }}</a>
+            </li>
+            {% endfor %}  
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

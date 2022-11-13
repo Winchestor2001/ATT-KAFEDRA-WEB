@@ -1,0 +1,27 @@
+{% extends 'e_dars/base.html' %}
+{% load static %}
+
+{% block title %}Resource{% endblock %}
+
+
+{% block content %}
+
+{% include 'e_dars/includes/navbar2.html' %}
+
+<section class="glassary my-5">
+    <div class="container">
+        <div class="glass">
+            {% for glossary in glossaries %}
+            <button data-bs-toggle="popover" data-bs-trigger="focus" data-bs-title="{{ glossary.glossary_title }}"
+                    data-bs-content="{{ glossary.glossary_body }}"
+                    class="glass_item d-inline-block">
+                {{ glossary.glossary_title }}
+            </button>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% include 'e_dars/includes/footer.html' %}
+
+{% endblock %}

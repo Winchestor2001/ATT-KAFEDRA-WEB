@@ -1,0 +1,160 @@
+{% extends 'teachers/base.html' %}
+
+
+{% block content %}
+
+<div class="center_card text-center">
+  <div class="d-block d-sm-flex justify-content-between">
+    <h2 class="ms-3">Test</h2>
+  </div>
+  <div class="container-fluid">
+    <div class="row mt-4 mb-4">
+      <div class="col-12 bg-light p-3 p-sm-4 col-lg-6 text-start">
+        <form method="post" class="form_block" onsubmit="formSubmit(this);">
+          {% csrf_token %}
+          <div class="my-2 align-items-center gap-3">
+            <select name="subject_slug" id="" class="form-select">
+              {% for subject in teacher.subjects.all %}
+              <option value="{{ subject.subject_slug }}">{{ subject.subject_name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="mb-3 ms-3">
+            <label for="question">Savol:</label>
+            <input type="username" class="form-control" id="question" name="question" required>
+          </div>
+          <div class="row">
+            <div class="d-flex my-1 align-items-center gap-3">
+              <!-- <input type="radio" value="variant1" name="answer" class="form-check-input" required> -->
+              <input type="text" name="variant1" class="form-control" placeholder="Variantlarni qo'shish" required>
+            </div>
+            <div class="d-flex my-1 align-items-center gap-3">
+              <!-- <input type="radio" value="variant2" name="answer" class="form-check-input" required> -->
+              <input type="text" name="variant2" class="form-control" placeholder="Variantlarni qo'shish" required>
+            </div>
+            <div class="d-flex my-1 align-items-center gap-3">
+              <!-- <input type="radio" value="variant3" name="answer" class="form-check-input" required> -->
+              <input type="text" name="variant3" class="form-control" placeholder="Variantlarni qo'shish" required>
+            </div>
+            <div class="d-flex my-1 align-items-center gap-3">
+              <!-- <input type="radio" value="variant4" name="answer" class="form-check-input" required> -->
+              <input type="text" name="variant4" class="form-control" placeholder="Variantlarni qo'shish" required>
+            </div>
+            <div class="d-flex my-1 align-items-center gap-3">
+              <!-- <input type="radio" value="variant4" name="answer" class="form-check-input" required> -->
+              <input type="text" name="answer" class="form-control" placeholder="To'g'ri javobni yozing" required>
+            </div>
+            <input id="status" name="status" type="text" hidden>
+          </div>
+          <div class="d-flex justify-content-end mt-3">
+            <button class="btn btn-success text-end"><i class="fa-solid fa-plus"></i> Qo'shish</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-12 bg-light p-3 p-sm-4 col-lg-6 text-start ">
+
+        <div class="row">
+          <div class="my-1 align-items-center gap-3">
+            <select name="subject_slug" id="" class="form-select" onchange="subjectFilter(this);">
+              <option value="all">Barchasi</option>
+              {% for subject in teacher.subjects.all %}
+              <option value="{{ subject.subject_slug }}">{{ subject.subject_name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="d-flex my-1 mb-4 align-items-center justify-content-between">
+            <h5 class="fw-bold">Jami: <span>{{tests|length }}</span></h5>
+            {% if tests %}
+            <a href="{% url 'delete_all_tests' %}" class="btn btn-danger all_del">All Deleted</a>
+            {% else %}
+            <a href="#" class="btn btn-danger disabled">All Deleted</a>
+            {% endif %}
+          </div>
+          <div class="scroll text-white">
+            {% for test in tests %}
+            <div class="card p-2 bg-secondary my-2" data-filter="{{ test.subject.subject_slug }}">
+              <div class="card_header d-flex justify-content-between">
+                <span></span>
+                <div>
+                  <a href="#" onclick="editData();" class="btn btn-success me-2 edit_btn" data-edit="{{ test.pk }}"><i class="fa-solid fa-pen"></i></a>
+                  <a href="{% url 'delete_test' test.pk %}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                </div>
+              </div>
+              <div class="">
+                <p class="fw-bold">{{test.question}}</p>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function editData(){
+    let edit_btn = document.querySelector('.edit_btn');
+    data_edit = edit_btn.getAttribute('data-edit')
+    $.ajax({
+        url: "edit_test",
+        type: 'get',
+        data: { attr: data_edit},
+        success: function (data) {
+          showEditData(data, data_edit);
+        }
+    });
+}
+
+function showEditData(items, s){
+    let form_block = document.querySelectorAll('.form_block input');
+    let form_block_radio = document.querySelectorAll('.form_block input[type=radio]');
+    let status = document.querySelector('.form_block #status');
+    console.log(items[0].fields.question);
+    form_block[1].value = items[0].fields.question
+    form_block[2].value = items[0].fields.option1
+    form_block[3].value = items[0].fields.option2
+    form_block[4].value = items[0].fields.option3
+    form_block[5].value = items[0].fields.option4
+    form_block[6].value = items[0].fields.answer
+    status.value = s 
+
+    form_block_radio.forEach(item => {
+      if (item.value === items[5]) {
+        item.checked = true;
+      }
+    })
+}
+function subjectFilter(e){
+  let cards = document.querySelectorAll('.scroll .card');
+  cards.forEach((card) => {
+    console.log(e.value, card.getAttribute('data-filter'));
+    if (e.value == 'all'){
+      card.style.display = 'block';
+    } else if (card.getAttribute('data-filter') != e.value){
+      card.style.display = 'none';
+    }
+  })
+}
+let all_del = document.querySelector('.all_del');
+all_del.onclick = (e) => {
+  let check = confirm("Xaqiqatdan xam o'chirmoqchimisiz");
+  if (!check){
+    e.preventDefault();
+  }
+}
+
+function formSubmit(e){
+  e.preventDefault();
+  let form_block = document.querySelectorAll('.form_block input[type=radio]');
+  let form_block2 = document.querySelectorAll('.form_block input[type=text]');
+  form_block.forEach((item) => {
+    form_block2.forEach((item2) => {
+      item.value = item2.value
+    });
+    console.log(item.value);
+  });
+}
+</script>
+{% endblock %}

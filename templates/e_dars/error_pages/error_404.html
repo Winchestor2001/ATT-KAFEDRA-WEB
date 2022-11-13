@@ -1,0 +1,37 @@
+{% extends 'e_darslik/base.html' %}
+{% load static %}
+
+{% block title %}PyDarslik - 404{% endblock %}
+
+
+{% block content %}
+
+
+{% include 'e_darslik/includes/navbar2.html' %}
+
+
+<div class="error_404 d-flex flex-column">
+    <h1>404</h1>
+    <p>sahifa topilmadi</p>
+    <center>
+        <a class="btn text-white btn-warning hvr-bounce-to-right py-3 px-5 w-25" href="{% url 'home' %}">Asosiy sahifaga qaytish</a>
+    </center>
+</div>
+<section class="footer pb-5">
+    <div class="section">
+        <div class='air air1'></div>
+        <div class='air air2'></div>
+        <div class='air air3'></div>
+        <div class='air air4'></div>
+    </div>
+    <div class="container">
+        <footer class="pt-5">
+            <div class="pt-4 border-top text-center text-white">
+                <p>&copy; 2022 Axborot Tizimlari va Texnologiyalari kafedrasi. Barcha huquqlar himoyalangan</p>
+            </div>
+        </footer>
+    </div>
+</section>
+
+
+{% endblock %}

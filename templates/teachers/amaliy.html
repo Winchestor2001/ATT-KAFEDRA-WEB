@@ -1,0 +1,237 @@
+{% extends 'teachers/base.html' %}
+
+{% block content %}
+<div class="center_card text-center">
+  <div class="d-block d-sm-flex justify-content-between">
+    <h2 class="ms-3">Amaliy</h2>
+  </div>
+  <div class="container-fluid mb-5">
+    <div class="row mt-4 mb-4">
+      <div class="col-12 bg-light p-3 p-sm-4 col-lg-6 text-start">
+        <form method="post" enctype="multipart/form-data" class="form_block">
+          {% csrf_token %}
+          <div class="row">
+            <div class="my-1 align-items-center gap-3">
+              <select name="subject_slug" id="" class="form-select" required>
+                <option value="">----</option>
+                {% for subject in teacher.subjects.all %}
+                <option value="{{ subject.subject_slug }}">{{ subject.subject_name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="my-1 align-items-center gap-3">
+              <label for="pract_id">Amaliy mavzu tartib raqami:</label>
+              <input type="text" class="form-control" id="pract_id" name="pract_id"
+                placeholder="Amaliy mavzu tartib raqami" required />
+            </div>
+            <div class="my-1 align-items-center gap-3">
+              <label for="title">Amaliy mavzusi:</label>
+              <input class="form-control" name="title" id="title" placeholder="Amaliy mavzusi" />
+            </div>
+            <input id="status" name="status" type="text" hidden>
+          </div>
+          <div class="d-flex justify-content-end my-3">
+            <button class="btn btn-success text-end">
+              <i class="fa-solid fa-plus"></i> Qo'shish
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="col-12 bg-light p-3 p-sm-4 col-lg-6 text-start">
+        <div class="row">
+          <div class="my-1 align-items-center gap-3">
+            <select name="subject_slug" id="" class="form-select" onchange="subjectFilter(this);">
+              <option value="all">Barchasi</option>
+              {% for subject in teacher.subjects.all %}
+              <option value="{{ subject.subject_slug }}">{{ subject.subject_name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="d-flex my-1 mb-4 align-items-center justify-content-between">
+            <h5 class="fw-bold">Jami: <span>{{amaliy|length }}</span></h5>
+            {% if amaliy %}
+            <a href="{% url 'delete_all_amaliy' %}" class="btn btn-danger all_del">All Deleted</a>
+            {% else %}
+            <a href="#" class="btn btn-danger disabled">All Deleted</a>
+            {% endif %}
+          </div>
+          <div class="scroll text-white">
+            {% for amali in amaliy_mavzu %}
+            <div class="card p-2 bg-secondary my-2" data-filter="{{ amali.subject.subject_slug }}">
+              <div class="card_header d-flex justify-content-between">
+                <span></span>
+                <div>
+                  <a href="#" onclick="editData(this);" class="btn btn-success me-2 edit_btn"
+                    data-edit="{{ amali.practis_slug }}"><i class="fa-solid fa-pen"></i></a>
+                  <a href="{% url 'delete_amaliy' amali.practis_slug %}" class="btn btn-danger"><i
+                      class="fa-solid fa-trash"></i></a>
+                </div>
+              </div>
+              <div>
+                <p class="fw-bold">{{ amali.practis_name }}</p>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row mt-4 mb-4">
+      <div class="col-12 bg-light p-3 p-sm-4 col-lg-6 text-start">
+        <form method="post" enctype="multipart/form-data" class="form_block">
+          {% csrf_token %}
+          <div class="row">
+            <div class="my-1 align-items-center gap-3">
+              <select name="subject_slug" id="" class="form-select main_select" required>
+                <option value="">----</option>
+                {% for subject in teacher.subjects.all %}
+                <option value="{{ subject.subject_slug }}">{{ subject.subject_name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="my-1 align-items-center gap-3">
+              <select name="practis_slug" id="amaliy_theme" class="form-select" required>
+                <option value="">----</option>
+              </select>
+            </div>
+            <div class="my-1 align-items-center gap-3">
+              <label for="title">Amaliy sarlavhasi:</label>
+              <input type="text" class="form-control" id="Video sarlavhasi" name="title" placeholder="Maruza sarlavhasi"
+                required />
+            </div>
+            <div class="my-1 align-items-center gap-3">
+              <label for="question">Savol:</label>
+              <textarea class="form-control" name="question" id="question" placeholder="Savol"></textarea>
+            </div>
+            <div class="my-1 align-items-center gap-3">
+              <label for="solusion">Echimi:</label>
+              <textarea class="form-control" name="solusion" id="solusion" placeholder="Echimi"></textarea>
+            </div>
+            <div class="my-1 align-items-center gap-3">
+              <label for="checking">Tekshiruv:</label>
+              <textarea class="form-control" name="checking" id="checking" placeholder="Tekshiruv"></textarea>
+            </div>
+            <div class="my-1 align-items-center gap-3">
+              <label for="hint">Eslatma:</label>
+              <input type="" class="form-control" id="hint" name="hint" placeholder="Eslatma" />
+            </div>
+            <input id="status" name="status" type="text" hidden>
+          </div>
+          <div class="d-flex justify-content-end mt-3">
+            <button class="btn btn-success text-end">
+              <i class="fa-solid fa-plus"></i> Qo'shish
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="col-12 bg-light p-3 p-sm-4 col-lg-6 text-start">
+        <div class="row">
+          <div class="my-1 align-items-center gap-3">
+            <select name="subject_slug" id="" class="form-select" onchange="subjectFilter(this);">
+              <option value="all">Barchasi</option>
+              {% for subject in teacher.subjects.all %}
+              <option value="{{ subject.subject_slug }}">{{ subject.subject_name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="d-flex my-1 mb-4 align-items-center justify-content-between">
+            <h5 class="fw-bold">Jami: <span>{{amaliy|length }}</span></h5>
+            {% if amaliy %}
+            <a href="{% url 'delete_all_amaliy' %}" class="btn btn-danger all_del">All Deleted</a>
+            {% else %}
+            <a href="#" class="btn btn-danger disabled">All Deleted</a>
+            {% endif %}
+          </div>
+          <div class="scroll text-white">
+            {% for amali in amaliy %}
+            <div class="card p-2 bg-secondary my-2" data-filter="{{ amali.question_slug }}">
+              <div class="card_header d-flex justify-content-between">
+                <span></span>
+                <div>
+                  <a href="#" onclick="editData(this);" class="btn btn-success me-2 edit_btn"
+                    data-edit="{{ amali.question_slug }}"><i class="fa-solid fa-pen"></i></a>
+                  <a href="{% url 'delete_amaliy' amali.question_slug %}" class="btn btn-danger"><i
+                      class="fa-solid fa-trash"></i></a>
+                </div>
+              </div>
+              <div>
+                <p class="fw-bold">{{ amali.question_title }}</p>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function editData(e) {
+    data_edit = e.getAttribute('data-edit')
+    $.ajax({
+      url: "edit_amaliy",
+      type: 'get',
+      data: { attr: data_edit },
+      success: function (data) {
+        showEditData(data.split(','), data_edit);
+      }
+    });
+  }
+
+  function showEditData(items, s) {
+    let form_block = document.querySelectorAll('.form_block input');
+    let status = document.querySelector('.form_block #status');
+    let files_type = document.querySelectorAll('.form_block input[type=file]');
+    files_type.forEach(item => {
+      item.required = false
+    });
+    form_block[1].value = items[0]
+    form_block[2].value = items[1]
+    status.value = s
+  }
+
+  function subjectFilter(e) {
+    console.log(e.value);
+    let cards = document.querySelectorAll('.scroll .card');
+    cards.forEach((card) => {
+      if (e.value == 'all') {
+        card.style.display = 'block';
+      } else if (card.getAttribute('data-filter') != e.value) {
+        card.style.display = 'none';
+      }
+    })
+  }
+
+  let all_del = document.querySelector('.all_del');
+  all_del.onclick = (e) => {
+    let check = confirm("Xaqiqatdan xam o'chirmoqchimisiz");
+    if (!check) {
+      e.preventDefault();
+    }
+  }
+
+  let main_select = document.querySelector('.main_select');
+  let amaliy_theme = document.querySelector('#amaliy_theme');
+  main_select.onchange = () => {
+    $.ajax({
+      url: "{% url 'get_amaliy_ajax' %}",
+      type: 'get',
+      data: { attr: main_select.value },
+      success: function (data) {
+        console.log(data);
+        let tag;
+        for (let i = 0; i < data.length; i++) {
+          tag += `<option value="${data[i].fields.practis_slug}">${data[i].fields.practis_name}</option>`
+        }
+        amaliy_theme.innerHTML = tag
+      }
+    });
+
+  }
+
+
+</script>
+{% endblock %}

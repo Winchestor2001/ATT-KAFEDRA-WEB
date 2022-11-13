@@ -1,0 +1,45 @@
+{% extends 'e_dars/base.html' %}
+
+
+{% block title %}PyDarslik - Amaliy{% endblock %}
+
+
+{% block content %}
+{% include 'e_dars/includes/navbar2.html' %}
+<div class="editor_card container py-4">
+    <h3 class="text-center mb-5">{{practis.question_title}}</h3>
+    {% for item in practis %}
+    <h6 class="mb-4">{{ item.question_title }}</h6>
+    <div data-datacamp-exercise data-lang="python" class="mb-5">
+        <code data-type="sample-code">
+            {{ item.question }}
+        </code>
+        {% if item.solusion %}
+        <code data-type="solution">
+            {{ item.solusion }}
+        </code>
+        {% endif %}
+        {% if item.checking %}
+        <code data-type="sct">
+            {{ item.checking }}
+        </code>
+        {% endif %}
+        {% if item.hint %}
+        <div data-type="hint">
+            {{ item.hint }}
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% include 'e_dars/includes/footer.html' %}
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript" src="//cdn.datacamp.com/dcl-react.js.gz"></script>
+<script>
+        initAddedDCLightExercises();
+
+
+</script>
+{% endblock %}

@@ -1,0 +1,29 @@
+<div
+  class="user_top bg-dark d-block d-sm-flex justify-content-center justify-content-sm-between p-3 px-sm-4 py-sm-0"
+>
+  <div class="d-flex align-items-center justify-content-center gap-2">
+    {% if teacher.avatar %}
+      <img
+        class="img"
+        src="{{ teacher.avatar.url }}"
+        alt=""
+      />
+      {% else %}
+      <img
+        class="img"
+        src="https://www.luxecorp.ru/templates/hunter/assets/img/persons/default.png"
+        alt=""
+      />
+      {% endif %}
+    <p class="mb-0 text-white">{{ teacher.teacher_full_name }}</p>
+  </div>
+  <form class="d-flex mt-3 mt-sm-0" role="search">
+    <input
+      class="form-control me-2"
+      type="search"
+      placeholder="Search"
+      aria-label="Search"
+    />
+    <button class="btn btn-outline-success" type="submit">Qidiruv</button>
+  </form>
+</div>

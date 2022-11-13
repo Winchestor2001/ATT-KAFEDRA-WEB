@@ -1,0 +1,27 @@
+{% extends 'e_dars/base.html' %}
+
+
+{% block title %}Posts{% endblock %}
+
+
+{% block content %}
+
+{% include 'e_dars/includes/navbar2.html' %}
+
+<div class="container">
+    <div class="shadow p-5 my-5 post_detail">
+        <h1 class="text-center">{{ post.title }}</h1>
+        <div class="text-end">
+            <span>{{ post.created_at | time:'H:i' }} / {{ post.created_at | date:'d.m.y' }}</span>
+            <span><i class="fa-solid fa-eye"></i> {{ post.post_views }}</span>
+        </div>
+         <center>
+            <img src="/media/{{ post.img }}" alt="">
+        </center>
+        <p>{{ post.body | safe }}</p>
+    </div>
+</div>
+
+{% include 'e_dars/includes/footer.html' %}
+
+{% endblock %}

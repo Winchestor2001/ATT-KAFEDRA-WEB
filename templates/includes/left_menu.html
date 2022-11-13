@@ -1,0 +1,57 @@
+<div class="left_content shadow-lg justify-content-center text-center pt-5">
+  <div class="left_btn px-3 py-4">
+    <i class="fa-solid fa-bars text-dark"></i>
+  </div>
+  <div class="profile">
+    <div class="profile_logo">
+      <div class="profile_logo_hover"></div>
+      <!-- <form id="send_ava" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input name="avatar" onchange="clickInput()" id="get_file_input" type="file" hidden>
+      </form> -->
+      {% if teacher.avatar %}
+      <img
+        class="img-2"
+        src="{{ teacher.avatar.url }}"
+        alt=""
+      />
+      {% else %}
+      <img
+        class="img-2"
+        src="https://www.luxecorp.ru/templates/hunter/assets/img/persons/default.png"
+        alt=""
+      />
+      {% endif %}
+      <p class="my-2m">{{ request.user.first_name }}</p>
+    </div>
+    <div class="profile_menu">
+      <ul class="profile_menu_ul">
+        <li><a href="{% url 'profile' %}"><i class="fa-solid fa-gear"></i> Profil</a></li>
+        <li><a href="{% url 'maruzalar' %}"><i class="fa-solid fa-paperclip"></i> Maruzalar</a></li>
+        <li>
+          <a class="drop_a" href="#"><i class="fa-solid fa-folder-open"></i> Amaliy ishlar</a>
+          <ul class="dropdrop_amaliy_ul ms-3 px-2">
+            <li><a href="{% url 'amaliy' %}">Dasturlash</a></li>
+            <li><a href="{% url 'virtual' %}">Virtual</a></li>
+            <li><a href="#"></a></li>
+          </ul>
+        </li>
+        <li><a href="{% url 'glossaries' %}"><i class="fa-regular fa-circle-dot"></i> Glossary</a></li>
+        <li>
+          <a href="#"><i class="fa-solid fa-newspaper"></i> Portfolio</a>
+        </li>
+        <li><a href="{% url 'videolar' %}"><i class="fa-solid fa-video"></i> Videolar</a></li>
+        <li>
+          <a class="drop_a" href="#"><i class="fa-solid fa-network-wired"></i> E-Resurslar</a>
+          <ul class="dropdrop_amaliy_ul ms-3 px-2">
+            <li><a href="{% url 'book' %}">Kitob</a></li>
+            <li><a href="{% url 'taqdimot' %}">Taqdimot</a></li>
+            <li><a href="{% url 'site' %}">Site</a></li>
+          </ul>
+        </li>
+        <li><a href="{% url 'tests' %}"><i class="fa-solid fa-feather"></i> Test</a></li>
+        <li><a href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i> Chiqish</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

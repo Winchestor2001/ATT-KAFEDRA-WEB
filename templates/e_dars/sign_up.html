@@ -1,0 +1,71 @@
+{% extends 'e_dars/base.html' %}
+{% load static %}
+
+{% block title %}Ro'yxatdan o'tish{% endblock %}
+
+
+{% block content %}
+
+{% include 'e_dars/includes/navbar2.html' %}
+ <div class="container my-5">
+        <div class="row">
+<!--            <div class="col-12 col-md-6 mt-5">-->
+<!--                <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"-->
+<!--                     alt="" class="img-fluid">-->
+<!--            </div>-->
+            <div class="col-12 col-md-6 offset-md-3 shadow p-4">
+                <h2 class="text-center">Ro'yxatdan o'tish</h2>
+                <hr>
+                <form method="post">
+                    {% csrf_token %}
+                    {% if message %}
+                        <div class="alert alert-{{col}} text-center">{{message}}</div>
+                    {% endif %}
+                    <div class="form-group">
+                        <label for="" class="form-label">Ismingiz</label>
+                        <input type="text" class="form-control" name="ism"
+                        placeholder="Ismingizni kiriting" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="form-label">Familyangiz</label>
+                        <input type="text" class="form-control" name="familya"
+                        placeholder="Familyangizni kiriting" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="form-label">Username</label>
+                        <input type="text" class="form-control" name="username"
+                        placeholder="Usernameingizni kiriting" required>
+                    </div>
+                     <div class="form-group">
+                        <label for="" class="form-label">Email</label>
+                        <input type="email" class="form-control" name="email"
+                        placeholder="Emailingizni kiriting" required>
+                    </div>
+                     <div class="form-group">
+                        <label for="" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password"
+                        placeholder="Passwordingizni kiriting" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" name="password2"
+                        placeholder="Confirm Passwordingizni kiriting" required>
+                    </div>
+                    <button type="submit" class="text-center border-0 py-3 px-5 btn-content hvr-btn mt-2">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+<!--{% if message %}-->
+<!--<script>-->
+<!--   function getStatus(){-->
+<!--        window.location='/';-->
+<!--   }-->
+<!--   setTimeout(()=>{-->
+<!--    getStatus()-->
+<!--   },2000)-->
+<!--</script>-->
+<!--{% endif %}-->
+
+{% include 'e_dars/includes/footer.html' %}
+{% endblock %}

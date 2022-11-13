@@ -1,0 +1,11 @@
+asgiref==3.5.2
+Django==4.1.2
+django-ckeditor==6.5.1
+django-jazzmin==2.5.0
+django-js-asset==2.0.0
+djangorestframework==3.14.0
+html2image==2.0.1
+Pillow==9.2.0
+pytz==2022.4
+sqlparse==0.4.3
+tzdata==2022.4

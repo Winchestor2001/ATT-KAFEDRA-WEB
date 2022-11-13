@@ -1,0 +1,189 @@
+{% extends 'e_dars/base.html' %}
+{% load static %}
+
+{% block title %}PyDarslik - Bosh sahofa{% endblock %}
+
+
+{% block content %}
+
+
+{% include 'e_dars/includes/navbar.html' %}
+
+
+<section class="abuot mt-100">
+    <div class="container">
+        <div class="row"> 
+            <div class="col-12 col-lg-6">
+                <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                <lottie-player src="https://lottie.host/f1fddb40-b832-41e1-9946-e43e21f9c342/4gUyEIE3ao.json" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></lottie-player>
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="title_img p-2 ">
+                    <h1>"{{ subject.subject_name }}" elektron resurs</h1>
+                </div>
+                <p>O’quv qo’llanma 5310200-Elektr energetikasi bakalavriat ta’lim yo’nalishida ta’lim olayotgan oliy
+                    o’quv
+                    yurti talabalari uchun mo’ljallangan bo’lib, undan boshqa ta’lim yo’nalishi talabalari va
+                    sohaning
+                    muhandis-texnik xodimlari ham foydalanishlari mumkin..</p>
+                <p>
+                    <span><i class="fa-regular fa-circle-check text-primary"></i></span>
+                    <span>Nazariy - bo'limda barcha ma'ruza mavzulari keltirilgan.</span>
+                </p>
+                <p>
+                    <span><i class="fa-regular fa-circle-check text-primary"></i></span>
+                    <span>Amaliy - bo'limda mavzuga doir amaliy mashqlar mavjud.</span>
+                </p>
+                <p>
+                    <span><i class="fa-regular fa-circle-check text-primary"></i></span>
+                    <span>E-Resurs - bo'limida elektron kitob, taqdimot va foydaliy sahifalar mavjud.</span>
+                </p>
+                <p>
+                    <span><i class="fa-regular fa-circle-check text-primary"></i></span>
+                    <span>Glossary - bo'limida fanga doir glossarylar keltirilgan.</span>
+                </p>
+                <p>
+                    <span><i class="fa-regular fa-circle-check text-primary"></i></span>
+                    <span>Quiz - bo'limida o'zlashtirilgan bilimlarni mustahkamlash mumkin.</span>
+                </p>
+                <p>
+                    <span><i class="fa-regular fa-circle-check text-primary"></i></span>
+                    <span>Yangiliklar - bo'limida dasturlashga doir maqolalar keltirilgan.</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- <section class="advert mt-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <div class="title_img p-3 mb-5">
+                    <h1>Yangiliklar</h1>
+                </div>
+            </div>
+        </div>
+        <div class="owl-carousel owl-them">
+            {% for post in posts %}
+            <a class="carouselCard" href="{% url 'posts_detail' post.id %}">
+                <img class="carouselCardImg" src="{{post.img.url}}"
+                     alt="">
+                <div class="card-header mb-5 text-end bg-transparent border-0">
+                    <h3>{{post.title}}</h3>
+                </div>
+                <div class="card-body mt-5 pt-4">
+                    <i>{{post.body | safe | truncatechars:80}}</i>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section> -->
+
+<section class="animate_number mt-100">
+    <div class="bg_animated">
+        <video class="bg_animate" src="{% static 'img/animated_medium20211215-20299-1h3n3kk.mp4' %}" loop autoplay
+               muted></video>
+    </div>
+    <div class="bg_glass text-white">
+        <div class="container">
+            <div class="row text-center py-5">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div>
+                        <h1 class="fw-bold display-4 border-bottom">{{ users }}</h1>
+                        <p>Talabalar</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div>
+                        <h1 class="fw-bold display-4 border-bottom">{{practis_themes}}</h1>
+                        <p>Amaliy mashg'ulotlar</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div>
+                        <h1 class="fw-bold display-4 border-bottom">{{themes}}</h1>
+                        <p>Maruza mashg'ulotlari</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div>
+                        <h1 class="fw-bold display-4 border-bottom">{{videos}}</h1>
+                        <p>Video darsliklar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cards mt-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <div class="title_img p-3 mb-5">
+                    <h1>Elektron Kitoblar</h1>
+                </div>
+            </div>
+        </div>
+        <div class="owl-carousel carousel owl-theme col justify-content-center">
+            {% for book in books %}
+            <div class="w-75 back ">
+                <img class="img_resize img-fluid mx-auto" src="{{ book.book_pic.url }}" alt="">
+                <div class="overlay">
+                    <div class="overlay-text">
+                        <h4 class="fw-bold mb-3">{{ book.book_title }}</h4>
+                        <a href="/media/{{ book.book_file }}" download
+                           class="text-center  py-2 px-3 btn-content hvr-btn">Yuklab olish</a>
+                    </div>
+                </div>
+                <div class="hover"></div>
+            </div>
+            {% endfor %}
+        </div>
+        <center class="mt-5">
+            <a href="resources_page/" class="text-center  py-3 px-5 btn-content hvr-btn mt-5">Ko'proq ko'rish</a>
+        </center>
+    </div>
+</section>
+
+<section class="glassary mt-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <div class="title_img p-3 mb-5">
+                    <h1>Glossary</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for glossary in glossaries %}
+            <div class="col-12 col-md-4 pt-3">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front py-4">
+                            <h3 class="fw-bold">{{glossary.glossary_title}}</h3>
+
+                        </div>
+                        <div class="flip-card-back p-3">
+                            <p>{{glossary.glossary_body}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <center class="mt-5 py-3">
+            <a href="glossary_page/" class="text-center py-3 px-5 btn-content hvr-btn mt-5">Ko'proq ko'rish</a>
+        </center>
+    </div>
+</section>
+
+
+{% include 'e_dars/includes/footer.html' %}
+
+
+{% endblock %}
+
+

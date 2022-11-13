@@ -1,0 +1,19 @@
+{% extends 'e_dars/base.html' %}
+
+
+{% block title %}PyDarslik - Yangiliklar{% endblock %}
+
+
+{% block content %}
+{% include 'e_dars/includes/navbar2.html' %}
+<div class="container">
+    <div class="themes_card shadow">
+        <ul>
+            {% for post in posts %}
+                <li><a href="{% url 'posts_detail' post.id %}">{{ post.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% include 'e_dars/includes/footer.html' %}
+{% endblock %}

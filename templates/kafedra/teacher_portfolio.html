@@ -1,0 +1,184 @@
+{% extends 'kafedra/base.html' %} {% block content %}
+<!-- modul porfolio img start -->
+<div class="popup">
+  <span>&times;</span>
+  <div class="popup-image">
+    <center>
+      <img src="" alt="" />
+    </center>
+  </div>
+</div>
+<!-- modul porfolio img end -->
+<!-- portfolio start -->
+<section class="portfolio_section">
+  <div class="container_new mt-50">
+    <p class="fs-13">Asosiy / <span class="text-muted">o'qituvchilar</span></p>
+    <h4 class="text-uppercase">Portfolio</h4>
+    <div class="shadow pt-5 pb-3 mt-5">
+      <!-- ourself about start -->
+      <div class="card border mx-sm-5 my-4">
+        <div class="card-header">
+          <h5
+            class="text-uppercase text-center text-lg-start fw-bold text-muted"
+          >
+            {{ teacher.rank }}
+          </h5>
+        </div>
+        <div class="row align-items-center p-4">
+          <div class="col-12 col-lg-3 border_end">
+            <center>
+              <div class="img_div border mt-3">
+                {% if teacher.avatar %}
+                <img
+                  class="img_card mt-10"
+                  src="{{ teacher.avatar.url }}"
+                  alt=""
+                />
+                {% else %}
+                <img
+                  class="img_card mt-10"
+                  src="https://corporateofficeheadquarters.org/wp-content/uploads/2021/05/Sam-Richman-1536x1536.jpg"
+                  alt=""
+                />
+                {% endif %}
+              </div>
+              <div class="icons mt-4">
+                <div class="icons_div first_bg">
+                  <a href="{{ teacher.telegram }}">
+                    <i class="fa-sharp fa-solid fa-paper-plane"></i>
+                  </a>
+                </div>
+                <div class="icons_div first_bg">
+                  <a href="{{ teacher.facebook }}">
+                    <i class="fa-brands fa-facebook-f"> </i>
+                  </a>
+                </div>
+                <div class="icons_div first_bg">
+                  <a href="{{ teacher.instagram }}">
+                    <i class="fa-brands fa-instagram"></i>
+                  </a>
+                </div>
+              </div>
+            </center>
+          </div>
+          <div class="col-12 col-lg-9 ps-4 mt-4 mt-lg-0">
+            <h2 class="text-center text-lg-start">
+              {{ teacher.teacher_id.first_name }}
+            </h2>
+            <h6>
+              <i class="fa-solid fa-phone text-success"></i> 
+              {{ teacher.phone_number }}
+            </h6>
+            <p>
+              <i class="fa-solid fa-envelope text-warning"></i>
+              {{ teacher.teacher_id.email }}
+            </p>
+            <!-- <div class="btn_div">
+                            <a href="#portfolio">
+                                <button class="btn first_bg px-4 py-2 shadov">
+                                    Portfolio..
+                                </button>
+                            </a>
+                        </div> -->
+          </div>
+        </div>
+      </div>
+      <!-- ourself about end -->
+
+      <!-- portfolio start -->
+      <div class="border-top border-info border-2 mt-5 mx-3">
+        <p class="mb-5 mt-3 text-start">Kasbiy faoliyat</p>
+        <div id="portfolio" class="portfolio">
+          <!-- left img -->
+          {% for portfolio in portfolios %} 
+          {% if forloop.counter|divisibleby:2 %}
+          <div class="card portfolio_card mb-3">
+            <div class="row align-items-center g-0">
+              <div class="col-md-4">
+                <img
+                  src="{{ portfolio.portfolio_img.url }}"
+                  class="img-fluid w-100 port_card_img jsImg"
+                  alt="..."
+                />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <b>Kategoriya:</b> {{ portfolio.category }}
+                  </h5>
+                  <h5 class="card-title">
+                    <b>Nomi:</b> {{ portfolio.portfolio_name }}
+                  </h5>
+                  <h5 class="card-text">
+                    <b>Mualiflar:</b> {{ portfolio.portfolio_authors }}
+                  </h5>
+                  <h5 class="card-text">
+                    <b>Nashriyot:</b> {{ portfolio.portfolio_address }}
+                  </h5>
+                  {% if portfolio.portfolio_description %}
+                  <h5 class="card-text text-align-justify">
+                    <b>Izoh: </b> {{ portfolio.portfolio_description }}
+                  </h5>
+                  {% endif %}
+                  <div
+                    class="text-secondary d-flex gap-3 fs-16 justify-content-end"
+                  >
+                    <span><i class="fa-solid fa-calendar-days"></i></span>
+                    <span>{{ portfolio.portfolio_date }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- left img -->
+          <!-- right img -->
+          {% else %}
+          <div class="card portfolio_card mb-3">
+            <div class="row align-items-center g-0">
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <b>Kategoriya:</b> {{ portfolio.category }}
+                  </h5>
+                  <h5 class="card-title">
+                    <b>Nomi:</b> {{ portfolio.portfolio_name }}
+                  </h5>
+                  <h5 class="card-text">
+                    <b>Mualiflar:</b> {{ portfolio.portfolio_authors }}
+                  </h5>
+                  <h5 class="card-text">
+                    <b>Nashriyot:</b> {{ portfolio.portfolio_address }}
+                  </h5>
+                  {% if portfolio.portfolio_description %}
+                  <h5 class="card-text text-align-justify">
+                    <b>Izoh: </b> {{ portfolio.portfolio_description }}
+                  </h5>
+                  {% endif %}
+                  <div
+                    class="text-secondary d-flex gap-3 fs-16 justify-content-start"
+                  >
+                    <span><i class="fa-solid fa-calendar-days"></i></span>
+                    <span>{{ portfolio.portfolio_date }}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <img
+                  src="{{ portfolio.portfolio_img.url }}"
+                  class="img-fluid w-100 port_card_img jsImg"
+                  alt="..."
+                />
+              </div>
+            </div>
+          </div>
+          {% endif %} 
+          {% endfor %}
+        </div>
+      </div>
+      <!-- portfolio end -->
+    </div>
+  </div>
+</section>
+<!-- portfolio end -->
+
+{% endblock %}

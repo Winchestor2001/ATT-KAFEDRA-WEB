@@ -1,0 +1,68 @@
+{% extends 'kafedra/base.html' %}
+{% load static %}
+
+
+
+{% block title %} O'qituvchilar {% endblock %}
+
+{% block content %}
+
+<section class="teachers_section">
+    <div class="container mt-50">
+        <p class="fs-13">Asosiy / <span class="text-muted">o'qituvchilar</span></p>
+        <h4>O'QITUVCHILAR</h4>
+        <div class="shadow  pt-5 mt-5">
+            {% for teacher in teachers %}
+            <div class="card border m-4">
+                <div class="card-header">
+                    <h5 class="text-uppercase text-center text-lg-start fw-bold text-muted">{{ teacher.rank }}</h5>
+                </div>
+                <div class="row align-items-center p-4">
+                    <div class="col-12 col-lg-3 border_end">
+                        <center>
+                            <div class="img_div border mt-3">
+                                {% if teacher.avatar %}
+                                    <img class="img_card mt-10" src="{{ teacher.avatar.url }}" alt="">
+                                {% else %}
+                                <img class="img_card mt-10" src="https://corporateofficeheadquarters.org/wp-content/uploads/2021/05/Sam-Richman-1536x1536.jpg" alt="">
+                                {% endif %}
+                            </div>
+                            <div class="icons mt-4">
+                                <div class="icons_div  first_bg">
+                                    <a href="{{ teacher.telegram }}">
+                                        <i class="fa-sharp fa-solid fa-paper-plane"></i>
+                                    </a>
+                                </div>
+                                <div class="icons_div  first_bg">
+                                    <a href="{{ teacher.facebook }}">
+                                        <i class="fa-brands fa-facebook-f">
+                                        </i>
+                                    </a>
+                                </div>
+                                <div class="icons_div first_bg">
+                                    <a href="{{ teacher.instagram }}">
+                                        <i class="fa-brands fa-instagram"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </center>
+                    </div>
+                    <div class="col-12 col-lg-9 ps-4 mt-4 mt-lg-0">
+                        <h2 class="text-center text-lg-start">{{ teacher.teacher_id.first_name }}</h2>
+                        <h6><i class="fa-solid fa-phone text-success"></i> {{ teacher.phone_number }}</h6>
+                        <p><i class="fa-solid fa-envelope text-warning"></i> {{ teacher.teacher_id.email }}</p>
+                        <div class="btn_div">
+                            <a href="{% url 'teacher_portfolio' teacher.teacher_id.pk %}">
+                                <button class="btn  first_bg  px-4 py-2 shadov">Batafsil..</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+

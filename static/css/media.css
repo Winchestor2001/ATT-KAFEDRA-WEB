@@ -1,0 +1,32 @@
+@media screen and (max-width:800px) {
+    .left_content {
+        width: 300px;
+        transform: translate(-83%);
+    }
+    .left_active {
+        width: 100%;
+        transform: translate(0%);
+        z-index: 10;
+    }
+    .right_content {
+        width: 100%;
+        display: block;
+        position: relative;
+        z-index: 0;
+    }
+    .right_active{
+        width: 100%;
+        margin-left: 50px !important;
+    }
+}
+@media (max-width: 578px){
+    .user_message {
+        height: 80vh;
+    }
+}
+/* @media (max-width: 600px){
+    .left_bar.left_active{
+        width: 100%;
+        padding: 50px;
+    }
+} */

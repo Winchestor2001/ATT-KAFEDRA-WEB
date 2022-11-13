@@ -1,0 +1,24 @@
+{% extends 'e_dars/base.html' %}
+
+
+{% block title %}PyDarslik - Amaliy{% endblock %}
+
+
+{% block content %}
+{% include 'e_dars/includes/navbar2.html' %}
+<div class="container text-center my-3">
+    <center>
+        <div class="title_img p-2 w-50">
+            <h1>Amaliy mavzulari</h1>
+        </div>
+    </center>
+    <div class="themes_card shadow">
+        <ul>
+            {% for item in practis_theme %}
+                <li><a href="/e-darslik/{{subject.subject_slug}}/practis_page/{{item.practis_slug}}/">{{ item.practis_name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% include 'e_dars/includes/footer.html' %}
+{% endblock %}

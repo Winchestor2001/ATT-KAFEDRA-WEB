@@ -1,0 +1,92 @@
+{% extends 'e_dars/base.html' %}
+
+
+{% block title %}PyDarslik - Quiz{% endblock %}
+
+
+{% block content %}
+
+<div class="quiz_main_div">
+    <div class="start_btn">
+        <button>Quizni boshlash</button>
+    </div>
+
+    <div class="info_box">
+        <div class="info_title">
+            <span>Quiz topshirish qoidalari</span>
+        </div>
+        <div class="info_list">
+            <div class="info">1. Quiz da xar bita savol uchun <span class="sec_timer">15 sekund</span> beriladi</div>
+            <div class="info">2. Tez yechishga xarakat qiling</div>
+            <div class="info">3. Eng ko'p topgan studentlarga sertifikatlar beriladi</div>
+        </div>
+        <div class="buttons">
+            <button class="quit"><a href="/e-darslik/{{subject.subject_slug}}/">Quizni Yakunlash</a></button>
+            <button class="restart">Davom etish</button>
+        </div>
+    </div>
+
+
+    <div class="quiz_box">
+        <header>
+            <div class="title">PyDarslik Quiz to'plami</div>
+            <div class="timer">
+                <div class="time_text">Vaqt</div>
+                <div class="time_sec">15</div>
+            </div>
+            <div class="time_line"></div>
+        </header>
+        <section>
+            <div class="quiz_text">
+                <span>Lorem ipsum dolor sit amet consectetur.</span>
+            </div>
+            <div class="option_list">
+
+            </div>
+        </section>
+        <footer>
+            <div class="total_quiz">
+
+            </div>
+            <button class="next_btn">Keyingi savol</button>
+        </footer>
+    </div>
+
+
+    <div class="result_box">
+        <div class="icon">
+            <i class="fa-solid fa-crown"></i>
+        </div>
+        <div class="complate_text">Siz quizni tugatingiz!</div>
+        <div class="score_text">
+
+        </div>
+        <div class="buttons">
+            <button class="restart">Qayta o'ynash</button>
+            <button class="quit"><a href="/e-darslik/{{ subject.subject_slug }}/">Bosh sahifa</a></button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block script %}
+<script>
+    async function QuizApi(){
+    let result;
+    let request = await fetch('http://192.168.137.98:8000/e-darslik/{{ subject.subject_slug }}/quiz_api/')
+    .then((response) => response.json())
+    .then((data) => result =  data);
+    return result
+    }
+
+    QuizApi().then((data) => {
+        questions = data
+        timeValue = questions[0].timer
+        console.log(questions);
+    })
+</script>
+{% endblock %}
+
+

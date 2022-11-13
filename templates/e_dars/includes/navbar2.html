@@ -1,0 +1,53 @@
+<section class="header">
+    <!-- <div class="ui_disgn"></div> -->
+    <div class="menu py-4">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container border-bottom">
+                <a class="navbar-brand" href="/e-darslik/{{subject.subject_slug}}/">
+                    <h4 class="fw-bold text_color">{{ subject.subject_subname }}</h4>
+                </a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 col justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link hvr-underline-from-left" aria-current="page" href="/e-darslik/{{subject.subject_slug}}/themes/">Maruzalar</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link hvr-underline-from-left" aria-current="page" href="/e-darslik/{{subject.subject_slug}}/practis_themes_page/">Amaliy</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link hvr-underline-from-left" aria-current="page" href="/e-darslik/{{subject.subject_slug}}/resources_page/">E-Resurslar</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link hvr-underline-from-left" aria-current="page" href="/e-darslik/{{subject.subject_slug}}/glossary_page/">Glossary</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link hvr-underline-from-left" aria-current="page" href="/e-darslik/{{subject.subject_slug}}/quiz_page/">Quiz</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link hvr-underline-from-left" aria-current="page" href="/e-darslik/{{subject.subject_slug}}/video_page/">Video darslar</a>
+                        </li>
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item ">
+                            <a class="nav-link hvr-underline-from-left" aria-current="page" href="/e-darslik/{{subject.subject_slug}}/logout/">Chiqish</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item ">
+                            <a class="nav-link hvr-underline-from-left" aria-current="page" href="/e-darslik/{{subject.subject_slug}}/sign_up/">Ro'yxatdan
+                                o'tish</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link hvr-underline-from-left" aria-current="page" href="/e-darslik/{{subject.subject_slug}}/sign_in/">Kirish</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</section>

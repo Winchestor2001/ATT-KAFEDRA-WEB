@@ -1,0 +1,24 @@
+{% extends 'e_dars/base.html' %}
+
+
+{% block title %}PyDarslik - Nazariy{% endblock %}
+
+
+{% block content %}
+{% include 'e_dars/includes/navbar2.html' %}
+<div class="container text-center my-3">
+    <center>
+        <div class="title_img p-2 w-50">
+            <h1>Ma'ruza mavzulari</h1>
+        </div>
+    </center>
+    <div class="themes_card shadow">
+        <ul>
+            {% for theme in themes %}
+            <li><a href="/e-darslik/{{subject.subject_slug}}/theme_detail/{{theme.maruza_slug}}/">{{ theme.maruza_title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% include 'e_dars/includes/footer.html' %}
+{% endblock %}
