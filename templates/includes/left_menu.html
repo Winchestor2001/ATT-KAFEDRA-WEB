@@ -22,11 +22,14 @@
         alt=""
       />
       {% endif %}
-      <p class="my-2m">{{ request.user.first_name }}</p>
+      <p class="my-2m">{{ teacher.teacher_id.first_name }}</p>
     </div>
     <div class="profile_menu">
       <ul class="profile_menu_ul">
         <li><a href="{% url 'profile' %}"><i class="fa-solid fa-gear"></i> Profil</a></li>
+        {% if teacher.rank == 'Kafedra mudiri' %}
+        <li><a href="{% url 'messages' %}"><i class="fa-solid fa-envelope"></i> Xabarlar</a></li>
+        {% endif %}
         <li><a href="{% url 'maruzalar' %}"><i class="fa-solid fa-paperclip"></i> Maruzalar</a></li>
         <li>
           <a class="drop_a" href="#"><i class="fa-solid fa-folder-open"></i> Amaliy ishlar</a>
@@ -38,7 +41,7 @@
         </li>
         <li><a href="{% url 'glossaries' %}"><i class="fa-regular fa-circle-dot"></i> Glossary</a></li>
         <li>
-          <a href="#"><i class="fa-solid fa-newspaper"></i> Portfolio</a>
+          <a href="{% url 'portfolio' %}"><i class="fa-solid fa-newspaper"></i> Portfolio</a>
         </li>
         <li><a href="{% url 'videolar' %}"><i class="fa-solid fa-video"></i> Videolar</a></li>
         <li>
@@ -50,7 +53,6 @@
           </ul>
         </li>
         <li><a href="{% url 'tests' %}"><i class="fa-solid fa-feather"></i> Test</a></li>
-        <li><a href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i> Chiqish</a></li>
       </ul>
     </div>
   </div>

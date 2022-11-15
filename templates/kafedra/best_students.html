@@ -1,0 +1,34 @@
+{% extends 'kafedra/base.html' %}
+{% load static %}
+
+
+
+{% block title %} Iqtidorli o'quvchilar {% endblock %}
+
+{% block content %}
+
+       <!-- student start -->
+       <section class="student mt-5">
+        <div class="container">
+            <p class="fs-13">Asosiy / <span class="text-muted">Iqtidorli Talabalar</span></p>
+            <h4 class="text-uppercase">Iqtidorli Talabalar</h4>
+            <div class="row mt-5">
+                {% for best_student in best_students %}
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="d-flex align-items-center my-2">
+                            <h1 class="d-inline me-3 first_color fs-5">{{ best_student.name }}</h1>
+                            <div class="border-top col mb-1"></div>
+                        </div>
+                        <div class="text text_justify border-bottom pb-4">
+                            {{ best_student.body | safe }}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- student end -->
+
+{% endblock %}

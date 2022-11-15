@@ -60,7 +60,7 @@
               <div class="card_header d-flex justify-content-between">
                 <span></span>
                 <div>
-                  <a href="#" onclick="editData();" class="btn btn-success me-2 edit_btn" data-edit="{{ virtual.pk }}"><i class="fa-solid fa-pen"></i></a>
+                  <a href="#" onclick="editData(this);" class="btn btn-success me-2 edit_btn" data-edit="{{ virtual.pk }}"><i class="fa-solid fa-pen"></i></a>
                   <a href="{% url 'delete_virtual' virtual.pk %}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                 </div>
               </div>
@@ -77,15 +77,14 @@
 </div>
 
 <script>
-  function editData(){
-    let edit_btn = document.querySelector('.edit_btn');
-    data_edit = edit_btn.getAttribute('data-edit')
+  function editData(e){
+    data_edit = e.getAttribute('data-edit')
     $.ajax({
         url: "edit_virtual",
         type: 'get',
         data: { attr: data_edit},
         success: function (data) {
-          showEditData(data.split(','), data_edit);
+          showEditData(data, data_edit);
         }
     });
 }
@@ -97,16 +96,20 @@ function showEditData(items, s){
     files_type.forEach(item => {
       item.required = false
     });
-    form_block[1].value = items[0]
+    form_block[1].value = items[0].fields.virtual_title
+    form_block[2].value = items[0].fields.virtual_url
     status.value = s
 }
 function subjectFilter(e){
-  console.log(e.value);
   let cards = document.querySelectorAll('.scroll .card');
   cards.forEach((card) => {
     if (e.value == 'all'){
       card.style.display = 'block';
-    } else if (card.getAttribute('data-filter') != e.value){
+    }
+    else if (card.getAttribute('data-filter') == e.value){
+      card.style.display = 'block';
+    }
+    else{
       card.style.display = 'none';
     }
   })

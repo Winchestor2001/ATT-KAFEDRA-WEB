@@ -89,7 +89,7 @@
         type: 'get',
         data: { attr: data_edit},
         success: function (data) {
-          showEditData(data.split(','), data_edit);
+          showEditData(data, data_edit);
         }
     });
 }
@@ -103,6 +103,20 @@ function showEditData(items, s){
     });
     form_block[1].value = items[0]
     status.value = s
+}
+function subjectFilter(e){
+  let cards = document.querySelectorAll('.scroll .card');
+  cards.forEach((card) => {
+    if (e.value == 'all'){
+      card.style.display = 'block';
+    }
+    else if (card.getAttribute('data-filter') == e.value){
+      card.style.display = 'block';
+    }
+    else{
+      card.style.display = 'none';
+    }
+  })
 }
 let all_del = document.querySelector('.all_del');
 all_del.onclick = (e) => {

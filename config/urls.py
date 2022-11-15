@@ -11,6 +11,7 @@ urlpatterns = [
     path('lk/', include('teachers.urls')),
     path('e-darslik/', include('e_dars.urls')),
     path('e-darslik/<slug:slug>', edars_detail, name='edarslik'),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', include('kafedra.urls')),
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),

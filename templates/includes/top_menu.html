@@ -15,15 +15,10 @@
         alt=""
       />
       {% endif %}
-    <p class="mb-0 text-white">{{ teacher.teacher_full_name }}</p>
   </div>
-  <form class="d-flex mt-3 mt-sm-0" role="search">
-    <input
-      class="form-control me-2"
-      type="search"
-      placeholder="Search"
-      aria-label="Search"
-    />
-    <button class="btn btn-outline-success" type="submit">Qidiruv</button>
-  </form>
+  <div class="d-flex mt-3 mt-sm-0 align-items-center">
+    <p class="mb-0 text-white me-3">{{ teacher.teacher_id.first_name }}</p>
+    <a href="{% url 'logout' %}" class="btn btn-danger text-white"><i class="fa-solid fa-right-from-bracket"></i> Chiqish</a>
+  </div>
+  
 </div>

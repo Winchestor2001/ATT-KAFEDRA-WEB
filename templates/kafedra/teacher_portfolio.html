@@ -1,12 +1,28 @@
-{% extends 'kafedra/base.html' %} {% block content %}
+{% extends 'kafedra/base.html' %} 
+
+
+{% block content %}
 <!-- modul porfolio img start -->
 <div class="popup">
-  <span>&times;</span>
-  <div class="popup-image">
-    <center>
-      <img src="" alt="" />
-    </center>
-  </div>
+  <span class="exit">&times;</span>
+  <center>
+  <div class="popup-image position-relative">
+      <div class="pdf_bar w-100 h-100  mt-5">
+        <button class="btn btn-primary me-3" id="prev-page">
+          <i class="fa-regular fa-circle-left"></i>
+        </button>
+        <span class="page_num">1</span> / <span class="page_count">3</span>
+        <button class="btn btn-primary ms-3" id="next-page">
+          <i class="fa-regular fa-circle-right"></i>
+        </button>
+        <div class="canvas position-relative">
+
+        </div>
+        <!-- <canvas data-pdf="" class="w-100 jsImg shadow pdf_render">
+        </canvas> -->
+      </div>
+    </div>
+  </center>
 </div>
 <!-- modul porfolio img end -->
 <!-- portfolio start -->
@@ -18,9 +34,7 @@
       <!-- ourself about start -->
       <div class="card border mx-sm-5 my-4">
         <div class="card-header">
-          <h5
-            class="text-uppercase text-center text-lg-start fw-bold text-muted"
-          >
+          <h5 class="text-uppercase text-center text-lg-start fw-bold text-muted">
             {{ teacher.rank }}
           </h5>
         </div>
@@ -29,17 +43,11 @@
             <center>
               <div class="img_div border mt-3">
                 {% if teacher.avatar %}
-                <img
-                  class="img_card mt-10"
-                  src="{{ teacher.avatar.url }}"
-                  alt=""
-                />
+                <img class="img_card mt-10" src="{{ teacher.avatar.url }}" alt="" />
                 {% else %}
-                <img
-                  class="img_card mt-10"
+                <img class="img_card mt-10"
                   src="https://corporateofficeheadquarters.org/wp-content/uploads/2021/05/Sam-Richman-1536x1536.jpg"
-                  alt=""
-                />
+                  alt="" />
                 {% endif %}
               </div>
               <div class="icons mt-4">
@@ -66,20 +74,13 @@
               {{ teacher.teacher_id.first_name }}
             </h2>
             <h6>
-              <i class="fa-solid fa-phone text-success"></i> 
+              <i class="fa-solid fa-phone text-success"></i>
               {{ teacher.phone_number }}
             </h6>
             <p>
               <i class="fa-solid fa-envelope text-warning"></i>
               {{ teacher.teacher_id.email }}
             </p>
-            <!-- <div class="btn_div">
-                            <a href="#portfolio">
-                                <button class="btn first_bg px-4 py-2 shadov">
-                                    Portfolio..
-                                </button>
-                            </a>
-                        </div> -->
           </div>
         </div>
       </div>
@@ -90,16 +91,12 @@
         <p class="mb-5 mt-3 text-start">Kasbiy faoliyat</p>
         <div id="portfolio" class="portfolio">
           <!-- left img -->
-          {% for portfolio in portfolios %} 
-          {% if forloop.counter|divisibleby:2 %}
+          {% for portfolio in portfolios %} {% if forloop.counter|divisibleby:2 %}
           <div class="card portfolio_card mb-3">
             <div class="row align-items-center g-0">
               <div class="col-md-4">
-                <img
-                  src="{{ portfolio.portfolio_img.url }}"
-                  class="img-fluid w-100 port_card_img jsImg"
-                  alt="..."
-                />
+                <canvas data-pdf="{{ portfolio.portfolio_file.url }}" class="w-100 port_card_img jsImg shadow pdf_render">
+                </canvas>
               </div>
               <div class="col-md-8">
                 <div class="card-body">
@@ -119,13 +116,10 @@
                   <h5 class="card-text text-align-justify">
                     <b>Izoh: </b> {{ portfolio.portfolio_description }}
                   </h5>
+                  <h5 class="card-text text-align-justify">
+                    <b>Sana: </b> {{ portfolio.portfolio_date }}
+                  </h5>
                   {% endif %}
-                  <div
-                    class="text-secondary d-flex gap-3 fs-16 justify-content-end"
-                  >
-                    <span><i class="fa-solid fa-calendar-days"></i></span>
-                    <span>{{ portfolio.portfolio_date }}</span>
-                  </div>
                 </div>
               </div>
             </div>
@@ -153,21 +147,15 @@
                   <h5 class="card-text text-align-justify">
                     <b>Izoh: </b> {{ portfolio.portfolio_description }}
                   </h5>
+                  <h5 class="card-text text-align-justify">
+                    <b>Sana: </b> {{ portfolio.portfolio_date }}
+                  </h5>
                   {% endif %}
-                  <div
-                    class="text-secondary d-flex gap-3 fs-16 justify-content-start"
-                  >
-                    <span><i class="fa-solid fa-calendar-days"></i></span>
-                    <span>{{ portfolio.portfolio_date }}</span>
-                  </div>
                 </div>
               </div>
               <div class="col-md-4">
-                <img
-                  src="{{ portfolio.portfolio_img.url }}"
-                  class="img-fluid w-100 port_card_img jsImg"
-                  alt="..."
-                />
+                <canvas data-pdf="{{ portfolio.portfolio_file.url }}" class="w-100 port_card_img jsImg shadow pdf_render">
+                </canvas>
               </div>
             </div>
           </div>
@@ -180,5 +168,82 @@
   </div>
 </section>
 <!-- portfolio end -->
+
+<script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+<script>
+  function renderPDFFiles() {
+    let canvases = document.querySelectorAll(".pdf_render");
+    canvases.forEach((item) => {
+      let url = item.getAttribute('data-pdf');
+      // console.log(item.getAttribute('data-pdf'));
+      let pdfDoc = null,
+        pageNum = 1,
+        pageIsRendering = false,
+        pageNumIsPending = null;
+      const scale = 8,
+        canvas = item,
+        ctx = canvas.getContext("2d");
+
+      const renderPage = (num) => {
+        pageIsRendering = true;
+        pdfDoc.getPage(num).then((page) => {
+          const viewport = page.getViewport({ scale });
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+
+          const renderCtx = {
+            canvasContext: ctx,
+            viewport,
+          };
+          page.render(renderCtx).promise.then(() => {
+            pageIsRendering = false;
+            if (pageNumIsPending !== null) {
+              renderPage(pageNumIsPending);
+              pageNumIsPending = null;
+            }
+          });
+          document.querySelector(".page_num").textContent = num;
+        });
+      };
+
+      const queueRenderPage = (num) => {
+        if (pageIsRendering) {
+          pageNumIsPending = num;
+        } else {
+          renderPage(num);
+        }
+      };
+
+      const showPrevPage = () => {
+        if (pageNum <= 1) {
+          return;
+        }
+        pageNum--;
+        queueRenderPage(pageNum);
+      };
+      const showNextPage = () => {
+        if (pageNum >= pdfDoc.numPages) {
+          return;
+        }
+        pageNum++;
+        queueRenderPage(pageNum);
+      };
+
+      pdfjsLib.getDocument(url).promise.then((pdfDoc_) => {
+        pdfDoc = pdfDoc_;
+        document.querySelector(".page_count").textContent = pdfDoc.numPages;
+        renderPage(pageNum);
+      });
+
+      document
+        .querySelector("#prev-page")
+        .addEventListener("click", showPrevPage);
+      document
+        .querySelector("#next-page")
+        .addEventListener("click", showNextPage);
+    });
+  }
+  renderPDFFiles();
+</script>
 
 {% endblock %}

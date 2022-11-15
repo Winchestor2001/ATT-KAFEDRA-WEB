@@ -1,14 +1,23 @@
 from django.db import models
 from django.contrib.auth.models import User
+from ckeditor_uploader.fields import RichTextUploadingField
 
+
+class SubjectCategory(models.Model):
+    category = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.category
 
 
 class Subject(models.Model):
     subject_slug = models.SlugField(blank=True, null=True)
     subject_name = models.CharField(max_length=255)
+    subject_category = models.ForeignKey(SubjectCategory, on_delete=models.CASCADE, blank=True, null=True)
     subject_subname = models.CharField(max_length=255, blank=True, null=True)
     subject_file_1 = models.FileField(upload_to='subject_files/', blank=True, null=True, verbose_name='Fan dasturi')
     subject_file_2 = models.FileField(upload_to='subject_files/', blank=True, null=True, verbose_name='Uslubiy ko\'rsatma')
+    subject_file_3 = models.FileField(upload_to='subject_files/', verbose_name='Fan rejasi')
     subject_btn_color = models.CharField(max_length=255, blank=True, null=True)
     subject_bg_pic = models.ImageField(upload_to='subject_files/', blank=True, null=True)
 
@@ -87,7 +96,6 @@ class Maruza(models.Model):
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     maruza_slug = models.CharField(max_length=255, blank=True, null=True)
     maruza_title = models.CharField(max_length=255)
-    video = models.CharField(max_length=255, blank=True, null=True)
     maruza_file = models.FileField(upload_to='maruzalar/file/')
 
     def __str__(self):
@@ -110,6 +118,7 @@ class Test(models.Model):
 
 class Video(models.Model):
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    maruza = models.ForeignKey(Maruza, on_delete=models.CASCADE, blank=True, null=True)
     video_title = models.CharField(max_length=255)
     video_url = models.CharField(max_length=255)
 
@@ -150,6 +159,7 @@ class Amaliy(models.Model):
 
 
 class PortfolioCategory(models.Model):
+    portfolio_slug = models.CharField(max_length=255, blank=True)
     portfolio_name = models.CharField(max_length=255)
 
     def __str__(self):
@@ -164,11 +174,41 @@ class Portfolio(models.Model):
     portfolio_address = models.TextField()
     portfolio_date = models.DateField()
     portfolio_description = models.TextField(blank=True, null=True)
-    portfolio_file = models.FileField(upload_to='portfolio_files/', blank=True, null=True)
+    portfolio_file = models.FileField(upload_to='portfolio_files/')
     portfolio_img = models.ImageField(upload_to='portfolio_files/', blank=True, null=True)
 
     def __str__(self):
         return '{} - {}'.format(self.teacher, self.portfolio_name)
+
+
+class ContactMessage(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.CharField(max_length=255)
+    number = models.CharField(max_length=255)
+    context = models.TextField()
+    date = models.DateField(auto_now=True, blank=True, null=True)
+
+    def __str__(self):
+        return '{} - {}'.format(self.name, self.email)
+
+
+class BestStudent(models.Model):
+    name = models.CharField(max_length=255)
+    body = RichTextUploadingField()
+
+    def __str__(self):
+        return '{}'.format(self.name)
+
+
+class PortfolioImage(models.Model):
+    portfolio = models.ForeignKey(Portfolio, default=None, on_delete=models.CASCADE)
+    img = models.FileField(upload_to='portfolio_files/')
+
+    def __str__(self):
+        return str(self.pk)
+
+
+
 
 
 

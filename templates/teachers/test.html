@@ -10,7 +10,7 @@
   <div class="container-fluid">
     <div class="row mt-4 mb-4">
       <div class="col-12 bg-light p-3 p-sm-4 col-lg-6 text-start">
-        <form method="post" class="form_block" onsubmit="formSubmit(this);">
+        <form method="post" class="form_block">
           {% csrf_token %}
           <div class="my-2 align-items-center gap-3">
             <select name="subject_slug" id="" class="form-select">
@@ -25,24 +25,20 @@
           </div>
           <div class="row">
             <div class="d-flex my-1 align-items-center gap-3">
-              <!-- <input type="radio" value="variant1" name="answer" class="form-check-input" required> -->
-              <input type="text" name="variant1" class="form-control" placeholder="Variantlarni qo'shish" required>
+              <input type="radio" name="answer" data-id="excample_1" class="check form-check-input" required>
+              <input type="text" name="variant1" class="form-control " id="excample_1" placeholder="Variantlarni qo'shish" required>
             </div>
             <div class="d-flex my-1 align-items-center gap-3">
-              <!-- <input type="radio" value="variant2" name="answer" class="form-check-input" required> -->
-              <input type="text" name="variant2" class="form-control" placeholder="Variantlarni qo'shish" required>
+              <input type="radio" name="answer" data-id="excample_2" class="check form-check-input" required>
+              <input type="text" name="variant2" class="form-control " id="excample_2" placeholder="Variantlarni qo'shish" required>
             </div>
             <div class="d-flex my-1 align-items-center gap-3">
-              <!-- <input type="radio" value="variant3" name="answer" class="form-check-input" required> -->
-              <input type="text" name="variant3" class="form-control" placeholder="Variantlarni qo'shish" required>
+              <input type="radio" name="answer" data-id="excample_3" class="check form-check-input" required>
+              <input type="text" name="variant3" class="form-control" id="excample_3" placeholder="Variantlarni qo'shish" required>
             </div>
             <div class="d-flex my-1 align-items-center gap-3">
-              <!-- <input type="radio" value="variant4" name="answer" class="form-check-input" required> -->
-              <input type="text" name="variant4" class="form-control" placeholder="Variantlarni qo'shish" required>
-            </div>
-            <div class="d-flex my-1 align-items-center gap-3">
-              <!-- <input type="radio" value="variant4" name="answer" class="form-check-input" required> -->
-              <input type="text" name="answer" class="form-control" placeholder="To'g'ri javobni yozing" required>
+              <input type="radio" name="answer" data-id="excample_4" class="check form-check-input" required>
+              <input type="text" name="variant4" class="form-control" id="excample_4" placeholder="Variantlarni qo'shish" required>
             </div>
             <input id="status" name="status" type="text" hidden>
           </div>
@@ -76,7 +72,7 @@
               <div class="card_header d-flex justify-content-between">
                 <span></span>
                 <div>
-                  <a href="#" onclick="editData();" class="btn btn-success me-2 edit_btn" data-edit="{{ test.pk }}"><i class="fa-solid fa-pen"></i></a>
+                  <a href="#" onclick="editData(this);" class="btn btn-success me-2 edit_btn" data-edit="{{ test.pk }}"><i class="fa-solid fa-pen"></i></a>
                   <a href="{% url 'delete_test' test.pk %}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                 </div>
               </div>
@@ -94,9 +90,9 @@
 </div>
 
 <script>
-  function editData(){
-    let edit_btn = document.querySelector('.edit_btn');
-    data_edit = edit_btn.getAttribute('data-edit')
+  function editData(e){
+    data_edit = e.getAttribute('data-edit')
+    console.log(data_edit);
     $.ajax({
         url: "edit_test",
         type: 'get',
@@ -111,32 +107,38 @@ function showEditData(items, s){
     let form_block = document.querySelectorAll('.form_block input');
     let form_block_radio = document.querySelectorAll('.form_block input[type=radio]');
     let status = document.querySelector('.form_block #status');
-    console.log(items[0].fields.question);
+    console.log(items);
+    console.log(form_block);
     form_block[1].value = items[0].fields.question
-    form_block[2].value = items[0].fields.option1
-    form_block[3].value = items[0].fields.option2
-    form_block[4].value = items[0].fields.option3
-    form_block[5].value = items[0].fields.option4
-    form_block[6].value = items[0].fields.answer
+    form_block[3].value = items[0].fields.option1
+    form_block[5].value = items[0].fields.option2
+    form_block[7].value = items[0].fields.option3
+    form_block[9].value = items[0].fields.option4
+    // form_block[6].value = items[0].fields.answer
     status.value = s 
 
-    form_block_radio.forEach(item => {
-      if (item.value === items[5]) {
-        item.checked = true;
+    form_block.forEach(item => {
+      if (item.value == items[0].fields.answer) {
+        item.parentElement.children[0].checked=true
       }
     })
 }
 function subjectFilter(e){
   let cards = document.querySelectorAll('.scroll .card');
   cards.forEach((card) => {
-    console.log(e.value, card.getAttribute('data-filter'));
     if (e.value == 'all'){
       card.style.display = 'block';
-    } else if (card.getAttribute('data-filter') != e.value){
+    }
+    else if (card.getAttribute('data-filter') == e.value){
+      card.style.display = 'block';
+    }
+    else{
       card.style.display = 'none';
     }
   })
 }
+
+
 let all_del = document.querySelector('.all_del');
 all_del.onclick = (e) => {
   let check = confirm("Xaqiqatdan xam o'chirmoqchimisiz");
@@ -145,16 +147,16 @@ all_del.onclick = (e) => {
   }
 }
 
-function formSubmit(e){
-  e.preventDefault();
-  let form_block = document.querySelectorAll('.form_block input[type=radio]');
-  let form_block2 = document.querySelectorAll('.form_block input[type=text]');
-  form_block.forEach((item) => {
-    form_block2.forEach((item2) => {
-      item.value = item2.value
-    });
-    console.log(item.value);
-  });
-}
+let radio = document.querySelectorAll('.check')
+        radio.forEach(radio_item =>{
+          radio_item.addEventListener('input' , (e)=>{
+                let input = document.getElementById(e.target.dataset.id)
+                radio_item.value=input.value
+                input.addEventListener('input', ()=>{
+                  radio_item.value=input.value
+                })
+                // console.log(radio_item.value=input.value);
+            })
+        })
 </script>
 {% endblock %}

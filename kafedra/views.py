@@ -30,3 +30,32 @@ def teacher_portfolio_page(request, pk):
     teacher = Teacher.objects.get(teacher_id=pk)
     context = {'portfolios': portfolios, 'teacher': teacher}
     return render(request, 'kafedra/teacher_portfolio.html', context)
+
+
+def subjects_page(request):
+    subject1 = Subject.objects.filter(subject_category__category='AXBOROT TIZIMLARI VA TEXNOLOGIYALARI')
+    subject2 = Subject.objects.filter(subject_category__category='INFORMATIKA VA AXBOROT TEXNOLOGIYALARI')
+    subject3 = Subject.objects.filter(subject_category__category='TEXNOLOGIK JARAYONLARNI BOSHQARISHNING AXBOROT KOMMUNIKATSIYA TIZIMLARI')
+    context = {'subject1': subject1, 'subject2': subject2, 'subject3': subject3}
+    return render(request, 'kafedra/subjects.html', context)
+
+
+def tarixi_page(request):
+    context = {}
+    return render(request, 'kafedra/tarix.html', context)
+
+
+def contact_page(request):
+    if request.method == 'POST':
+        ContactMessage.objects.create(
+            name=request.POST.get('name'),
+            email=request.POST.get('email'),
+            context=request.POST.get('context'),
+        )
+    return render(request, 'kafedra/contact.html')
+
+
+def best_students_page(request):
+    best_students = BestStudent.objects.all()
+    context = {'best_students': best_students}
+    return render(request, 'kafedra/best_students.html', context)

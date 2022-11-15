@@ -37,10 +37,9 @@ def delete_all_maruza(request):
 
 
 def edit_maruza(request):
-    print(request.GET.get('attr'))
-    maruza = Maruza.objects.get(maruza_slug=request.GET.get('attr'))
-    data = f"{maruza.maruza_title},{maruza.video},{maruza.maruza_file}"
-    return HttpResponse(data)
+    maruza = Maruza.objects.filter(maruza_slug=request.GET.get('attr'))
+    data = serializers.serialize('json', maruza)
+    return HttpResponse(data, content_type="application/json")
 
 
 @login_required(login_url='login')
@@ -63,9 +62,9 @@ def delete_all_glossary(request):
 
 
 def edit_glossary(request):
-    glossary = Glossary.objects.get(glossary_slug=request.GET.get('attr'))
-    data = f"{glossary.glossary_title},{glossary.glossary_body}"
-    return HttpResponse(data)
+    glossary = Glossary.objects.filter(glossary_slug=request.GET.get('attr'))
+    data = serializers.serialize('json', glossary)
+    return HttpResponse(data, content_type="application/json")
 
 
 @login_required(login_url='login')
@@ -73,7 +72,8 @@ def videolar_page(request):
     if request.POST: return videolar_save_items(request)
     teacher = Teacher.objects.get(teacher_id=request.user)
     videos = Video.objects.filter(subject__teacher__teacher_id=request.user)
-    context = {'teacher': teacher, 'videos': videos}
+    maruzalar = Maruza.objects.filter(subject__teacher__teacher_id=request.user)
+    context = {'teacher': teacher, 'videos': videos, 'maruzalar': maruzalar}
     return render(request, 'teachers/videolar.html', context)
 
 
@@ -88,9 +88,9 @@ def delete_all_videolar(request):
 
 
 def edit_videolar(request):
-    video = Video.objects.get(pk=request.GET.get('attr'))
-    data = f"{video.video_title},{video.video_url}"
-    return HttpResponse(data)
+    video = Video.objects.filter(pk=request.GET.get('attr'))
+    data = serializers.serialize('json', video)
+    return HttpResponse(data, content_type="application/json")
 
 
 @login_required(login_url='login')
@@ -114,6 +114,7 @@ def delete_all_test(request):
 
 def edit_test(request):
     test = Test.objects.filter(pk=request.GET.get('attr'))
+    print(request.GET.get('attr'))
     data = serializers.serialize('json', test)
     return HttpResponse(data, content_type="application/json")
 
@@ -138,9 +139,9 @@ def delete_all_virtual(request):
 
 
 def edit_virtual(request):
-    virtual = Virtual.objects.get(pk=request.GET.get('attr'))
-    data = f"{virtual.virtual_title}"
-    return HttpResponse(data)
+    virtual = Virtual.objects.filter(pk=request.GET.get('attr'))
+    data = serializers.serialize('json', virtual)
+    return HttpResponse(data, content_type="application/json")
 
 
 @login_required(login_url='login')
@@ -170,7 +171,13 @@ def delete_all_amaliy(request):
 
 
 def edit_amaliy(request):
-    amaliy = Amaliy.objects.get(pk=request.GET.get('attr'))
+    amaliy = Amaliy.objects.filter(question_slug=request.GET.get('attr'))
+    data = serializers.serialize('json', amaliy)
+    return HttpResponse(data, content_type="application/json")
+
+
+def edit_amaliy2(request):
+    amaliy = AmaliyTheme.objects.filter(practis_slug=request.GET.get('attr'))
     data = serializers.serialize('json', amaliy)
     return HttpResponse(data, content_type="application/json")
 
@@ -195,9 +202,9 @@ def delete_all_book(request):
 
 
 def edit_book(request):
-    book = Book.objects.get(pk=request.GET.get('attr'))
-    data = f"{book.book_title}"
-    return HttpResponse(data)
+    book = Book.objects.filter(pk=request.GET.get('attr'))
+    data = serializers.serialize('json', book)
+    return HttpResponse(data, content_type="application/json")
 
 
 @login_required(login_url='login')
@@ -245,7 +252,33 @@ def delete_all_site(request):
 
 
 def edit_site(request):
-    site = WebSite.objects.get(pk=request.GET.get('attr'))
+    site = WebSite.objects.filter(pk=request.GET.get('attr'))
+    data = serializers.serialize('json', site)
+    return HttpResponse(data, content_type="application/json")
+
+
+@login_required(login_url='login')
+def portfolio_page(request):
+    if request.POST: return portfolio_save_items(request)
+    teacher = Teacher.objects.get(teacher_id=request.user)
+    portfolios = Portfolio.objects.filter(teacher=request.user)
+    categories = PortfolioCategory.objects.all()
+    context = {'teacher': teacher, 'portfolios': portfolios, 'categories': categories}
+    return render(request, 'teachers/portfolio.html', context)
+
+
+def delete_portfolio(request, pk):
+    Portfolio.objects.filter(pk=pk).delete()
+    return redirect('portfolio')
+
+
+def delete_all_portfolio(request):
+    Portfolio.objects.filter(teacher__teacher_id=request.user).delete()
+    return redirect('portfolio')
+
+
+def edit_portfolio(request):
+    site = Portfolio.objects.filter(pk=request.GET.get('attr'))
     data = serializers.serialize('json', site)
     return HttpResponse(data, content_type="application/json")
 
@@ -261,9 +294,9 @@ def profile_page(request):
         user.first_name = items['fio']
         teacher.phone_number = items['number']
         user.email = items['email']
-        teacher.telegram = items['tg']
-        teacher.instagram = items['inst']
-        teacher.facebook = items['fb']
+        teacher.telegram = 'https://t.me/' + items['tg']
+        teacher.instagram = 'https://www.instagram.com/' + items['inst']
+        teacher.facebook = 'https://www.facebook.com/' + items['fb']
 
         if request.FILES:
             file_obj = request.FILES['avatar']
@@ -299,6 +332,12 @@ def logout_user(request):
     return redirect('login')
 
 
+@login_required(login_url='login')
+def messages_page(request):
+    messages = ContactMessage.objects.all()
+    teacher = Teacher.objects.get(teacher_id=request.user)
+    context = {'messages': messages, 'teacher': teacher}
+    return render(request, 'teachers/messages.html', context)
 
 
 

@@ -7,10 +7,18 @@ language.forEach((element) => {
     element.classList.add("language_active");
   });
 });
+
 document.querySelectorAll(".jsImg").forEach((image) => {
-  image.addEventListener("click", () => {
+  image.addEventListener("click", (e) => {
+    console.log("success");
     document.querySelector(".popup").style.display = "block";
-    document.querySelector(".popup-image img").src = image.getAttribute("src");
+    let pdf_div = document.querySelector(".canvas");
+    // pdf_div.dataset.pdf = e.target.dataset.pdf
+    pdf_div.innerHTML = `
+          <canvas data-pdf="${e.target.dataset.pdf}" class="w-75 h-100 jsImg shadow pdf_render">
+          </canvas>
+    `;
+    renderPDFFiles();
   });
 });
 document.querySelector(".popup span").addEventListener("click", () => {

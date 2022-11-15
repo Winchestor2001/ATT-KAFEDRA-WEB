@@ -11,9 +11,10 @@
     <div class="themes_card shadow">
         <ul>
             {% for edars in edarslar %}
-            <li>
-                <a href="{% url 'edarslik' edars.subject_slug %}">{{ edars.subject_name }}</a>
-            </li>
+                <div class="d-flex align-items-center my-2">
+                    <a href="{% url 'edarslik' edars.subject_slug %}" class="d-inline me-3 first_color fs-5">{{ edars.subject_name }}</a>
+                    <div class="border-top col mb-1"></div>
+                </div>
             {% endfor %}  
         </ul>
     </div>

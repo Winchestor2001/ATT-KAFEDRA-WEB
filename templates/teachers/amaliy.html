@@ -80,7 +80,7 @@
   <div class="container-fluid">
     <div class="row mt-4 mb-4">
       <div class="col-12 bg-light p-3 p-sm-4 col-lg-6 text-start">
-        <form method="post" enctype="multipart/form-data" class="form_block">
+        <form method="post" enctype="multipart/form-data" class="form_block2">
           {% csrf_token %}
           <div class="row">
             <div class="my-1 align-items-center gap-3">
@@ -98,7 +98,7 @@
             </div>
             <div class="my-1 align-items-center gap-3">
               <label for="title">Amaliy sarlavhasi:</label>
-              <input type="text" class="form-control" id="Video sarlavhasi" name="title" placeholder="Maruza sarlavhasi"
+              <input type="text" class="form-control" id="title" name="title" placeholder="Maruza sarlavhasi"
                 required />
             </div>
             <div class="my-1 align-items-center gap-3">
@@ -150,7 +150,7 @@
               <div class="card_header d-flex justify-content-between">
                 <span></span>
                 <div>
-                  <a href="#" onclick="editData(this);" class="btn btn-success me-2 edit_btn"
+                  <a href="#" onclick="editData2(this);" class="btn btn-success me-2 edit_btn"
                     data-edit="{{ amali.question_slug }}"><i class="fa-solid fa-pen"></i></a>
                   <a href="{% url 'delete_amaliy' amali.question_slug %}" class="btn btn-danger"><i
                       class="fa-solid fa-trash"></i></a>
@@ -172,11 +172,22 @@
   function editData(e) {
     data_edit = e.getAttribute('data-edit')
     $.ajax({
+      url: "edit_amaliy2",
+      type: 'get',
+      data: { attr: data_edit },
+      success: function (data) {
+        showEditData(data, data_edit);
+      }
+    });
+  }
+  function editData2(e) {
+    data_edit = e.getAttribute('data-edit')
+    $.ajax({
       url: "edit_amaliy",
       type: 'get',
       data: { attr: data_edit },
       success: function (data) {
-        showEditData(data.split(','), data_edit);
+        showEditData2(data, data_edit);
       }
     });
   }
@@ -188,22 +199,43 @@
     files_type.forEach(item => {
       item.required = false
     });
-    form_block[1].value = items[0]
-    form_block[2].value = items[1]
+    form_block[1].value = items[0].fields.practis_id
+    form_block[2].value = items[0].fields.practis_name
+    status.value = s
+  }
+  function showEditData2(items, s) {
+    let form_block = document.querySelectorAll('.form_block2 input');
+    let form_textarea_block = document.querySelectorAll('.form_block2 textarea');
+    let status = document.querySelector('.form_block2 #status');
+    let files_type = document.querySelectorAll('.form_block2 input[type=file]');
+    files_type.forEach(item => {
+      item.required = false
+    });
+    console.log(form_textarea_block);
+    console.log(form_block);
+    form_block[1].value = items[0].fields.question_title
+    form_block[2].value = items[0].fields.hint
+    form_textarea_block[0].value = items[0].fields.question
+    form_textarea_block[1].value = items[0].fields.solusion
+    form_textarea_block[2].value = items[0].fields.checking
     status.value = s
   }
 
-  function subjectFilter(e) {
-    console.log(e.value);
-    let cards = document.querySelectorAll('.scroll .card');
-    cards.forEach((card) => {
-      if (e.value == 'all') {
-        card.style.display = 'block';
-      } else if (card.getAttribute('data-filter') != e.value) {
-        card.style.display = 'none';
-      }
-    })
-  }
+  function subjectFilter(e){
+  console.log(e.value);
+  let cards = document.querySelectorAll('.scroll .card');
+  cards.forEach((card) => {
+    if (e.value == 'all'){
+      card.style.display = 'block';
+    }
+    else if (card.getAttribute('data-filter') == e.value){
+      card.style.display = 'block';
+    }
+    else{
+      card.style.display = 'none';
+    }
+  })
+}
 
   let all_del = document.querySelector('.all_del');
   all_del.onclick = (e) => {

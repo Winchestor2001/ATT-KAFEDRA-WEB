@@ -14,17 +14,9 @@
     <div class="container_new">
         <div class="row align-items-center pt-5 pt-lg-0">
             <div class="col-12 col-lg-7">
-                <h1 class="display-6 text_color  fw-bold text-center text-lg-start"> ​​Erishilgan yutuqlarga mahliyo bo'lib o'tirish
+                <h1 class="display-5 text_color  fw-normal text-center text-lg-start"> ​​Erishilgan yutuqlarga mahliyo bo'lib o'tirish
                     taraqqiyot yo'lidagi eng katta g'ovdir.</h1>
                 <p class="fw-bold first_color text-center text-lg-start">Shavkat Mirziyoyev</p>
-                <div class="gap-4 justify-content-center text-center text-lg-start">
-                    <a href="#" download
-                        class="btn text-white btn-warning first_bg hvr-bounce-to-right py-3 mx-2 mt-3 px-5">Fan
-                        dasturi</a>
-                    <a href="#" download
-                        class="btn text-white btn-warning first_bg hvr-bounce-to-right py-3 mx-2 mt-3 px-5">Uslubiy
-                        ko'rsatma</a>
-                </div>
             </div>
             <div class="col-12 col-lg-5">
                 <script src="{% static 'js/anim.js' %}"></script>
@@ -573,7 +565,7 @@
                 </center>
                 <div class="text-center mt-3">
                     <div class="talim_card_title px-4">
-                        <span class="talabalar_soni">508</span>
+                        <span class="talabalar_soni">508 nafar</span>
                     </div>
                     <h5>Axborot tizimlari va texnologiyalari</h5>
                 </div>
@@ -585,7 +577,7 @@
                 </center>
                 <div class="text-center mt-3">
                     <div class="talim_card_title px-4">
-                        <span class="talabalar_soni">258</span>
+                        <span class="talabalar_soni">258 nafar</span>
                     </div>
                     <h5>Informatika va axborot texnologiyalari</h5>
                 </div>
@@ -597,7 +589,7 @@
                 </center>
                 <div class="text-center mt-3">
                     <div class="talim_card_title px-4">
-                        <span class="talabalar_soni">98</span>
+                        <span class="talabalar_soni">98 nafar</span>
                     </div>
                     <h5>Texnologik jarayonlarni boshqarishning axborot-kommunikatsiya tizimlari-</h5>
                 </div>
@@ -609,7 +601,7 @@
                 </center>
                 <div class="text-center mt-3">
                     <div class="talim_card_title px-4">
-                        <span class="talabalar_soni">10</span>
+                        <span class="talabalar_soni">10 nafar</span>
                     </div>
                     <h5>Kompyuter tizimlari va ularning dasturiy ta’minoti</h5>
                 </div>
@@ -716,5 +708,11 @@
 </section>
 <!-- hududiy boshqarmalar end -->
 
+<script>
+    let prog = document.querySelectorAll('.prog')
+prog.forEach(progress =>{
+    progress.style.cssText = `--value:${progress.getAttribute('data-progress')}`
+});
+</script>
 {% endblock %}
 

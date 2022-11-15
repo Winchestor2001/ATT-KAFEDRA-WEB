@@ -23,4 +23,19 @@ liClick.forEach(element => {
 });
 
 
+function showNotic(color){
+  let notic = document.querySelector('.Message')
+  let notic_color = document.querySelector('.Message--green')
+  notic.style.display = 'block'
+  notic_color.style.background = color
+  setTimeout(() => {
+    notic.style.display = 'none'
+  }, 2000)
+}
+
+
+
+
+
+
 

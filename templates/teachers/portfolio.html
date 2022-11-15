@@ -1,0 +1,148 @@
+{% extends 'teachers/base.html' %} 
+
+{% block content %}
+
+
+<div class="center_card text-center">
+    <div class="d-block d-sm-flex justify-content-between">
+      <h2 class="ms-3">Portfolio</h2>
+    </div>
+    <div class="container-fluid">
+      <div class="row mt-4 mb-4">
+        <div class="col-12 bg-light p-3 p-sm-4 col-lg-6 text-start">
+          <form method="post" enctype="multipart/form-data" class="form_block">
+            {% csrf_token %}
+            <div class="row">
+              <div class="my-1 align-items-center gap-3">
+                <select name="category_slug" id="" class="form-select">
+                    <option value="">-----</option>
+                  {% for category in categories %}
+                  <option value="{{ category.portfolio_slug }}">{{ category.portfolio_name }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="my-1 align-items-center gap-3">
+                <label for="title">Nomi:</label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="Nomi" required />
+              </div>
+              <div class="my-1 align-items-center gap-3">
+                <label for="authors">Mualiflar:</label>
+                <input type="text" class="form-control" id="authors" name="authors" placeholder="Mualiflar" required />
+              </div>
+              <div class="my-1 align-items-center gap-3">
+                  <label for="address">Nashriyot:</label>
+                  <input type="text" class="form-control" id="address" name="address" placeholder="Nashriyot" required />
+                </div>
+                <div class="my-1 align-items-center gap-3">
+                    <label for="description">Izoh:</label>
+                    <input type="text" class="form-control" id="description" name="description" placeholder="Izoh" />
+                </div>
+                <div class="my-1 align-items-center gap-3">
+                    <label for="description">Portfoliyo rasmi:</label>
+                    <input type="file" class="form-control" multiple="multiple" id="file" name="file" placeholder="Rasm" required/>
+                </div>
+                <div class="my-1 align-items-center gap-3">
+                    <label for="date">Olingan sana:</label>
+                    <input type="date" class="form-control" id="date" name="date" placeholder="Olingan sana" required/>
+                </div>
+              <input id="status" name="status" type="text" hidden>
+            </div>
+            <div class="d-flex justify-content-end mt-3">
+              <button class="btn btn-success text-end">
+                <i class="fa-solid fa-plus"></i> Qo'shish
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="col-12 bg-light p-3 p-sm-4 col-lg-6 text-start">
+          <div class="row">
+            <div class="my-1 align-items-center gap-3">
+              <select name="subject_slug" id="" class="form-select" onchange="subjectFilter(this);">
+                <option value="all">Barchasi</option>
+                  {% for category in categories %}
+                  <option value="{{ category.portfolio_slug }}">{{ category.portfolio_name }}</option>
+                  {% endfor %}
+              </select>
+            </div>
+            <div class="d-flex my-1 mb-4 align-items-center justify-content-between">
+              <h5 class="fw-bold">Jami: <span>{{portfolios|length }}</span></h5>
+              {% if portfolios %}
+              <a href="{% url 'delete_all_portfolio' %}" class="btn btn-danger all_del">All Deleted</a>
+              {% else %}
+              <a href="#" class="btn btn-danger disabled">All Deleted</a>
+              {% endif %}
+            </div>
+            <div class="scroll text-white">
+              {% for portfolio in portfolios %}
+              <div class="card p-2 bg-secondary my-2" data-filter="{{ portfolio.portfolio_name }}">
+                <div class="card_header d-flex justify-content-between">
+                  <span></span>
+                  <div>
+                    <a href="#" onclick="editData(this);" class="btn btn-success me-2 edit_btn" data-edit="{{ portfolio.pk }}"><i class="fa-solid fa-pen"></i></a>
+                    <a href="{% url 'delete_portfolio' portfolio.pk %}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                  </div>
+                </div>
+                <div>
+                  <p class="fw-bold">{{portfolio.portfolio_name}}</p>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    function editData(e){
+      data_edit = e.getAttribute('data-edit')
+      $.ajax({
+          url: "edit_portfolio",
+          type: 'get',
+          data: { attr: data_edit},
+          success: function (data) {
+            showEditData(data, data_edit);
+          }
+      });
+  }
+  
+  function showEditData(items, s){
+      let form_block = document.querySelectorAll('.form_block input');
+      let status = document.querySelector('.form_block #status');
+      let files_type = document.querySelectorAll('.form_block input[type=file]');
+      files_type.forEach(item => {
+        item.required = false
+      });
+      form_block[1].value = items[0].fields.portfolio_name
+      form_block[2].value = items[0].fields.portfolio_authors
+      form_block[3].value = items[0].fields.portfolio_address
+      form_block[4].value = items[0].fields.portfolio_description
+      form_block[6].value = items[0].fields.portfolio_date
+      status.value = sportfolio_slug
+  }
+  function subjectFilter(e){
+  let cards = document.querySelectorAll('.scroll .card');
+  cards.forEach((card) => {
+    if (e.value == 'all'){
+      card.style.display = 'block';
+    }
+    else if (card.getAttribute('data-filter') == e.value){
+      card.style.display = 'block';
+    }
+    else{
+      card.style.display = 'none';
+    }
+  })
+}
+  let all_del = document.querySelector('.all_del');
+  all_del.onclick = (e) => {
+    let check = confirm("Xaqiqatdan xam o'chirmoqchimisiz");
+    if (!check){
+      e.preventDefault();
+    }
+  }
+  </script>
+
+
+{% endblock %}

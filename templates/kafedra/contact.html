@@ -1,0 +1,53 @@
+{% extends 'kafedra/base.html' %}
+{% load static %}
+
+
+
+{% block title %} Biz bilan bog'lanish {% endblock %}
+
+{% block content %}
+
+<!-- hududiy boshqarmalar start -->
+<section class="location_control mt-50">
+    <div class="container_new">
+        <div class="row">
+            <div class="col-12 col-lg-6 mt-5 mt-lg-0">
+                <h4 class="section_title pb-3 first_color border-bottom fw-bold text-uppercase text-lg-center">
+                    Bog'lanish
+                </h4>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" required placeholder="Username" name="name">
+                        <label for="floatingInput">Ismingiz</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingpochta" required placeholder="Password" name="email">
+                        <label for="floatingpochta">Pochta</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <input type="number" pattern="[0-9]{9}" class="form-control" id="floatintell" required placeholder="Number" name="number">
+                        <label for="floatintell">Number</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <textarea class="form-control" placeholder="Leave a comment here" required name="context" id="floatingTextarea2" style="height: 150px"></textarea>
+                        <label for="floatingTextarea2">Xabar</label>
+                      </div>
+                      <div>
+                         <button type="submit" class="btn btn-primary first_bg border-0 py-3 px-4">Xabar Yuborish</button>
+                      </div>
+                </form>
+            </div>
+            <div class="col-12 col-lg-6 mb-5 mb-lg-0">
+                <h4 class="section_title pb-3 first_color border-bottom fw-bold text-uppercase text-lg-center">
+                    HUDUDIY BOSHQARMALAR
+                </h4>
+                <iframe class="w-100 h-100"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.825941616226!2d71.62937922628976!3d41.007182764676436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38bb4b027d4f4989%3A0xd0ff22471ee90ac1!2sNamangan%20muhandislik-qurilish%20instituti!5e0!3m2!1suz!2s!4v1666782900719!5m2!1suz!2s"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- hududiy boshqarmalar end -->
+{% endblock %}

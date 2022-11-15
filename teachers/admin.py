@@ -2,6 +2,10 @@ from django.contrib import admin
 from .models import *
 
 
+class PhotoAdmin(admin.StackedInline):
+    model = PortfolioImage
+
+
 @admin.register(Teacher)
 class TeacherAdmin(admin.ModelAdmin):
     list_display = ['teacher_id']
@@ -69,6 +73,7 @@ class PortfolioCategoryAdmin(admin.ModelAdmin):
 @admin.register(Portfolio)
 class PortfolioAdmin(admin.ModelAdmin):
     list_display = ['category', 'teacher', 'portfolio_name']
+    inlines = [PhotoAdmin]
 
 
 @admin.register(AmaliyTheme)
@@ -76,3 +81,17 @@ class AmaliyThemeAdmin(admin.ModelAdmin):
     prepopulated_fields = {'practis_slug': ('practis_name',)}
     list_display = ['subject', 'practis_name']
 
+
+@admin.register(SubjectCategory)
+class SubjectCategoryAdmin(admin.ModelAdmin):
+    list_display = ['category']
+
+
+@admin.register(ContactMessage)
+class ContactMessageAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email']
+
+
+@admin.register(BestStudent)
+class BestStudentAdmin(admin.ModelAdmin):
+    list_display = ['name']

@@ -1,0 +1,83 @@
+{% extends 'kafedra/base.html' %}
+{% load static %}
+
+
+
+{% block title %} O'qitiladigan fanlar {% endblock %}
+
+{% block content %}
+
+<section class="subjects">
+    <div class="container mt-50">
+        <p class="fs-13">Asosiy / <span class="text-muted">O'qitiladigan fanlar</span></p>
+        <h4 class="text-uppercase">O'qitiladigan fanlar</h4>
+        <div class="shadow pt-5 mt-5 p-4">
+            <div class="subject_div my-5">
+              <div class="d-flex align-items-center my-3">
+                <h4 class="d-inline me-3 first_color">AXBOROT TIZIMLARI VA TEXNOLOGIYALARI</h4>
+                <div class="border-top col mb-2"></div>
+              </div>
+              <div class="card brr-0">
+                <div class="card-header fw-semibold first_color text-uppercase">
+                    AXBOROT TIZIMLARI VA TEXNOLOGIYALARI
+                  </div>
+                <div>
+                    <table class="table table-bordered mb-0 table-hover">
+                      {% for subject in subject1 %}
+                          <tr>
+                            <td>{{ subject.subject_name }}</td>
+                            <td class="text-center"><a class="first_color" download href="{{ subject.subject_file_3.url }}">Yuklab olish</a></td>
+                          </tr>
+                          {% endfor %}
+                      </table>
+                </div>
+            </div>
+            </div>
+            <div class="subject_div my-5">
+              <div class="d-flex align-items-center my-3">
+                <h4 class="d-inline me-3 first_colorblack">INFORMATIKA VA AXBOROT TEXNOLOGIYALARI</h4>
+                <div class="border-top col mb-2"></div>
+              </div>
+              <div class="card brr-0">
+                <div class="card-header fw-semibold first_color text-uppercase">
+                  INFORMATIKA VA AXBOROT TEXNOLOGIYALARI
+                  </div>
+                <div>
+                    <table class="table table-bordered mb-0 table-hover">
+                      {% for subject in subject2 %}
+                      <tr>
+                        <td>{{ subject.subject_name }}</td>
+                        <td class="text-center"><a class="first_color" download href="{{ subject.subject_file_3.url }}">Yuklab olish</a></td>
+                      </tr>
+                      {% endfor %}
+                      </table>
+                </div>
+            </div>
+            </div>
+            <div class="subject_div my-5">
+              <div class="d-flex align-items-center my-3">
+                <h4 class="d-inline me-3 first_colorblack">TEXNOLOGIK JARAYONLARNI BOSHQARISHNING AXBOROT KOMMUNIKATSIYA TIZIMLARI</h4>
+                <div class="border-top col mb-2"></div>
+              </div>
+              <div class="card brr-0">
+                <div class="card-header fw-semibold first_color text-uppercase">
+                  TEXNOLOGIK JARAYONLARNI BOSHQARISHNING AXBOROT KOMMUNIKATSIYA TIZIMLARI
+                  </div>
+                <div>
+                    <table class="table table-bordered mb-0 table-hover">
+                      {% for subject in subject3 %}
+                      <tr>
+                        <td>{{ subject.subject_name }}</td>
+                        <td class="text-center"><a class="first_color" download href="{{ subject.subject_file_3.url }}">Yuklab olish</a></td>
+                      </tr>
+                      {% endfor %}
+                      </table>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

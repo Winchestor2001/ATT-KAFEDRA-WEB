@@ -1,0 +1,29 @@
+{% extends 'teachers/base.html' %} 
+
+{% block content %}
+
+<section class="messega_table w-100">
+    <div class="container">
+        <table class="table w-100 table-bordered table-striped text-center">
+            <thead class="bg-dark text-white">
+                <th>F.I.O</th>
+                <th>E-POCHTA</th>
+                <th>TELEFON RAQAM</th>
+                <th>XABAR</th>
+            </thead>
+            <tbody>
+                {% for message in messages %}
+                <tr>
+                    <td data-title="№">{{ message.name }}</td>
+                    <td data-title="Group Name"><a href="mailto:{{ message.email }}">{{ message.email }}</a></td>
+                    <td data-title="Group Name"><a href="tel:{{ message.number }}">{{ message.number }}</a></td>
+                    <td  class="text_justify text-break" data-title="Class Name">{{ message.context }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+{% endblock %}
+

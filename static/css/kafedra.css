@@ -1,10 +1,10 @@
 * {
   font-family: "Poppins", sans-serif;
 }
-body{
-    padding-bottom: 348px;
-    min-height: 100vh;
-    position: relative;
+body {
+  padding-bottom: 400px;
+  min-height: 100vh;
+  position: relative;
 }
 
 /* *-========== header menu section end ==========-* */
@@ -241,6 +241,9 @@ div[role="progressbar"]::before {
 .brr-30 {
   border-radius: 30px;
 }
+.brr-0 {
+  border-radius: 0 !important;
+}
 
 .fs-11 {
   font-size: 11px;
@@ -283,7 +286,7 @@ div[role="progressbar"]::before {
 }
 
 .first_color {
-  color: #243978;
+  color: #243978 !important;
 }
 
 .border_end {
@@ -411,6 +414,9 @@ a {
 }
 
 /* *-========== helper code ==========*- */
+.history_img{
+  filter: grayscale(100%);
+}
 
 .portfolio {
   display: grid;
@@ -446,14 +452,14 @@ a {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 500px;
   z-index: 10;
   overflow-y: scroll;
   padding: 10px;
   /* margin: 20px; */
 }
 
-.popup span {
+.popup .exit {
   position: fixed;
   top: 0;
   right: 10px;
@@ -480,12 +486,6 @@ a {
   border-radius: 10px;
 }
 
-.popup-image img {
-  width: 90%;
-  height: auto;
-  object-fit: cover;
-}
-
 .themes_card {
   width: 100%;
   height: 100%;
@@ -496,7 +496,7 @@ a {
 .themes_card ul {
   list-style: none !important;
   display: grid;
-  gap: 10px;
+  gap: 20px;
   grid-template-columns: 1fr 1fr;
   padding: 0;
 }
@@ -508,6 +508,7 @@ a {
     #00c5fb 50%,
     #005cea 100%
   );
+  margin: 0 20px;
   color: #fff;
   border-radius: 5px;
   background-size: 200% auto;
@@ -529,18 +530,19 @@ a {
   text-decoration: none;
   display: block;
 }
-
+.text_justify{
+  text-align: justify;
+}
 /* *-========== responsive ==========*- */
 @media screen and (max-width: 992px) {
   .border_end {
     border-right: none;
   }
-  .portfolio {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
   .popup {
     width: 90%;
+  }
+  body {
+    padding-bottom: 450px;
   }
 }
 
@@ -549,7 +551,9 @@ a {
     display: grid;
     grid-template-columns: 1fr;
   }
-
+  body{
+    padding-bottom: 670px;
+}
   .port_card {
     max-width: 560px;
     display: inline-block;
@@ -557,13 +561,20 @@ a {
     border-radius: 5px;
     margin: 10px 0;
   }
+  .themes_card ul {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
 }
 
 @media screen and (max-width: 576px) {
   .brand_div {
     width: 200px;
   }
-
+  body{
+    padding-bottom: 700px;
+}
   .container_new {
     width: 100%;
     padding: 0 20px;
