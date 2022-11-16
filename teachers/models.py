@@ -18,7 +18,6 @@ class Subject(models.Model):
     subject_file_1 = models.FileField(upload_to='subject_files/', blank=True, null=True, verbose_name='Fan dasturi')
     subject_file_2 = models.FileField(upload_to='subject_files/', blank=True, null=True, verbose_name='Uslubiy ko\'rsatma')
     subject_file_3 = models.FileField(upload_to='subject_files/', verbose_name='Fan rejasi')
-    subject_btn_color = models.CharField(max_length=255, blank=True, null=True)
     subject_bg_pic = models.ImageField(upload_to='subject_files/', blank=True, null=True)
 
     def __str__(self):
@@ -174,8 +173,7 @@ class Portfolio(models.Model):
     portfolio_address = models.TextField()
     portfolio_date = models.DateField()
     portfolio_description = models.TextField(blank=True, null=True)
-    portfolio_file = models.FileField(upload_to='portfolio_files/')
-    portfolio_img = models.ImageField(upload_to='portfolio_files/', blank=True, null=True)
+    img = models.ImageField(upload_to='portfolio_files/', blank=True, null=True)
 
     def __str__(self):
         return '{} - {}'.format(self.teacher, self.portfolio_name)

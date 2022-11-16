@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{% static 'css/teacher.css' %}">
     <link rel="stylesheet" href="{% static 'css/kafedra.css' %}">
     <link rel="stylesheet" href="{% static 'bootstrap-5.2.2-dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css' %}">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -21,10 +22,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-
         <link rel="icon" href="{% static 'img/title_logo.png' %}">
 </head>
-<body>
+<body id="home">
+
     {% include 'kafedra/includes/search.html' %}
 
 
@@ -38,8 +39,14 @@
     </section>
     {% include 'kafedra/includes/footer.html' %}
 
+    <a class="scroll-link top-link" href="#home">
+        <i class="fas fa-arrow-up"></i>
+      </a>
+    
+    <script src="{% static 'js/jquery.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{% static 'bootstrap-5.2.2-dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'OwlCarousel2-2.3.4/dist/owl.carousel.min.js' %}"></script>
     <script src="{% static 'js/kafedra.js' %}"></script>
 </body>
 </html>

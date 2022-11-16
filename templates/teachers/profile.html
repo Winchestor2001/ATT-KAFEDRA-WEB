@@ -5,7 +5,7 @@
 
 <div class="center_card text-center">
     <div class="d-block d-sm-flex justify-content-between">
-        <h2 class="ms-3">Profile</h2>
+        <h2 class="ms-3">O'qituvchi Profili</h2>
     </div>
     <div class="container-fluid">
         <form method="post" class="form_block" enctype="multipart/form-data">
@@ -23,35 +23,30 @@
                             placeholder="Telefon raqamnigizni kiriting" required />
                     </div>
                     <div class="my-1 align-items-center gap-3">
-                        <label for="mailTeacher">Email</label>
+                        <label for="mailTeacher">E-pochta</label>
                         <input value="{{ teacher.teacher_id.email }}" type="email" class="form-control" id="mailTeacher" name="email"
-                            placeholder="Emailingizni kiritng" required />
+                            placeholder="E-pochtangizni kiritng" required />
                     </div>
                     <div class="my-1 align-items-center gap-3">
-                        <label for="telegram"><i class="fa-sharp fa-solid fa-paper-plane"></i></label>
+                        <label for="telegram"><i class="fa-sharp fa-solid fa-paper-plane"></i> havolasi</label>
                         <input value="{{ teacher.telegram }}" type="text" class="form-control" id="telegram" name="tg" placeholder="Telegram"
                             required />
                     </div>
+                    <button type="submit" class="btn btn-success mt-3"><i class="fa-solid fa-plus"></i> Saqlash</button>
+                </div>
+                <div class="col-12 bg-light p-3 p-sm-4 col-lg-6 text-start">
                     <div class="my-1 align-items-center gap-3">
-                        <label for="instagram"><i class="fa-brands fa-instagram"></i></label>
+                        <label for="instagram"><i class="fa-brands fa-instagram"></i> havolasi</label>
                         <input value="{{ teacher.instagram }}" type="text" class="form-control" id="instagram" name="inst" placeholder="Instagram"
                             required />
                     </div>
                     <div class="my-1 align-items-center gap-3">
-                        <label for="facebook"><i class="fa-brands fa-facebook-f"></i></label>
+                        <label for="facebook"><i class="fa-brands fa-facebook-f"></i> havolasi</label>
                         <input value="{{ teacher.facebook }}" type="text" class="form-control" id="facebook" name="fb" placeholder="Facebook"
                             required />
                     </div>
-                    <button type="submit" class="btn btn-success mt-3">Saqlash</button>
-                </div>
-                <div class="col-12 bg-light p-3 p-sm-4 col-lg-6 text-start">
                     <div class="my-1 align-items-center gap-3">
-                        <label for="color_btn">Tugmalar rangi</i></label>
-                        <input value="{{ subject.subject_btn_color }}" type="color" class="form-control form-control-color" id="color_btn"
-                            name="color" />
-                    </div>
-                    <div class="my-1 align-items-center gap-3">
-                        <label for="color_btn">Rasmingiz</i></label>
+                        <label for="color_btn">Rasmingizni yuklang</i></label>
                         <input type="file" class="form-control" id="color_btn"
                             name="avatar" />
                     </div>

@@ -185,10 +185,6 @@ def quiz_api(request, slug):
     return Response(serializer.data)
 
 
-def error_404_view(request, exception):
-    return render(request, 'e_dars/error_pages/error_404.html')
-
-
 def pdf_page(request):
     return render(request, 'e_dars/pdf.html')
 

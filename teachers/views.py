@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from django.http import JsonResponse
 from .models import *
 from django.contrib.auth.decorators import login_required
 from .utils import *
@@ -311,7 +310,6 @@ def profile_page(request):
     return render(request, 'teachers/profile.html', context)
 
 
-
 def login_page(request):
     context = {}
     if request.method == 'POST':
@@ -339,7 +337,7 @@ def messages_page(request):
     context = {'messages': messages, 'teacher': teacher}
     return render(request, 'teachers/messages.html', context)
 
-
+    return render(request, 'error_pages/error_404.html')
 
 
 

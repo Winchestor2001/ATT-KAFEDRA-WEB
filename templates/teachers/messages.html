@@ -14,10 +14,10 @@
             <tbody>
                 {% for message in messages %}
                 <tr>
-                    <td data-title="№">{{ message.name }}</td>
-                    <td data-title="Group Name"><a href="mailto:{{ message.email }}">{{ message.email }}</a></td>
-                    <td data-title="Group Name"><a href="tel:{{ message.number }}">{{ message.number }}</a></td>
-                    <td  class="text_justify text-break" data-title="Class Name">{{ message.context }}</td>
+                    <td class="bg-light" data-title="№">{{ message.name }}</td>
+                    <td class="bg-light" data-title="Group Name"><a href="mailto:{{ message.email }}">{{ message.email }}</a></td>
+                    <td class="bg-light" data-title="Group Name"><a href="tel:{{ message.number }}">{{ message.number }}</a></td>
+                    <td class="text_justify text-break bg-light" data-title="Class Name">{{ message.context }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

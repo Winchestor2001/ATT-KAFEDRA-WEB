@@ -13,4 +13,5 @@ urlpatterns = [
     path('tarixi/', views.tarixi_page, name='tarixi'),
     path('contact/', views.contact_page, name='contact'),
     path('best_students/', views.best_students_page, name='best_students'),
+    path('teacher_portfolio/teacher_portfolio_ajax/', views.teacher_portfolio_ajax, name='teacher_portfolio_ajax'),
 ]

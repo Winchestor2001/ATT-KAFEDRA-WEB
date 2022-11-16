@@ -85,14 +85,14 @@ def test_save_items(request):
     items = request.POST
     user = Subject.objects.get(subject_slug=request.POST.get('subject_slug'))
     if items['status'] != '':
-        Test.objects.filter(subject=user).update(
-            question = items['question'],
-            answer = items['answer'],
-            option1 = items['variant1'],
-            option2 = items['variant2'],
-            option3 = items['variant3'],
-            option4 = items['variant4'],
-        )
+        test = Test.objects.get(pk=items['status'])
+        test.question = items['question']
+        test.answer = items['answer']
+        test.option1 = items['variant1']
+        test.option2 = items['variant2']
+        test.option3 = items['variant3']
+        test.option4 = items['variant4']
+        test.save()
     else:
         Test.objects.create(
             subject=user,
@@ -201,7 +201,7 @@ def amaliy_save_items(request):
 
 def site_save_items(request):
     items = request.POST
-    user = Subject.objects.filter(teacher__teacher_id=request.user)
+    user = Subject.objects.get(teacher__teacher_id=request.user)
     if len(items['status']) != 0:
         check_data = WebSite.objects.get(pk=items['status'])
         if check_data:
