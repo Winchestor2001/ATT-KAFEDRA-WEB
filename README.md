@@ -1,1 +1,1 @@
-# Web link - https://attkafedra.pythonanywhere.com
+# Web link - https://att.nammqi.uz/
