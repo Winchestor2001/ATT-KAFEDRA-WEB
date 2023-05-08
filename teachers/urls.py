@@ -19,7 +19,9 @@ urlpatterns = [
     path('amaliy/edit_amaliy/', views.edit_amaliy, name='edit_amaliy'),
     path('amaliy/edit_amaliy2/', views.edit_amaliy2, name='edit_amaliy2'),
     path('delete_amaliy/<str:slug>', views.delete_amaliy, name='delete_amaliy'),
+    path('delete_amaliy2/<str:slug>', views.delete_amaliy2, name='delete_amaliy2'),
     path('delete_all_amaliy/', views.delete_all_amaliy, name='delete_all_amaliy'),
+    path('delete_all_amaliy2/', views.delete_all_amaliy2, name='delete_all_amaliy2'),
     path('get_amaliy_ajax/', views.get_amaliy_ajax, name='get_amaliy_ajax'),
 
     path('videolar/', views.videolar_page, name='videolar'),
@@ -53,15 +55,15 @@ urlpatterns = [
     path('delete_all_site/', views.delete_all_site, name='delete_all_site'),
 
     path('profile/', views.profile_page, name='profile'),
-    
+
     path('portfolio/', views.portfolio_page, name='portfolio'),
     path('portfolio/edit_portfolio/', views.edit_portfolio, name='edit_portfolio'),
     path('delete_portfolio/<int:pk>', views.delete_portfolio, name='delete_portfolio'),
     path('delete_all_portfolio/', views.delete_all_portfolio, name='delete_all_portfolio'),
-    
+
     path('login/', views.login_page, name='login'),
     path('logout/', views.logout_user, name='logout'),
-    
+
     path('messages/', views.messages_page, name='messages'),
 ]
 

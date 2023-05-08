@@ -45,12 +45,12 @@ def maruza_save_items(request):
 def glossary_save_items(request):
     items = request.POST
     user = Subject.objects.get(subject_slug=request.POST.get('subject_slug'))
-    if items['status'] != '':     
+    if items['status'] != '':
         glossary = Glossary.objects.get(glossary_slug=items['status'])
         glossary.glossary_title = items['title']
         glossary.glossary_body = items['body']
         glossary.glossary_slug = text_to_slugify(items['title']),
-   
+
         glossary.save()
     else:
         Glossary.objects.create(
@@ -66,14 +66,17 @@ def glossary_save_items(request):
 def videolar_save_items(request):
     items = request.POST
     user = Subject.objects.get(subject_slug=request.POST.get('subject_slug'))
+    maruza = Maruza.objects.get(maruza_slug=items['maruza_slug'])
     if items['status'] != '':
         video = Video.objects.get(pk=items['status'])
+        video.maruza=maruza
         video.video_title = items['title']
         video.video_url = items['url']
         video.save()
     else:
         Video.objects.create(
             subject=user,
+            maruza=maruza,
             video_title = items['title'],
             video_url = items['url'],
         )
@@ -147,7 +150,7 @@ def book_save_items(request):
                 filename = check_data.book_pic
                 filename2 = check_data.book_file
 
-            
+
             check_data.book_title = items['title'],
             check_data.book_pic = filename,
             check_data.book_file = filename2,
@@ -173,28 +176,91 @@ def book_save_items(request):
     return redirect('book')
 
 
+def taqdimot_save_items(request):
+    items = request.POST
+    user = Subject.objects.get(subject_slug=request.POST.get('subject_slug'))
+    if len(items['status']) != 0:
+        check_data = Presentation.objects.get(pk=items['status'])
+        if check_data:
+            if request.FILES:
+                file_obj = request.FILES['pic']
+                file_obj2 = request.FILES['file']
+                filename = f'resourse/taqdimot/{file_obj}_{request.user}'
+                filename2 = f'resourse/taqdimot/{file_obj2}_{request.user}'
+                with default_storage.open(filename, 'wb+') as d:
+                    for chunk in file_obj.chunks():
+                        d.write(chunk)
+                with default_storage.open(filename2, 'wb+') as d:
+                    for chunk in file_obj2.chunks():
+                        d.write(chunk)
+            else:
+                filename = check_data.book_pic
+                filename2 = check_data.book_file
+
+
+            check_data.presentation_title = items['title'],
+            check_data.presentation_pic = filename,
+            check_data.presentation_file = filename2,
+            check_data.save()
+    else:
+        file_obj = request.FILES['pic']
+        file_obj2 = request.FILES['file']
+        filename = f'resourse/taqdimot/{file_obj}_{request.user}'
+        filename2 = f'resourse/taqdimot/{file_obj2}_{request.user}'
+        with default_storage.open(filename, 'wb+') as d:
+            for chunk in file_obj.chunks():
+                d.write(chunk)
+        with default_storage.open(filename2, 'wb+') as d:
+            for chunk in file_obj2.chunks():
+                d.write(chunk)
+        Presentation.objects.create(
+            subject=user,
+            presentation_title = items['title'],
+            presentation_pic = filename,
+            presentation_file = filename2,
+        )
+
+    return redirect('taqdimot')
+
+
 def amaliy_save_items(request):
     items = request.POST
     user = Subject.objects.get(subject_slug=request.POST.get('subject_slug'))
-    if items['status'] != '':
-        amaliy = Amaliy.objects.get(question_slug=items['status'])
-        amaliy.question_title = items['title'],
-        amaliy.question_slug = text_to_slugify(items['title']),
-        amaliy.question = items['question']
-        amaliy.solusion = items['solusion']
-        amaliy.checking = items['checking']
-        amaliy.hint = items['hint']
-        amaliy.save()
+    if len(items) != 5:
+        theme = AmaliyTheme.objects.get(practis_slug=request.POST.get('practis_slug'))
+        if items['status'] != '':
+            amaliy = Amaliy.objects.get(question_slug=items['status'])
+            amaliy.question_title = items['title'],
+            amaliy.question_slug = text_to_slugify(items['title']),
+            amaliy.question = items['question']
+            amaliy.solusion = items['solusion']
+            amaliy.checking = items['checking']
+            amaliy.hint = items['hint']
+            amaliy.save()
+        else:
+            Amaliy.objects.create(
+                practis_name=theme,
+                question_title = items['title'],
+                question_slug = text_to_slugify(items['title']),
+                question = items['question'],
+                solusion = items['solusion'],
+                checking = items['checking'],
+                hint = items['hint'],
+            )
     else:
-        Amaliy.objects.create(
-            subject=user[0],
-            question_title = items['title'],
-            question_slug = text_to_slugify(items['title']),
-            question = items['question'],
-            solusion = items['solusion'],
-            checking = items['checking'],
-            hint = items['hint'],
-        )
+        if items['status'] != '':
+            amaliy = AmaliyTheme.objects.get(practis_slug=items['status'])
+            amaliy.practis_id = items['pract_id'],
+            amaliy.practis_slug = text_to_slugify(items['title']),
+            amaliy.practis_name = items['title']
+            amaliy.save()
+        else:
+            AmaliyTheme.objects.create(
+                subject=user,
+                practis_id = items['pract_id'],
+                practis_slug = text_to_slugify(items['title']),
+                practis_name = items['title']
+            )
 
     return redirect('amaliy')
 
@@ -208,7 +274,7 @@ def site_save_items(request):
             check_data.site_title = items['title']
             check_data.site_url = items['url']
             check_data.save()
-            
+
     else:
         WebSite.objects.create(
             subject=user,
@@ -227,30 +293,32 @@ def portfolio_save_items(request):
         check_data = Portfolio.objects.get(pk=items['status'])
         if check_data:
             if request.FILES:
-                file_obj = request.FILES['file']
-                filename = f'portfolio/{file_obj}_{request.user}'
-                with default_storage.open(filename, 'wb+') as d:
-                    for chunk in file_obj.chunks():
-                        d.write(chunk)
+                for img in images:
+                    file_obj = img
+                    filename = f'portfolio/{file_obj}_{request.user}'
+                    with default_storage.open(filename, 'wb+') as d:
+                        for chunk in file_obj.chunks():
+                            d.write(chunk)
             else:
-                filename = check_data.portfolio_file
+                filename = check_data.img
 
-            check_data.category = items['category_slug'],
-            check_data.portfolio_name = items['title'],
-            check_data.portfolio_authors = items['authors'],
-            check_data.portfolio_address = items['address'],
-            check_data.portfolio_date = items['date'],
-            check_data.portfolio_description = items['description'],
-            check_data.portfolio_file = filename
+            check_data.category = items['category_slug'] if len(items['category_slug']) != 0 else check_data.category
+            check_data.portfolio_name = items['title']
+            check_data.portfolio_authors = items['authors']
+            check_data.portfolio_address = items['address']
+            check_data.portfolio_date = items['date']
+            check_data.portfolio_description = items['description']
+            check_data.img = filename
             check_data.save()
-            
+
     else:
-        file_obj = request.FILES['file']
-        filename = f'portfolio/{file_obj}_{request.user}'
-        with default_storage.open(filename, 'wb+') as d:
-            for chunk in file_obj.chunks():
-                d.write(chunk)
-        print(items)
+        for img in images:
+            file_obj = img
+            filename = f'portfolio/{file_obj}_{request.user}'
+            with default_storage.open(filename, 'wb+') as d:
+                for chunk in file_obj.chunks():
+                    d.write(chunk)
+
         cat = PortfolioCategory.objects.get(portfolio_slug=items['category_slug'])
 
         portf = Portfolio.objects.create(
@@ -261,8 +329,7 @@ def portfolio_save_items(request):
             portfolio_address = items['address'],
             portfolio_date = items['date'],
             portfolio_description = items['description'],
-            portfolio_file = filename,
-            portfolio_img = images[0]
+            img = images[0]
         )
         for pic in images[1:]:
             PortfolioImage.objects.create(

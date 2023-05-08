@@ -17,7 +17,12 @@ def teachers_page(request):
 
 def edars_page(request):
     edarslar = Subject.objects.all()
-    context = {'edarslar': edarslar}
+    edarslar_list = []
+    for item in edarslar:
+        #  and AmaliyTheme.objects.filter(subject__subject_slug=item.subject_slug).exists()
+        if Maruza.objects.filter(subject__subject_slug=item.subject_slug).exists():
+            edarslar_list.append(item)
+    context = {'edarslar': edarslar_list}
     return render(request, 'kafedra/edars.html', context)
 
 

@@ -346,12 +346,8 @@ div[role="progressbar"]::before {
   box-shadow: none !important;
 }
 
-.container_new {
-  width: 100%;
-  padding: 0 80px;
-  position: relative;
-  max-width: 1400px;
-  margin: 0 auto;
+.container {
+  margin: 0 auto !important;
 }
 
 a {
@@ -487,7 +483,7 @@ a {
   /* border-radius: 10px; */
   padding: 40px;
 }
-.mySwiper {
+.mySwiper , .myModal{
   position: relative;
   width: 100%;
   height: 100%;
@@ -505,16 +501,19 @@ a {
   cursor: pointer;
   z-index: 21;
 }
-.mySwiper::-webkit-scrollbar{
+.mySwiper::-webkit-scrollbar,
+.myModal::-webkit-scrollbar{
   width: 8px;
 }
 
-.mySwiper::-webkit-scrollbar-track{
+.mySwiper::-webkit-scrollbar-track,
+.myModal::-webkit-scrollbar-track{
   background: transparent;
 }
 
 /* Handle */
-.mySwiper::-webkit-scrollbar-thumb {
+.mySwiper::-webkit-scrollbar-thumb,
+.myModal::-webkit-scrollbar-thumb {
   background: #888;
   border-radius: 10px;
 }
@@ -566,6 +565,9 @@ a {
 .text_justify{
   text-align: justify;
 }
+.modal_p{
+  display:none;
+}
 
 /* *-========== responsive ==========*- */
 @media screen and (max-width: 992px) {
@@ -584,6 +586,10 @@ a {
   .portfolio {
     display: grid;
     grid-template-columns: 1fr;
+  }
+  .container {
+    padding: 0 20px !important;
+    margin: 0 auto !important;
   }
   body{
     padding-bottom: 670px;
@@ -609,12 +615,9 @@ a {
   body{
     padding-bottom: 700px;
 }
-  .container_new {
-    width: 100%;
-    padding: 0 20px;
-    position: relative;
-    max-width: 1400px;
-    margin: 0 auto;
+  .container {
+    padding: 0 20px !important;
+    margin: 0 auto !important;
   }
   .modal_dis {
     width: 95%;

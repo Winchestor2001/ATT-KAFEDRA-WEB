@@ -67,6 +67,7 @@ class AmaliyAdmin(admin.ModelAdmin):
 
 @admin.register(PortfolioCategory)
 class PortfolioCategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'portfolio_slug': ('portfolio_name',)}
     list_display = ['portfolio_name']
 
 

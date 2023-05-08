@@ -1,0 +1,26 @@
+{% extends 'e_dars/base.html' %}
+
+
+{% block title %}Virtual{% endblock %}
+
+
+{% block content %}
+{% include 'e_dars/includes/navbar2.html' %}
+
+<div class="container text-center my-3">
+    <center>
+        <div class="title_img p-2 w-50">
+            <h1>Virtual mavzular</h1>
+        </div>
+    </center>
+    <div class="themes_card shadow">
+        <ul>
+            {% for virtual in virtual_theme %}
+            <li><a href="/e-darslik/{{subject.subject_slug}}/virtual_detail/{{virtual.pk}}/">{{ virtual.virtual_title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% include 'e_dars/includes/footer.html' %}
+{% endblock %}

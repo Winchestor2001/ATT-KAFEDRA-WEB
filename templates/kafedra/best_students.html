@@ -8,26 +8,163 @@
 {% block content %}
 
        <!-- student start -->
-       <section class="student mt-5">
-        <div class="container">
-            <p class="fs-13">Asosiy / <span class="text-muted">Iqtidorli Talabalar</span></p>
-            <h4 class="text-uppercase">Iqtidorli Talabalar</h4>
-            <div class="row mt-5">
-                {% for best_student in best_students %}
+      <section class="student mt-5">
+            <div class="container">
+                <p class="fs-13">Asosiy / <span class="text-muted">Iqtidorli Talabalar</span></p>
+                <h4 class="text-uppercase">Iqtidorli Talabalar</h4>
                 <div class="row mt-5">
-                    <div class="col-12">
-                        <div class="d-flex align-items-center my-2">
-                            <h1 class="d-inline me-3 first_color fs-5">{{ best_student.name }}</h1>
-                            <div class="border-top col mb-1"></div>
+                    <div class="row mt-5 border-bottom pb-5 justify-content-center">
+                        <div class="d-flex align-items-center my-3">
+                            <div class="border-top col mb-2"></div>
+                            <h4 class="d-inline text-center mx-3 first_color text-uppercase">Xasanov Xojiakbar</h4>
+                            <div class="border-top col mb-2"></div>
                         </div>
-                        <div class="text text_justify border-bottom pb-4">
-                            {{ best_student.body | safe }}
+                        <div class="col-8 col-md-6 col-xl-4">
+                            <img class="img-fluid w-70" src="/media/best_students/talaba_1.png" alt="">
+                        </div>
+                        <div class="col-12 col-xl-8">
+                            <p class="text">
+                                Iqtidorli yoshlar - O’zbekiston Respublikasining ijtimoiy va iqtisodiy taraqqiyotining
+                                hamda uning jahon hamjamiyatida munosib o’rin egallashini ta’minlovchi muhim omil va
+                                millat ziynati hisoblanadi. Iqtidorli talabalarni izlash, aniqlash va maqsadli
+                                tayyorlashning asosiy - maqsadi Respublikamizning ilmiy va ijodiy salohiyatini
+                                rivojlantiruvchi intellektual yoshlarni tayyorlash va bu borada yuksak iste’dod
+                                sohiblariga bilimnnng tegishli sohalari va fanning aniq yo’nalishlari bo’yicha o’z
+                                tabiiy qobiliyatlarini namoyon etish va rivojlantirish, o’zlaridagi noyob iste’dodni
+                                ro’yobga chiqarish uchun keng imkoniyatlar yaratishdir.
+                                ATT kafedarsida iqtidorli talabalarni ilmiy faoliyatga tizimli ravishda keng jalb etish
+                                borasida bir qator ishlar amalga oshirilmoqda. Jumladan, iqtidorli talabalardan 4 kurs
+                                16 – IAT – 19 gurux talabasi Xasanov Xojiakbar O’zbekiston Respublikasi bakalavriat
+                                uchun ta’sis etilgan Beruniy nomli Davlat stipediyasi soxibi bo’ldi.
+                            </p>
+                            <div class="row">
+                                <div class="col-12 col-md-4 justify-content-end">
+                                    <img class="img-fluid" src="/media/best_students/talaba_1fy.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5 border-bottom pb-5 justify-content-center">
+                        <div class="d-flex align-items-center my-3">
+                            <div class="border-top col mb-2"></div>
+                            <h4 class="d-inline text-center mx-3 first_color text-uppercase">Sobirov SHoxjaxon </h4>
+                            <div class="border-top col mb-2"></div>
+                        </div>
+                        <div class="col-8 col-md-6 col-xl-4">
+                            <img class="img-fluid w-70" src="/media/best_students/talaba_2.png" alt="">
+                        </div>
+                        <div class="col-12 col-xl-8">
+                            <p class="text">
+                                Joriy yil 22-oktabr kuni "Yil talabasi-2022" tanlovining institut bosqichi oʻtkazildi.
+                                Fakultet bosqichida g'olib bo'lib, institut bosqichiga tavsiya etilgan nomzodlarning
+                                hujjatlari tanlov komissiyasi tomonidan ko'rib chiqildi. Unga ko'ra: “Yilning eng faol
+                                ixtirochi-innovator talabasi” nominatsiyasi bo‘yicha: I -o‘rin soxibi buldi.
+                                “Technoways” texnologik rivojlanish marafonining Respublika bosqichida ishtirok etdi.Viloyat hokimi SHavkatjon Abdurazzaqovning talaba-yoshlar bilan uchrashuvida
+                                energiyatejamkor qurilmalar loyihasi uchun 60 mln so’m miqdoridagi sertifikat bilan
+                                taqdirlandi.Prezident huzuridagi Davlat xizmatini rivojlantirish agentligi tomonidan
+                                joylarda salohiyatli yosh yetakchilar qatlamini shakllantirish maqsadida agentlik
+                                hududiy filiallari qoshida 20 yoshdan 35 yoshgacha bo’lgan yigit-qizlar uchun “Kelajak
+                                liderlari” klubini tashkil etish bo’yicha tanlov e’lon qilingandi. “Kelajak liderlari”
+                                klubi a’zoligiga qabul qilindi.
+                            </p>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-12 col-md-3 justify-content-end">
+                                <img class="img-fluid" src="/media/best_students/shohjahon2.png" alt="">
+                            </div>
+                            <div class="col-12 col-md-3 justify-content-end">
+                                <img class="img-fluid" src="/media/best_students/shohjahon3.png" alt="">
+                            </div>
+                            <div class="col-12 col-md-3 justify-content-end">
+                                <img class="img-fluid" src="/media/best_students/shohjahon4.png" alt="">
+                            </div>
+                            <div class="col-12 col-md-3 justify-content-end">
+                                <img class="img-fluid" src="/media/best_students/shohjahon5.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5 border-bottom pb-5 justify-content-center">
+                        <div class="d-flex align-items-center my-3">
+                            <div class="border-top col mb-2"></div>
+                            <h4 class="d-inline text-center mx-3 first_color text-uppercase">Jakbaralieva Durdona</h4>
+                            <div class="border-top col mb-2"></div>
+                        </div>
+                        <div class="col-8 col-md-6 col-xl-4">
+                            <img class="img-fluid w-70" src="/media/best_students/talaba_3.png" alt="">
+                        </div>
+                        <div class="col-12 col-xl-8">
+                            <p class="text">
+                                4-kurs talabasi Jakbaralieva Durdona “Innovativa Academy” ilmiy tadqiqotlarni
+                                ko’llab ko’vvatlash markazining 2022 yil 28 fevralida 12 sonli bo’yrug’iga asosan MDH
+                                miqyosida tashkil etilgan “Eng yaxshi innovator -2022” maqolalar tanlovining esdalik
+                                nishonibilan taqdirlandi.
+                            </p>
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-sm-8 justify-content-end">
+                                    <img class="img-fluid" src="/media/best_students/durdona1.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5 border-bottom pb-5 justify-content-center">
+                        <div class="d-flex align-items-center my-3">
+                            <div class="border-top col mb-2"></div>
+                            <h4 class="d-inline text-center mx-3 first_color text-uppercase">Ikramov Islomjon</h4>
+                            <div class="border-top col mb-2"></div>
+                        </div>
+                        <div class="col-8 col-md-6 col-xl-4">
+                            <img class="img-fluid w-70" src="/media/best_students/talaba_4.png" alt="">
+                        </div>
+                        <div class="col-12 col-xl-8">
+                            <p class="text">4-kurs talabasi Ikramov Islomjon
+                                Joriy yil 22-oktabr kuni "Yil talabasi-2022" tanlovining institut bosqichi oʻtkazildi.
+                                Fakultet bosqichida g'olib bo'lib, institut bosqichiga tavsiya etilgan nomzodlarning
+                                hujjatlari tanlov komissiyasi tomonidan ko'rib chiqildi. Unga ko'ra: “Yilning eng faol
+                                bilimdon talabasi” nominatsiyasi bo‘yicha: II-o‘rin soxibi bo’ldi.
+                            </p>
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-sm-6 justify-content-end">
+                                    <img class="img-fluid" src="/media/best_students/islomjon1.png" alt="">
+                                </div>
+                                <div class="col-12 col-sm-6 justify-content-end">
+                                    <img class="img-fluid" src="/media/best_students/islomjon2.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5 border-bottom pb-5 justify-content-center">
+                        <div class="d-flex align-items-center my-3">
+                            <div class="border-top col mb-2"></div>
+                            <h4 class="d-inline text-center mx-3 first_color text-uppercase">Kamoliddinov Murod</h4>
+                            <div class="border-top col mb-2"></div>
+                        </div>
+                        <div class="col-8 col-md-6 col-xl-4">
+                            <img class="img-fluid w-70" src="/media/best_students/talaba_5.png" alt="">
+                        </div>
+                        <div class="col-12 col-xl-8">
+                            <p class="text">
+                                4-kurs talabasi Kamoliddinov Murod Joriy yilning 5-6 noyabrь kunlari Namangan viloyati
+                                yoshlari o’rtasida “Hackathon” tanlovida 1-o’rinni qo’lga kiriti 10 mln. so’mlik
+                                vaucherni qo’lga kiritdi.
+                                19-21 may kunlari Toshkent shahrida o’tkazilgan "Mirzo Ulug’bek vorislari" ko’rik
+                                tanlovining Respublika bosqichida ishtirok etib, tanlov yakunlariga ko’ra g’alaba
+                                qozondi.
+                            </p>
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-md-4 justify-content-end">
+                                    <img class="img-fluid" src="/media/best_students/murod2.png" alt="">
+                                </div>
+                                <div class="col-12 col-md-4 justify-content-end">
+                                    <img class="img-fluid" src="/media/best_students/murod1.png" alt="">
+                                </div>
+                                <div class="col-12 col-md-4 justify-content-end">
+                                    <img class="img-fluid" src="/media/best_students/murod3.png" alt="">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                {% endfor %}
             </div>
-        </div>
-    </section>
+        </section>
     <!-- student end -->
 {% endblock %}

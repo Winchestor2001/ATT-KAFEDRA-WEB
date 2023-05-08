@@ -7,8 +7,10 @@ urlpatterns = [
     path('<slug:slug>/themes/', views.themes_page, name='themes'),
     path('<slug:slug1>/theme_detail/<slug:slug>/', views.theme_detail, name='theme_detail'),
 
+    path('<slug:slug>/virtuale/', views.virtual_themes_page, name='virtuale'),
+    path('<slug:slug1>/virtual_detail/<int:pk>/', views.virtual_page, name='virtual_detail'),
+
     path('<slug:slug>/video_page/', views.video_page, name='video_page'),
-    # path('posts_detail/<int:pk>', views.posts_detail, name='posts_detail'),
 
     path('<slug:slug>/resources_page/', views.resources_page, name='resources_page'),
 
@@ -24,7 +26,7 @@ urlpatterns = [
     path('<slug:slug>/sign_up/', views.sign_up, name='sign_up'),
     path('<slug:slug>/sign_in/', views.sign_in, name='sign_in'),
     path('<slug:slug>/logout/', views.logout_user, name='logout'),
-    
+
     path('pdf/', views.pdf_page, name='pdf'),
 
 ]

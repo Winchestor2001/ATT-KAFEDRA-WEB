@@ -1,4 +1,4 @@
-{% extends 'teachers/base.html' %} 
+{% extends 'teachers/base.html' %}
 
 {% block content %}
 
@@ -93,7 +93,7 @@
       </div>
     </div>
   </div>
-  
+
   <script>
     function editData(e){
       data_edit = e.getAttribute('data-edit')
@@ -106,7 +106,7 @@
           }
       });
   }
-  
+
   function showEditData(items, s){
       let form_block = document.querySelectorAll('.form_block input');
       let status = document.querySelector('.form_block #status');
@@ -119,7 +119,7 @@
       form_block[3].value = items[0].fields.portfolio_address
       form_block[4].value = items[0].fields.portfolio_description
       form_block[6].value = items[0].fields.portfolio_date
-      status.value = sportfolio_slug
+      status.value = s
   }
   function subjectFilter(e){
   let cards = document.querySelectorAll('.scroll .card');

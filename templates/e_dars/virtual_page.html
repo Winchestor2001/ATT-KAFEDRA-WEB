@@ -1,0 +1,19 @@
+{% extends 'e_dars/base.html' %}
+
+
+{% block title %}Virtual{% endblock %}
+
+
+{% block content %}
+{% include 'e_dars/includes/navbar2.html' %}
+
+<div class="container">
+    <h4 class="text-center mb-3">{{ virtual.virtual_title }}</h4>
+
+    <center>
+        <iframe src="{{ virtual.virtual_url }}" width="1000" height="600" frameborder="0" scrolling="no"></iframe>
+    </center>
+</div>
+
+{% include 'e_dars/includes/footer.html' %}
+{% endblock %}

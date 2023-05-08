@@ -7,27 +7,42 @@
 {% block content %}
 {% include 'e_dars/includes/navbar2.html' %}
 <div class="container">
-    <center>
-        <div class="pdf_bar mt-5">
-            <button class="btn btn-primary me-3" id="prev-page"><i class="fa-regular fa-circle-left"></i></button>
-            <span class="page_num">1</span> / <span class="page_count">3</span>
-            <button class="btn btn-primary ms-3" id="next-page"><i class="fa-regular fa-circle-right"></i></button>
-        </div>
-        <canvas id="pdf_render" class="my-5 shadow pdf_render">
+    <div class='row'>
+        <div class='col'>
+            <div class='card shadow p-3'>
+                <center>
+                <div class="pdf_bar mt-5">
+                    <button class="btn btn-primary me-3" id="prev-page"><i class="fa-regular fa-circle-left"></i></button>
+                    <span class="page_num">1</span> / <span class="page_count">3</span>
+                    <button class="btn btn-primary ms-3" id="next-page"><i class="fa-regular fa-circle-right"></i></button>
+                </div>
+                <canvas id="pdf_render" class="my-5 shadow pdf_render">
 
-        </canvas>
-    </center>
-    {% if theme.video %}
-    <div class="video mb-3">
-        <center>
-            <h4>Video Qo'llanma</h4>
-            <iframe width="100%" height="600" src="https://www.youtube.com/embed/{{ theme.video }}"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-        </center>
+                </canvas>
+            </center>
+            {% if videos %}
+            <hr/>
+            <div class="video mb-3">
+                <center>
+                    <div class="title_img p-2 w-50">
+                        <h1>Video Materiallar</h1>
+                    </div>
+                     <hr/>
+                    {% for video in videos %}
+                        <div class='m-5'>
+                            <h4>{{ video.video_title }}</h4>
+                            <iframe width="100%" height="600" src="https://www.youtube.com/embed/{{ video.video_url }}"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                        </div>
+                    {% endfor %}
+                </center>
+            </div>
+            {% endif %}
+            </div>
+        </div>
     </div>
-    {% endif %}
 </div>
 {% include 'e_dars/includes/footer.html' %}
 
@@ -35,15 +50,15 @@
 <script>
     const url = "/media/{{ theme.maruza_file }}";
     let pdfDoc = null, pageNum = 1, pageIsRendering = false, pageNumIsPending = null;
-    const scale = 1.1, canvas = document.querySelector('#pdf_render'), ctx = canvas.getContext('2d');
-    
+    const scale = 2, canvas = document.querySelector('#pdf_render'), ctx = canvas.getContext('2d');
+
     const renderPage = num => {
         pageIsRendering = true;
         pdfDoc.getPage(num).then(page => {
             const viewport = page.getViewport({scale});
             canvas.height = viewport.height;
             canvas.width = viewport.width;
-            
+
             const renderCtx = {
                 canvasContext: ctx, viewport
             }

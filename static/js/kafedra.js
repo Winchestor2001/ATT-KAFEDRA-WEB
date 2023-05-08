@@ -49,9 +49,7 @@ function makeImgBlocks(data) {
     // console.log(imgs_data);
     const userDiv = document.createElement("div");
     userDiv.classList.add("item");
-    userDiv.innerHTML = `<img class="w-100" src="${
-      "/media/" + imgs_data.fields.img
-    }" alt="" />`;
+    userDiv.innerHTML = `<img class="w-100" src="${"/media/" + imgs_data.fields.img}" alt="" />`;
     imgs_carusel.appendChild(userDiv);
   }
 }

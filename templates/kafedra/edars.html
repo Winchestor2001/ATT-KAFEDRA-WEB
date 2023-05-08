@@ -9,13 +9,13 @@
 
 <div class="container">
     <div class="themes_card shadow">
-        <ul>
+        <ul class='px-3'>
             {% for edars in edarslar %}
                 <div class="d-flex align-items-center my-2">
                     <a href="{% url 'edarslik' edars.subject_slug %}" class="d-inline me-3 first_color fs-5">{{ edars.subject_name }}</a>
                     <div class="border-top col mb-1"></div>
                 </div>
-            {% endfor %}  
+            {% endfor %}
         </ul>
     </div>
 </div>

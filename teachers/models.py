@@ -21,13 +21,14 @@ class Subject(models.Model):
     subject_bg_pic = models.ImageField(upload_to='subject_files/', blank=True, null=True)
 
     def __str__(self):
-        return '{}'.format(self.subject_name)
+        return '{}'.format(self.subject_name, self.subject_category)
 
 
 class Teacher(models.Model):
     CHOICES = (
         ('Kafedra mudiri', 'Kafedra mudiri'),
         ('Dotsent', 'Dotsent'),
+        ('Professor', 'Professor'),
         ('Katta o\'qituvchi', 'Katta o\'qituvchi'),
         ('O\'qituvchi', 'O\'qituvchi'),
         ('Laborant', 'Laborant'),
@@ -41,9 +42,9 @@ class Teacher(models.Model):
     rank = models.CharField(max_length=255, blank=True, null=True, choices=CHOICES)
     type = models.CharField(max_length=255, blank=True, null=True, choices=CHOICES2)
     phone_number = models.CharField(max_length=255, blank=True, null=True)
-    telegram = models.CharField(max_length=255, blank=True, null=True)
-    instagram = models.CharField(max_length=255, blank=True, null=True)
-    facebook = models.CharField(max_length=255, blank=True, null=True)
+    telegram = models.CharField(max_length=255, default='/')
+    instagram = models.CharField(max_length=255, default='/')
+    facebook = models.CharField(max_length=255, default='/')
     avatar = models.ImageField(upload_to='avatar/', blank=True, null=True)
     subjects = models.ManyToManyField(Subject)
 
@@ -103,7 +104,7 @@ class Maruza(models.Model):
 
 class Test(models.Model):
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
-    question = models.CharField(max_length=255)
+    question = RichTextUploadingField()
     answer = models.CharField(max_length=255)
     option1 = models.CharField(max_length=255)
     option2 = models.CharField(max_length=255)
@@ -146,7 +147,7 @@ class AmaliyTheme(models.Model):
 
 class Amaliy(models.Model):
     practis_name = models.ForeignKey(AmaliyTheme, on_delete=models.CASCADE, blank=True, null=True)
-    question_slug = models.SlugField()
+    question_slug = models.CharField(max_length=255)
     question_title = models.CharField(max_length=255)
     question = models.TextField()
     solusion = models.TextField(blank=True, null=True)

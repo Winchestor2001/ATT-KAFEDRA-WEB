@@ -16,7 +16,6 @@ def home_page(request, slug):
     glossaries = Glossary.objects.filter(subject__subject_slug=slug)
     practis_themes = AmaliyTheme.objects.filter(subject__subject_slug=slug).count()
     themes = Maruza.objects.filter(subject__subject_slug=slug).count()
-    # posts = Post.objects.all()
     videos = Video.objects.filter(subject__subject_slug=slug).count()
     subject = Subject.objects.get(subject_slug=slug)
     context = {
@@ -41,8 +40,9 @@ def themes_page(request, slug):
 
 def theme_detail(request, slug1, slug):
     theme = get_object_or_404(Maruza, maruza_slug=slug)
+    videos = Video.objects.filter(maruza__maruza_slug=slug)
     subject = Subject.objects.get(subject_slug=slug1)
-    context = {'theme': theme, 'subject':subject}
+    context = {'theme': theme, 'subject':subject, 'videos': videos}
     return render(request, 'e_dars/theme_detail.html', context)
 
 
@@ -61,6 +61,20 @@ def practis_page(request, slug1, slug):
     return render(request, 'e_dars/practis_page.html', context)
 
 
+def virtual_themes_page(request, slug):
+    virtual_theme = Virtual.objects.filter(subject__subject_slug=slug)
+    subject = Subject.objects.get(subject_slug=slug)
+    context = {'virtual_theme': virtual_theme, 'subject': subject}
+    return render(request, 'e_dars/virtual_theme.html', context)
+
+
+def virtual_page(request, slug1, pk):
+    virtual = Virtual.objects.get(pk=pk)
+    subject = Subject.objects.get(subject_slug=slug1)
+    context = {'virtual': virtual, 'subject': subject}
+    return render(request, 'e_dars/virtual_page.html', context)
+
+
 def quiz_page(request, slug):
     subject = Subject.objects.get(subject_slug=slug)
     context = {'subject': subject}
@@ -70,24 +84,8 @@ def quiz_page(request, slug):
         return redirect('sign_in', slug=slug)
 
 
-# def posts_page(request):
-    # posts = Post.objects.all()
-    # context = {'posts': posts}
-    # return render(request, 'e_dars/posts.html', context)
-
-
-# def posts_detail(request, pk):
-#     post = get_object_or_404(Post, id=pk)
-#     post_viwe = post.post_views + 1
-#     post.post_views = post_viwe
-#     post.save()
-#     context = {'post': post}
-#     return render(request, 'e_dars/post_detail.html', context)
-
-
 def resources_page(request, slug):
     hti = Html2Image()
-    # resources = Resource.objects.all()
     books = Book.objects.filter(subject__subject_slug=slug)
     exposures = Presentation.objects.filter(subject__subject_slug=slug)
     useful_links = WebSite.objects.filter(subject__subject_slug=slug)

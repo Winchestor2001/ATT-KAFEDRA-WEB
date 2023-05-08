@@ -164,8 +164,18 @@ def delete_amaliy(request, slug):
     return redirect('amaliy')
 
 
+def delete_amaliy2(request, slug):
+    AmaliyTheme.objects.filter(practis_slug=slug).delete()
+    return redirect('amaliy')
+
+
 def delete_all_amaliy(request):
     Amaliy.objects.filter(subject__teacher__teacher_id=request.user).delete()
+    return redirect('amaliy')
+
+
+def delete_all_amaliy2(request):
+    AmaliyTheme.objects.filter(subject__teacher__teacher_id=request.user).delete()
     return redirect('amaliy')
 
 
@@ -208,7 +218,7 @@ def edit_book(request):
 
 @login_required(login_url='login')
 def taqdimot_page(request):
-    if request.POST: return book_save_items(request)
+    if request.POST: return taqdimot_save_items(request)
     teacher = Teacher.objects.get(teacher_id=request.user)
     presentations = Presentation.objects.filter(subject__teacher__teacher_id=request.user)
     context = {'teacher': teacher, 'presentations': presentations}

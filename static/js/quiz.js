@@ -174,7 +174,7 @@ function QuestionCounter(index){
 
 async function QuizApi(){
     let result;
-    let request = await fetch('http://127.0.0.1:8000/e-darslik/{{ subject.subject_slug }}/quiz_api/')
+    let request = await fetch('https://attkafedra.pythonanywhere.com/e-darslik/{{ subject.subject_slug }}/quiz_api')
     .then((response) => response.json())
     .then((data) => result =  data);
     return result
