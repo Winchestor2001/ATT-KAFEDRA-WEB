@@ -7,7 +7,6 @@ from teachers.models import *
 from .serializers import QuizesSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from html2image import Html2Image
 
 
 def home_page(request, slug):
@@ -85,25 +84,10 @@ def quiz_page(request, slug):
 
 
 def resources_page(request, slug):
-    hti = Html2Image()
     books = Book.objects.filter(subject__subject_slug=slug)
     exposures = Presentation.objects.filter(subject__subject_slug=slug)
     useful_links = WebSite.objects.filter(subject__subject_slug=slug)
     subject = Subject.objects.get(subject_slug=slug)
-    resources_with_link = []
-    for useful_link in useful_links:
-        if len(str(useful_link.site_intro)) <= 0:
-            resources_with_link.append({'id': useful_link.pk, 'link': useful_link.site_url, 'name': useful_link.site_title})
-            for site in resources_with_link:
-                site_name = site['name']
-                save_pic_path = f'site_pic/{site_name}.png'
-                hti.output_path = 'media/site_pic/'
-                hti.screenshot(url=site['link'], save_as=f"{site_name}.png")
-                res = get_object_or_404(WebSite, id=site['id'])
-                res.site_intro = save_pic_path
-                res.save()
-                print('screen')
-
     context = {'books': books, 'exposures': exposures, 'useful_links': useful_links, 'subject': subject}
     return render(request, 'e_dars/resources_page.html', context)
 

@@ -185,8 +185,8 @@ def taqdimot_save_items(request):
             if request.FILES:
                 file_obj = request.FILES['pic']
                 file_obj2 = request.FILES['file']
-                filename = f'resourse/taqdimot/{file_obj}_{request.user}'
-                filename2 = f'resourse/taqdimot/{file_obj2}_{request.user}'
+                filename = f'resourse/taqdimot/{file_obj}'
+                filename2 = f'resourse/taqdimot/{file_obj2}'
                 with default_storage.open(filename, 'wb+') as d:
                     for chunk in file_obj.chunks():
                         d.write(chunk)
@@ -197,7 +197,6 @@ def taqdimot_save_items(request):
                 filename = check_data.book_pic
                 filename2 = check_data.book_file
 
-
             check_data.presentation_title = items['title'],
             check_data.presentation_pic = filename,
             check_data.presentation_file = filename2,
@@ -205,8 +204,8 @@ def taqdimot_save_items(request):
     else:
         file_obj = request.FILES['pic']
         file_obj2 = request.FILES['file']
-        filename = f'resourse/taqdimot/{file_obj}_{request.user}'
-        filename2 = f'resourse/taqdimot/{file_obj2}_{request.user}'
+        filename = f'resourse/taqdimot/{file_obj}'
+        filename2 = f'resourse/taqdimot/{file_obj2}'
         with default_storage.open(filename, 'wb+') as d:
             for chunk in file_obj.chunks():
                 d.write(chunk)

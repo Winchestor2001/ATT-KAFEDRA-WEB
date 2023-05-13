@@ -5,7 +5,6 @@ from .models import *
 from django.contrib.auth.decorators import login_required
 from .utils import *
 from django.core import serializers
-from html2image import Html2Image
 
 
 @login_required(login_url='login')
