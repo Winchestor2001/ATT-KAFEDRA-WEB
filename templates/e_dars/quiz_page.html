@@ -13,20 +13,20 @@
 
 <div class="quiz_main_div">
     <div class="start_btn">
-        <button>Quizni boshlash</button>
+        <button>Testni boshlash</button>
     </div>
 
     <div class="info_box">
         <div class="info_title">
-            <span>Quiz topshirish qoidalari</span>
+            <span>Test topshirish qoidalari</span>
         </div>
         <div class="info_list">
-            <div class="info">1. Quiz da xar bita savol uchun <span class="sec_timer">15 sekund</span> beriladi</div>
+            <div class="info">1. Test da xar bita savol uchun <span class="sec_timer">15 sekund</span> beriladi</div>
             <div class="info">2. Tez yechishga xarakat qiling</div>
             <div class="info">3. Eng ko'p topgan studentlarga sertifikatlar beriladi</div>
         </div>
         <div class="buttons">
-            <button class="quit"><a href="/e-darslik/{{subject.subject_slug}}/">Quizni Yakunlash</a></button>
+            <button class="quit"><a href="/e-darslik/{{subject.subject_slug}}/">Testni Yakunlash</a></button>
             <button class="restart">Davom etish</button>
         </div>
     </div>
@@ -34,7 +34,7 @@
 
     <div class="quiz_box">
         <header>
-            <div class="title">PyDarslik Quiz to'plami</div>
+            <div class="title">Test to'plami</div>
             <div class="timer">
                 <div class="time_text">Vaqt</div>
                 <div class="time_sec">15</div>
@@ -62,12 +62,12 @@
         <div class="icon">
             <i class="fa-solid fa-crown"></i>
         </div>
-        <div class="complate_text">Siz quizni tugatingiz!</div>
+        <div class="complate_text">Siz testni tugatingiz!</div>
         <div class="score_text">
 
         </div>
         <div class="buttons">
-            <button class="restart">Qayta o'ynash</button>
+            <button class="restart">Qayta boshlash</button>
             <button class="quit"><a href="/e-darslik/{{ subject.subject_slug }}/">Bosh sahifa</a></button>
         </div>
     </div>
@@ -91,6 +91,10 @@
         timeValue = questions[0].timer
         console.log(questions);
     })
+    window.addEventListener('beforeunload', function(event) {
+      event.preventDefault();
+      alert("Test xali yakunlanmadi!")
+    });
 </script>
 {% endblock %}
 

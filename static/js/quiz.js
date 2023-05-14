@@ -12,7 +12,7 @@ let questions;
 
 start_btn.onclick = () => {
     console.log(questions)
-    sec_timer.textContent = `${questions[0].timer} seconds`
+    sec_timer.textContent = `${questions[0].timer} sekund`
   info_box.classList.add("activeInfo");
 };
 
@@ -58,7 +58,7 @@ next_btn.onclick = () =>{
     clearInterval(counterLine);
 //    startTimerLine(lineWidth);
     next_btn.style.display = 'none';
-    timeOff.textContent = 'Time Left';
+    timeOff.textContent = 'Vaqt';
   }
   else{
     clearInterval(counter);
@@ -69,7 +69,7 @@ next_btn.onclick = () =>{
 
 function showQuestions(index) {
   const question_text = document.querySelector(".quiz_text");
-  let question_tag = `<span>${questions[index].id}. ${questions[index].question}</span>`;
+  let question_tag = `<span><pre>${index+1}. ${questions[index].question}</pre></span>`;
   let option_tag = `<div class="option"><span>${questions[index][`option1`]}</span></div>
                     <div class="option"><span>${questions[index][`option2`]}</span></div>
                     <div class="option"><span>${questions[index][`option3`]}</span></div>
@@ -119,7 +119,7 @@ function showResultBox(){
   quiz_box.classList.remove("activeQuiz");
   result_box.classList.add("activeResult");
   const scoreText = result_box.querySelector('.score_text');
-  let scoreTag = `<span>and congrats!, You got <p>${userScore}</p> out of <p>${questions.length}</p></span>`
+  let scoreTag = `<span>Test yakunlandi!, Siz <p>${userScore}</p> / <p>${questions.length}</p> topdingiz!</span>`
   scoreText.innerHTML = scoreTag;
 
 }
@@ -167,7 +167,7 @@ function startTimer(time){
 
 function QuestionCounter(index){
   const bottom_question_counter = quiz_box.querySelector('.total_quiz');
-  let totalQuestionsCountTag = `<span><p>${index}</p>of<p>${questions.length}</p>Questions</span>`
+  let totalQuestionsCountTag = `<span><p>${index}</p>of<p>${questions.length}</p>Testlar</span>`
   bottom_question_counter.innerHTML = totalQuestionsCountTag;
 }
 

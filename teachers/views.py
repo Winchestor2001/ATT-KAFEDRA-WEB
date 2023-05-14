@@ -235,7 +235,7 @@ def delete_all_taqdimot(request):
 
 
 def edit_taqdimot(request):
-    presentation = Presentation.objects.get(pk=request.GET.get('attr'))
+    presentation = Presentation.objects.filter(pk=request.GET.get('attr'))
     data = serializers.serialize('json', presentation)
     return HttpResponse(data, content_type="application/json")
 
@@ -345,8 +345,6 @@ def messages_page(request):
     teacher = Teacher.objects.get(teacher_id=request.user)
     context = {'messages': messages, 'teacher': teacher}
     return render(request, 'teachers/messages.html', context)
-
-    return render(request, 'error_pages/error_404.html')
 
 
 

@@ -64,7 +64,7 @@
               <div class="card_header d-flex justify-content-between">
                 <span></span>
                 <div>
-                  <a href="#" onclick="editData();" class="btn btn-success me-2 edit_btn" data-edit="{{ presentation.pk }}"><i class="fa-solid fa-pen"></i></a>
+                  <a href="#" onclick="editData(this);" class="btn btn-success me-2 edit_btn" data-edit="{{ presentation.pk }}"><i class="fa-solid fa-pen"></i></a>
                   <a href="{% url 'delete_taqdimot' presentation.pk %}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                 </div>
               </div>
@@ -81,9 +81,8 @@
 </div>
 
 <script>
-  function editData(){
-    let edit_btn = document.querySelector('.edit_btn');
-    data_edit = edit_btn.getAttribute('data-edit')
+  function editData(e){
+   data_edit = e.getAttribute('data-edit')
     $.ajax({
         url: "edit_taqdimot",
         type: 'get',
@@ -101,7 +100,7 @@ function showEditData(items, s){
     files_type.forEach(item => {
       item.required = false
     });
-    form_block[1].value = items[0]
+    form_block[1].value = items[0].fields.presentation_title
     status.value = s
 }
 function subjectFilter(e){
