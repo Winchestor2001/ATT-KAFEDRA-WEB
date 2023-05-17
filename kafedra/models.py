@@ -1,3 +1,38 @@
 from django.db import models
+from ckeditor_uploader.fields import RichTextUploadingField
 
-# Create your models here.
+
+class ArticleCategory(models.Model):
+    name = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.name
+
+
+class Article(models.Model):
+    slug = models.SlugField(max_length=255, blank=True, null=True)
+    category = models.ForeignKey(ArticleCategory, on_delete=models.CASCADE)
+    title = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='articles/')
+    context = RichTextUploadingField()
+    views = models.IntegerField(default=0)
+    created_date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return "{} - {}".format(self.category, self.title)
+
+
+class ArticleViewIP(models.Model):
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    ip = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.ip
+
+
+class ArticleGallery(models.Model):
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='articles/')
+
+    def __str__(self):
+        return str(self.article)

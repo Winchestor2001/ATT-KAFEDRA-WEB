@@ -37,116 +37,67 @@
                 <div class="row mt-3">
                     <div id="news_title_1"
                         class="col-6 cursor_pointer tran_time section_title_hover border_t border-end py-3 text-center mb-3">
-                        Vazirlik yangiliklari</div>
+                        Yangiliklar</div>
                     <div id="news_title_2"
                         class="col-6 cursor_pointer tran_time section_title_hover border_b py-3 text-center mb-3">
-                        Anonslar</div>
+                        E`lonlar</div>
                     <!-- vazirlik news card start -->
                     <div id="news_row_1" class="row ">
                         <!-- img card start -->
                         <div class="col-12 col-lg-5">
-                            <img class="img-fluid w-100" src="{% static 'img/news.jpg' %}" alt="">
+                            <a href="{% url 'article_detail' articles1.0.slug %}">
+                                <img class="img-fluid w-100" src="/media/{{ articles1.0.image }}" alt="">
+                            </a>
                         </div>
                         <div class="col-12 col-lg-7">
-                            <h5 class="yangiliklar_title hover_d_2">
-                                AKT vaziri IT Park Navoiy filialida yosh IT dasturchilar bilan ochiq muloqot
-                                o‘tkazdi
-                            </h5>
+                            <a href="{% url 'article_detail' articles1.0.slug %}" class="text-dark hover_d_2">
+                                <h5 class="yangiliklar_title">
+                                {{ articles1.0.title }}
+                                </h5>
+                            </a>
                             <p class="yangiliklar_post">
-                                “Axborot-kommunikatsiya texnologiyalari sohasida IT-ta’lim xizmatlarini
-                                ko‘rsatish, dasturiy mahsulotlar ishlab chiqish hamda eksportga yo‘naltirish
-                                bo‘yicha startap loyihalar” tanlovi
+                                {{ articles1.0.context | truncatewords:20 | safe }}
                             </p>
                             <div class="time_see text-secondary d-flex gap-3 fs-12 justify-content-end">
                                 <div>
                                     <span><i class="fa-solid fa-calendar-days"></i></span>
-                                    <span>14.10.2022</span>
+                                    <span>{{ articles1.0.created_date |date:"d.m.Y" }}</span>
                                 </div>
                                 <div>
                                     <span><i class="fa-solid fa-eye"></i></span>
-                                    <span>244</span>
+                                    <span>{{ articles1.0.views }}</span>
                                 </div>
                             </div>
                         </div>
                         <!-- img card end -->
                         <div class="row mt-5">
-
+                            {% for article in articles1 %}
+                            {% if forloop.counter0 != 0 %}
                             <div class="col-12 col-md-6 col-lg-6 col-xl-4">
                                 <div class="card p-3 border-0">
 
-                                    <h5 class="yangiliklar_title">
-                                        AKT vaziri IT Parki
-                                    </h5>
+                                    <a href="{% url 'article_detail' article.slug %}" class="text-dark hover_d_2">
+                                        <h5 class="yangiliklar_title">
+                                        {{ article.title }}
+                                        </h5>
+                                    </a>
                                     <p class="yangiliklar_post">
-                                        Axborot texnologiyalari va kommunikatsiyalarini rivojlantirish vaziri
-                                        Sherzod
-                                        Shermatov Navoiy viloyatiga tashrifi doirasida IT Park Navoiy filiali
-                                        bilan
-                                        yaqindan tanishdi.
+                                        {{ article.context | truncatewords:13 | safe }}
                                     </p>
                                     <div class="time_see text-secondary d-flex gap-3 fs-12 justify-content-end">
                                         <div>
                                             <span><i class="fa-solid fa-calendar-days"></i></span>
-                                            <span>14.10.2022</span>
+                                            <span>{{ article.created_date |date:"d.m.Y" }}</span>
                                         </div>
                                         <div>
                                             <span><i class="fa-solid fa-eye"></i></span>
-                                            <span>244</span>
+                                            <span>{{ article.views }}</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-6 col-lg-6 col-xl-4">
-                                <div class="card p-3 border-0">
-
-                                    <h5 class="yangiliklar_title">
-                                        AKT vaziri IT Park Navoiy filialida
-                                    </h5>
-                                    <p class="yangiliklar_post">
-                                        Axborot texnologiyalari va kommunikatsiyalarini rivojlantirish vaziri
-                                        Sherzod
-                                        Shermatov Navoiy viloyatiga tashrifi doirasida IT Park Navoiy filiali
-                                        bilan
-                                        yaqindan tanishdi.
-                                    </p>
-                                    <div class="time_see text-secondary d-flex gap-3 fs-12 justify-content-end">
-                                        <div>
-                                            <span><i class="fa-solid fa-calendar-days"></i></span>
-                                            <span>14.10.2022</span>
-                                        </div>
-                                        <div>
-                                            <span><i class="fa-solid fa-eye"></i></span>
-                                            <span>244</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-6 col-xl-4">
-                                <div class="card p-3 border-0">
-
-                                    <h5 class="yangiliklar_title">
-                                        AKT vaziri IT Park Navoiy
-                                    </h5>
-                                    <p class="yangiliklar_post">
-                                        Axborot texnologiyalari va kommunikatsiyalarini rivojlantirish vaziri
-                                        Sherzod
-                                        Shermatov Navoiy viloyatiga tashrifi doirasida IT Park Navoiy filiali
-                                        bilan
-                                        yaqindan tanishdi.
-                                    </p>
-                                    <div class="time_see text-secondary d-flex gap-3 fs-12 justify-content-end">
-                                        <div>
-                                            <span><i class="fa-solid fa-calendar-days"></i></span>
-                                            <span>14.10.2022</span>
-                                        </div>
-                                        <div>
-                                            <span><i class="fa-solid fa-eye"></i></span>
-                                            <span>244</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                            {% endif %}
+                            {% endfor %}
                         </div>
                     </div>
                     <!-- vazirlik news card end -->
@@ -154,100 +105,60 @@
                     <div id="news_row_2" class="row none">
                         <!-- img card start -->
                         <div class="col-12 col-lg-5">
-                            <img class="img-fluid w-100" src="{% static 'img/news.jpg' %}" alt="">
+                            <a href="{% url 'article_detail' articles2.0.slug %}">
+                                <img class="img-fluid w-100" src="/media/{{ articles2.0.image }}" alt="">
+                            </a>
                         </div>
                         <div class="col-12 col-lg-7">
-                            <h5 class="yangiliklar_title hover_d_2">
-                                ZTE yangi BPO markazlar uchun 100 ming dollar ajratadi
-                            </h5>
+                            <a href="{% url 'article_detail' articles2.0.slug %}" class="text-dark hover_d_2">
+                                <h5 class="yangiliklar_title">
+                                {{ articles2.0.title }}
+                                </h5>
+                            </a>
                             <p class="yangiliklar_post">
-                                25-oktabr kuni AKT haftaligining ikkinchi kunida Axborot texnologiyalari va
-                                kommunikatsiyalarini rivojlantirish vaziri Sherzod Shermatov, IT Park Uzbekistan
-                                direktori Farxod Ibragimov hamda ZTE Uzbekistan bosh direktori Van Guandun ...
+                                {{ articles2.0.context | truncatewords:20 | safe }}
                             </p>
                             <div class="time_see text-secondary d-flex gap-3 fs-12 justify-content-end">
                                 <div>
                                     <span><i class="fa-solid fa-calendar-days"></i></span>
-                                    <span>14.10.2022</span>
+                                    <span>{{ articles2.0.created_date |date:"d.m.Y" }}</span>
                                 </div>
                                 <div>
                                     <span><i class="fa-solid fa-eye"></i></span>
-                                    <span>244</span>
+                                    <span>{{ articles2.0.views }}</span>
                                 </div>
                             </div>
                         </div>
                         <!-- img card end -->
                         <div class="row mt-5">
 
+                            {% for article in articles2 %}
+                            {% if forloop.counter0 != 0 %}
                             <div class="col-12 col-md-6 col-lg-6 col-xl-4">
                                 <div class="card p-3 border-0">
 
-                                    <h5 class="yangiliklar_title">
-                                        AKT vaziri IT Parki
-                                    </h5>
+                                    <a href="{% url 'article_detail' article.slug %}" class="text-dark hover_d_2">
+                                        <h5 class="yangiliklar_title">
+                                        {{ article.title }}
+                                        </h5>
+                                    </a>
                                     <p class="yangiliklar_post">
-                                        Markaziy Osiyo mamlakatlarida 1 GHz dan past radiochastota spektridan
-                                        foydalanish istiqbollari”ga bag‘ishlangan sessiya bo‘lib o‘tdi
+                                        {{ article.context | truncatewords:13 | safe }}
                                     </p>
                                     <div class="time_see text-secondary d-flex gap-3 fs-12 justify-content-end">
                                         <div>
                                             <span><i class="fa-solid fa-calendar-days"></i></span>
-                                            <span>14.10.2022</span>
+                                            <span>{{ article.created_date |date:"d.m.Y" }}</span>
                                         </div>
                                         <div>
                                             <span><i class="fa-solid fa-eye"></i></span>
-                                            <span>244</span>
+                                            <span>{{ article.views }}</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-6 col-lg-6 col-xl-4">
-                                <div class="card p-3 border-0">
-
-                                    <h5 class="yangiliklar_title">
-                                        AKT vaziri IT Park Navoiy filialida
-                                    </h5>
-                                    <p class="yangiliklar_post">
-                                        “2022 yilgi BMT Elektron hukumat tadqiqoti natijalari va hududiy
-                                        trendlari” xalqaro seminari tashkil etildi
-                                    </p>
-                                    <div class="time_see text-secondary d-flex gap-3 fs-12 justify-content-end">
-                                        <div>
-                                            <span><i class="fa-solid fa-calendar-days"></i></span>
-                                            <span>14.10.2022</span>
-                                        </div>
-                                        <div>
-                                            <span><i class="fa-solid fa-eye"></i></span>
-                                            <span>244</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-6 col-xl-4">
-                                <div class="card p-3 border-0">
-
-                                    <h5 class="yangiliklar_title">
-                                        AKT vaziri IT Park Navoiy
-                                    </h5>
-                                    <p class="yangiliklar_post">
-                                        Axborot texnologiyalari va kommunikatsiyalarini rivojlantirish vaziri
-                                        Sherzod
-                                        Shermatov Navoiy viloyatiga tashrifi doirasida IT Park Navoiy filiali
-                                        bilan
-                                        yaqindan tanishdi.
-                                    </p>
-                                    <div class="time_see text-secondary d-flex gap-3 fs-12 justify-content-end">
-                                        <div>
-                                            <span><i class="fa-solid fa-calendar-days"></i></span>
-                                            <span>14.10.2022</span>
-                                        </div>
-                                        <div>
-                                            <span><i class="fa-solid fa-eye"></i></span>
-                                            <span>244</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {% endif %}
+                            {% endfor %}
 
                         </div>
                     </div>
@@ -315,9 +226,6 @@
                 </ul>
                 <!-- right menu end -->
             </div>
-            <a href="#">
-                <button class="btn first_bg">Batafsil..</button>
-            </a>
         </div>
 
     </div>

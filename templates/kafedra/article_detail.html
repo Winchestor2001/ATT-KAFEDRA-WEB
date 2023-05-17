@@ -1,0 +1,118 @@
+{% extends 'kafedra/base.html' %}
+{% load static %}
+
+
+{% block title %} {{ article.title }} {% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+
+    <div class="card shadow p-4 mt-5">
+        <div class="time_see text-secondary d-flex gap-3 fs-12 justify-content-start mb-4">
+            <div>
+                <span><i class="fa-solid fa-calendar-days"></i></span>
+                <span>{{ article.created_date |date:"d.m.Y" }}</span>
+            </div>
+            <div>
+                <span><i class="fa-solid fa-eye"></i></span>
+                <span>{{ article.views }}</span>
+            </div>
+        </div>
+
+        <div class="owl-carousel carousel owl-theme col justify-content-center">
+            <div class="w-100 back ">
+                <img class="img_resize img-fluid mx-auto" src="/media/{{ article.image }}" alt="">
+                <div class="hover"></div>
+            </div>
+            {% for gallery in article_gallery %}
+            <div class="w-100 back ">
+                <img class="img_resize img-fluid mx-auto" src="/media/{{ gallery.image }}" alt="">
+                <div class="hover"></div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <h4 class="text-center">{{ article.title }}</h4>
+        <p class="text-justify">
+            {{ article.context | safe }}
+        </p>
+        <div class="d-flex justify-content-end">
+            <button onclick="shareBtn(this);" class="btn btn-primary" style="width: 60px;"><i class="fa-solid fa-share-nodes share_btn"></i></button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function changeIcon(share_btn, add, remove) {
+        share_btn.classList.add(add);
+        share_btn.classList.remove(remove);
+    }
+
+    function changeColorBtn(e, color) {
+        e.classList.toggle(color);
+    }
+
+    function shareBtn(e){
+        let share_btn = document.querySelector('.share_btn');
+        let share_url = `{{ request.build_absolute_uri }}`
+        navigator.clipboard.writeText(share_url);
+        changeIcon(share_btn, 'fa-circle-check', 'fa-share-nodes');
+        changeColorBtn(e, 'btn-success');
+        setInterval(function(){
+            changeIcon(share_btn, 'fa-share-nodes', 'fa-circle-check');
+            changeColorBtn(e, 'btn-success');
+        }, 2000)
+    }
+
+
+    $(document).ready(function () {
+    $('.carousel').owlCarousel({
+        loop: true,
+        autoplay: true,
+        animateOut: 'fadeOut',
+        autoplayTimeout: 4000,
+        // autoplayHoverPause: true,
+        speed: 8000,
+        responsiveClass: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            992: {
+                items: 1
+            }
+        }
+    })
+    $('.owl-carousel').owlCarousel({
+        loop: true,
+        autoplay: true,
+        animateOut: 'fadeOut',
+        autoplayTimeout: 4000,
+        // autoplayHoverPause: true,
+        speed: 8000,
+        responsiveClass: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            768: {
+                items: 1
+            }
+        }
+    });
+
+
+    })
+    // Glassary Tooltips
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+    const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+    const popover = new bootstrap.Popover('.popover-dismiss', {
+        trigger: 'focus'
+      })
+</script>
+
+{% endblock %}
+

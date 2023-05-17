@@ -2,10 +2,23 @@ from django.shortcuts import render, redirect, HttpResponse
 from teachers.models import *
 from django.core import serializers
 from itertools import chain
+from .models import *
+
+
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+
+    return ip
 
 
 def home_page(request):
-    context = {}
+    articles1 = Article.objects.filter(category__name='Yangiliklar')
+    articles2 = Article.objects.filter(category__name='Elonlar')
+    context = {'articles1': articles1, 'articles2': articles2}
     return render(request, 'kafedra/home.html', context)
 
 
@@ -80,3 +93,23 @@ def best_students_page(request):
 
 def error_404_view(request, exception):
     return render(request, 'error_pages/error_404.html')
+
+
+def article_detail(request, slug):
+    user_ip = get_client_ip(request)
+    article = Article.objects.get(slug=slug)
+    article_gallery = ArticleGallery.objects.filter(article__slug=slug)
+    ip_exists = ArticleViewIP.objects.filter(article=article, ip=user_ip).exists()
+    if not ip_exists:
+        ArticleViewIP.objects.create(
+            article=article,
+            ip=user_ip
+        )
+        article.views += 1
+        article.save()
+
+    context = {
+        'article': article,
+        'article_gallery': article_gallery,
+    }
+    return render(request, 'kafedra/article_detail.html', context)
