@@ -1,5 +1,6 @@
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
+from teachers.models import User
 
 
 class ArticleCategory(models.Model):
@@ -16,10 +17,14 @@ class Article(models.Model):
     image = models.ImageField(upload_to='articles/')
     context = RichTextUploadingField()
     views = models.IntegerField(default=0)
-    created_date = models.DateField(auto_now_add=True)
+    created_date = models.DateTimeField(auto_now_add=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         return "{} - {}".format(self.category, self.title)
+
+    class Meta:
+        ordering = ['created_date']
 
 
 class ArticleViewIP(models.Model):

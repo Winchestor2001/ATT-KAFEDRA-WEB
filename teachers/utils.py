@@ -16,7 +16,7 @@ def maruza_save_items(request):
         if check_data:
             if request.FILES:
                 file_obj = request.FILES['file']
-                filename = f'maruzalar/file/{file_obj}_{request.user}.pdf'
+                filename = f'maruzalar/file/{file_obj}'
                 with default_storage.open(filename, 'wb+') as d:
                     for chunk in file_obj.chunks():
                         d.write(chunk)
@@ -30,7 +30,7 @@ def maruza_save_items(request):
             maruza.save()
     else:
         file_obj = request.FILES['file']
-        filename = f'maruzalar/file/{file_obj}_{request.user}.pdf'
+        filename = f'maruzalar/file/{file_obj}'
         with default_storage.open(filename, 'wb+') as d:
             for chunk in file_obj.chunks():
                 d.write(chunk)
@@ -141,8 +141,8 @@ def book_save_items(request):
             if request.FILES:
                 file_obj = request.FILES['pic']
                 file_obj2 = request.FILES['file']
-                filename = f'resourse/book/{file_obj}_{request.user}'
-                filename2 = f'resourse/book/{file_obj2}_{request.user}'
+                filename = f'resourse/book/{file_obj}'
+                filename2 = f'resourse/book/{file_obj2}'
                 with default_storage.open(filename, 'wb+') as d:
                     for chunk in file_obj.chunks():
                         d.write(chunk)
@@ -160,8 +160,8 @@ def book_save_items(request):
     else:
         file_obj = request.FILES['pic']
         file_obj2 = request.FILES['file']
-        filename = f'resourse/book/{file_obj}_{request.user}'
-        filename2 = f'resourse/book/{file_obj2}_{request.user}'
+        filename = f'resourse/book/{file_obj}'
+        filename2 = f'resourse/book/{file_obj2}'
         with default_storage.open(filename, 'wb+') as d:
             for chunk in file_obj.chunks():
                 d.write(chunk)
@@ -194,7 +194,7 @@ def taqdimot_save_items(request):
                 else:
                     filename = check_data.presentation_pic
                 if 'file' in request.FILES:
-                    file_obj = request.FILES['file']
+                    file_obj2 = request.FILES['file']
                     filename2 = f'resourse/taqdimot/{file_obj2}'
                     with default_storage.open(filename2, 'wb+') as d:
                         for chunk in file_obj2.chunks():
@@ -323,7 +323,7 @@ def portfolio_save_items(request):
             if request.FILES:
                 for img in images:
                     file_obj = img
-                    filename = f'portfolio/{file_obj}_{request.user}'
+                    filename = f'portfolio/{file_obj}'
                     with default_storage.open(filename, 'wb+') as d:
                         for chunk in file_obj.chunks():
                             d.write(chunk)
@@ -342,7 +342,7 @@ def portfolio_save_items(request):
     else:
         for img in images:
             file_obj = img
-            filename = f'portfolio/{file_obj}_{request.user}'
+            filename = f'portfolio/{file_obj}'
             with default_storage.open(filename, 'wb+') as d:
                 for chunk in file_obj.chunks():
                     d.write(chunk)

@@ -569,6 +569,35 @@ a {
   display:none;
 }
 
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:500px !important;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.swiper {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* *-========== responsive ==========*- */
 @media screen and (max-width: 992px) {
   .border_end {
@@ -606,6 +635,15 @@ a {
     grid-template-columns: 1fr;
     padding: 0;
   }
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:300px !important;
+  }
 }
 
 @media screen and (max-width: 576px) {
@@ -622,5 +660,14 @@ a {
   .modal_dis {
     width: 95%;
     height: 300px;
+  }
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:250px !important;
   }
 }

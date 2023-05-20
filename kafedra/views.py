@@ -98,6 +98,7 @@ def error_404_view(request, exception):
 def article_detail(request, slug):
     user_ip = get_client_ip(request)
     article = Article.objects.get(slug=slug)
+    article_type = ArticleCategory.objects.get(id=article.category.id)
     article_gallery = ArticleGallery.objects.filter(article__slug=slug)
     ip_exists = ArticleViewIP.objects.filter(article=article, ip=user_ip).exists()
     if not ip_exists:
@@ -111,5 +112,6 @@ def article_detail(request, slug):
     context = {
         'article': article,
         'article_gallery': article_gallery,
+        'article_type': article_type,
     }
     return render(request, 'kafedra/article_detail.html', context)
