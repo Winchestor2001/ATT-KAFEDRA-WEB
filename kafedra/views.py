@@ -3,6 +3,7 @@ from teachers.models import *
 from django.core import serializers
 from itertools import chain
 from .models import *
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def get_client_ip(request):
@@ -115,3 +116,17 @@ def article_detail(request, slug):
         'article_type': article_type,
     }
     return render(request, 'kafedra/article_detail.html', context)
+
+
+def articles(request, article_type):
+    articles = Article.objects.filter(category__name=article_type)
+    paginator = Paginator(articles, 1)
+    page = request.GET.get('page')
+    paged_articles = paginator.get_page(page)
+    context = {
+        'articles': paged_articles,
+        'article_type': article_type,
+    }
+    return render(request, 'kafedra/articles.html', context)
+
+

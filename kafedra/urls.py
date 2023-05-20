@@ -11,6 +11,7 @@ urlpatterns = [
     path('tarixi/', views.tarixi_page, name='tarixi'),
     path('contact/', views.contact_page, name='contact'),
     path('best_students/', views.best_students_page, name='best_students'),
+    path('articles/<slug:article_type>/', views.articles, name='articles'),
     path('teacher_portfolio/teacher_portfolio_ajax/', views.teacher_portfolio_ajax, name='teacher_portfolio_ajax'),
 
     path('article_detail/<slug:slug>/', views.article_detail, name='article_detail'),

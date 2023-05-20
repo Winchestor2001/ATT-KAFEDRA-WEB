@@ -607,7 +607,13 @@ a {
 .text-justify{
   text-align: justify !important;
 }
-
+.pagination a{
+  color: #243978 !important;
+}
+.pagination a:hover{
+  background: #243978;
+  color: #fff !important;
+}
 /* *-========== responsive ==========*- */
 @media screen and (max-width: 992px) {
   .border_end {

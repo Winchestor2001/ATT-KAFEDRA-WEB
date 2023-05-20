@@ -1,0 +1,64 @@
+{% extends 'kafedra/base.html' %}
+{% load static %}
+
+{% block title %} {{ article_type }} {% endblock %} 
+
+
+{% block content %}
+
+<div class="container mt-5">
+   <div class="aticle_deteil_card">
+    {% for article in articles %}
+        <div class="border-bottom mt-3 py-1">
+            <a href="{% url 'article_detail' article.slug %}" class="fs-5 decoration-none first_color fw-semibold">
+                {{ article.title }}
+            </a>
+            <div class="time_see text-secondary  d-flex gap-3 fs-12 justify-content-end">
+                <div>
+                    <span><i class="fa-solid fa-calendar-days"></i></span>
+                    <span>{{ article.created_date |date:"d.m.Y" }}</span>
+                </div>
+                    <span>
+                        <i class="fa-solid fa-eye"></i>
+                        <span>{{ article.views }}</span>
+                    </span>
+                </div>
+        </div>
+        {% endfor %}
+    </div>
+        <nav aria-label="Page navigation example">
+            {% if articles.has_other_pages %}
+            <ul class="pagination justify-content-center mt-5 pagination">
+                {% if articles.has_previous %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ articles.previous_page_number }}" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="#">&laquo;</a>
+                </li>
+                {% endif %}
+
+                {% for i in articles.paginator.page_range %}
+                {% if articles.number == i %}
+                <li class="page-item active"><a class="page-link" href="#">{{ i }}</a></li>
+                {% else %}
+                <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+                {% endfor %}
+
+                {% if articles.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ articles.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                <li class="page-item disabled"><a class="page-link" href="#">&raquo;</a></li>
+                {% endif %}
+            </ul>
+            {% endif %}
+          </nav>
+
+   </div>
+</div>
+
+{% endblock %}
