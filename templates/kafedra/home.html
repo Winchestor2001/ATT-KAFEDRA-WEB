@@ -3,7 +3,7 @@
 
 
 
-{% block title %} Bosh sahifa {% endblock %}
+{% block title %} Axborot tizimlari va texnologiyalari kafedrasi  {% endblock %}
 
 {% block content %}
 
@@ -99,7 +99,7 @@
                             </div>
                             {% endif %}
                             {% endfor %}
-                            <a href="{% url 'articles' 'Yangiliklar' %}">
+                            <a href="{% url 'articles' articles1.0.category_id %}">
                                     <button class="btn first_bg">Batafsil...</button>
                             </a>
                         </div>
@@ -163,7 +163,7 @@
                             </div>
                             {% endif %}
                             {% endfor %}
-                            <a href="{% url 'articles' 'Elonlar' %}">
+                            <a href="{% url 'articles' articles2.0.category_id %}">
                                     <button class="btn first_bg">Batafsil...</button>
                             </a>
                         </div>
@@ -232,7 +232,7 @@
                 </ul>
                 <!-- right menu end -->
             </div>
-           
+
         </div>
 
     </div>

@@ -24,7 +24,7 @@ class Article(models.Model):
         return "{} - {}".format(self.category, self.title)
 
     class Meta:
-        ordering = ['created_date']
+        ordering = ['-created_date']
 
 
 class ArticleViewIP(models.Model):

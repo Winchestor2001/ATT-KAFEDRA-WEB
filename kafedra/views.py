@@ -18,7 +18,7 @@ def get_client_ip(request):
 
 def home_page(request):
     articles1 = Article.objects.filter(category__name='Yangiliklar')
-    articles2 = Article.objects.filter(category__name='Elonlar')
+    articles2 = Article.objects.filter(category__name="E'lonlar")
     context = {'articles1': articles1, 'articles2': articles2}
     return render(request, 'kafedra/home.html', context)
 
@@ -119,13 +119,14 @@ def article_detail(request, slug):
 
 
 def articles(request, article_type):
-    articles = Article.objects.filter(category__name=article_type)
-    paginator = Paginator(articles, 1)
+    article_cat = ArticleCategory.objects.get(id=article_type)
+    articles = Article.objects.filter(category__id=article_type)
+    paginator = Paginator(articles, 10)
     page = request.GET.get('page')
     paged_articles = paginator.get_page(page)
     context = {
         'articles': paged_articles,
-        'article_type': article_type,
+        'article_type': article_cat,
     }
     return render(request, 'kafedra/articles.html', context)
 

@@ -614,6 +614,16 @@ a {
   background: #243978;
   color: #fff !important;
 }
+.img_home img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.img_home{
+  height: 250px !important;
+  display: block;
+}
 /* *-========== responsive ==========*- */
 @media screen and (max-width: 992px) {
   .border_end {
@@ -628,6 +638,10 @@ a {
   .aticle_deteil_card{
     width: 100%;
     margin: 0 auto;
+  }
+  .img_home{
+    height: 350px !important;
+    display: block;
   }
 }
 
