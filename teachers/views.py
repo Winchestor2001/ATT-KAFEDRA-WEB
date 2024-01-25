@@ -302,9 +302,9 @@ def profile_page(request):
         user.first_name = items['fio']
         teacher.phone_number = items['number']
         user.email = items['email']
-        teacher.telegram = 'https://t.me/' + items['tg']
-        teacher.instagram = 'https://www.instagram.com/' + items['inst']
-        teacher.facebook = 'https://www.facebook.com/' + items['fb']
+        teacher.telegram = items['tg']
+        teacher.instagram = items['inst']
+        teacher.facebook = items['fb']
 
         if request.FILES:
             file_obj = request.FILES['avatar']
