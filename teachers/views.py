@@ -308,7 +308,7 @@ def profile_page(request):
 
         if request.FILES:
             file_obj = request.FILES['avatar']
-            filename = f'subject_logo/{file_obj}_{request.user}'
+            filename = f'subject_logo/{request.user}_{file_obj}'
             with default_storage.open(filename, 'wb+') as d:
                 for chunk in file_obj.chunks():
                     d.write(chunk)
