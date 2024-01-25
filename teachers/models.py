@@ -45,6 +45,7 @@ class Teacher(models.Model):
     telegram = models.CharField(max_length=255, default='/')
     instagram = models.CharField(max_length=255, default='/')
     facebook = models.CharField(max_length=255, default='/')
+    portfolio_url = models.CharField(max_length=255, default='/')
     avatar = models.ImageField(upload_to='avatar/', blank=True, null=True)
     subjects = models.ManyToManyField(Subject)
 
