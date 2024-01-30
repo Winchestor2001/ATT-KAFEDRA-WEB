@@ -24,7 +24,7 @@ def home_page(request):
 
 
 def teachers_page(request):
-    teachers = Teacher.objects.all()
+    teachers = Teacher.objects.all().order_by('teacher_queue')
     context = {'teachers': teachers}
     return render(request, 'kafedra/teachers.html', context)
 

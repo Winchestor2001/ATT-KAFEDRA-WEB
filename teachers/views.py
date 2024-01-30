@@ -305,7 +305,9 @@ def profile_page(request):
         teacher.telegram = items['tg']
         teacher.instagram = items['inst']
         teacher.facebook = items['fb']
-
+        teacher.e_dars_url = items['e_dars_url']
+        teacher.save()
+        user.save()
         if request.FILES:
             file_obj = request.FILES['avatar']
             filename = f'subject_logo/{request.user}_{file_obj}'
@@ -314,7 +316,7 @@ def profile_page(request):
                     d.write(chunk)
             teacher.avatar = filename
         teacher.save()
-        user.save()
+        # user.save()
     context = {'teacher': teacher, 'subject': subject}
     return render(request, 'teachers/profile.html', context)
 

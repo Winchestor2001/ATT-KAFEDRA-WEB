@@ -1,12 +1,15 @@
 {% extends 'kafedra/base.html' %}
 {% load static %}
 
-{% block title %} {{ article_type }} {% endblock %} 
+{% block title %} {{ article_type }} {% endblock %}
 
 
 {% block content %}
 
 <div class="container mt-5">
+    <center>
+        <h2>Barcha {{ article_type }}</h2>
+    </center>
    <div class="aticle_deteil_card">
     {% for article in articles %}
         <div class="border-bottom mt-3 py-1">

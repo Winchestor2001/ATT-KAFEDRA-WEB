@@ -38,16 +38,50 @@ class Teacher(models.Model):
         ('Ichki o\'rindosh', 'Ichki o\'rindosh'),
         ('Tashqi o\'rindosh', 'Tashqi o\'rindosh'),
     )
+
+    CHOICES3=(
+        ('1','1'),
+        ('2','2'),
+        ('3','3'),
+        ('4','4'),
+        ('5','5'),
+        ('6','6'),
+        ('7','7'),
+        ('8','8'),
+        ('9','9'),
+        ('10','10'),
+        ('11','11'),
+        ('12','12'),
+        ('13','13'),
+        ('14','14'),
+        ('15','15'),
+        ('16','16'),
+        ('17','17'),
+        ('18','18'),
+        ('19','19'),
+        ('20','20'),
+        ('21','21'),
+        ('22','22'),
+        ('23','23'),
+        ('24','24'),
+        ('25','25'),
+        ('26','26'),
+        ('27','27'),
+        ('28','28'),
+        ('29','29'),
+        ('30','30'),
+        )
     teacher_id = models.OneToOneField(User, on_delete=models.CASCADE)
     rank = models.CharField(max_length=255, blank=True, null=True, choices=CHOICES)
     type = models.CharField(max_length=255, blank=True, null=True, choices=CHOICES2)
     phone_number = models.CharField(max_length=255, blank=True, null=True)
     telegram = models.CharField(max_length=255, default='/')
     instagram = models.CharField(max_length=255, default='/')
+    e_dars_url = models.CharField(max_length=255, default='/')
     facebook = models.CharField(max_length=255, default='/')
-    portfolio_url = models.CharField(max_length=255, default='/')
     avatar = models.ImageField(upload_to='avatar/', blank=True, null=True)
     subjects = models.ManyToManyField(Subject)
+    teacher_queue=models.CharField(max_length=255, choices=CHOICES3,blank=True)
 
     def __str__(self):
         return '{} - {}'.format(self.rank, self.type)
@@ -61,6 +95,9 @@ class Glossary(models.Model):
 
     def __str__(self):
         return '{} - {}'.format(self.subject, self.glossary_title)
+
+    class Meta:
+        ordering = ['glossary_title']
 
 
 class Book(models.Model):

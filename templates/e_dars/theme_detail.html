@@ -1,5 +1,5 @@
 {% extends 'e_dars/base.html' %}
-
+{% load  static %}
 
 {% block title %}{{ subject.subject_name }} - Nazariy{% endblock %}
 
@@ -46,7 +46,7 @@
 </div>
 {% include 'e_dars/includes/footer.html' %}
 
-<script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+<script src="{% static 'js/pdfjs.js' %}"></script>
 <script>
     const url = "/media/{{ theme.maruza_file }}";
     let pdfDoc = null, pageNum = 1, pageIsRendering = false, pageNumIsPending = null;

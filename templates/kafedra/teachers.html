@@ -55,6 +55,12 @@
                             <a href="{% url 'teacher_portfolio' teacher.teacher_id.pk %}">
                                 <button class="btn  first_bg  px-4 py-2 shadov">Batafsil..</button>
                             </a>
+
+                            {% if teacher.e_dars_url != '/' %}
+                            <a href="{{ teacher.e_dars_url }}">
+                                <button class="btn ms-2 first_bg  px-4 py-2 shadov">E-Darslik</button>
+                            </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
