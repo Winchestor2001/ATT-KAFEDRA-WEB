@@ -74,7 +74,7 @@
             </div>
             <div class="scroll text-white">
               {% for portfolio in portfolios %}
-              <div class="card p-2 bg-secondary my-2" data-filter="{{ portfolio.portfolio_name }}">
+              <div class="card p-2 bg-secondary my-2" data-filter="{{ portfolio.category.portfolio_slug }}">
                 <div class="card_header d-flex justify-content-between">
                   <span></span>
                   <div>

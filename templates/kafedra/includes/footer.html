@@ -5,7 +5,7 @@
             <div class="col-12 col-lg-4">
                 <p class="white">
                     Namangan Muhandislik Qurulish instituti Axborot tizimlari va texnologiyalari kafedrasi <br>
-                    © 2006-2022
+                    © 2006-<span id="change_date"></span>
                 </p>
                 <a class="brand_link gap-2" href="{% url 'home' %}">
                     <img class="brand_img brand_im" src="{% static 'img/att_logo.png' %}" alt="">
@@ -73,3 +73,9 @@
         </div>
     </div>
 </section>
+
+<script>
+    let now_year = new Date();
+    let change_date = document.querySelector('#change_date');
+    change_date.textContent = now_year.getFullYear();
+</script>

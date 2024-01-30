@@ -19,5 +19,6 @@ class ArticleAdmin(admin.ModelAdmin):
     inlines = [ArticleGalleryAdmin]
 
 
-# admin.site.register(ArticleViewIP)
+admin.site.register(KafedraHistory)
+admin.site.register(IqdidorliStudents)
 

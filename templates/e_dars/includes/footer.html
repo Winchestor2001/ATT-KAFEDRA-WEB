@@ -8,8 +8,14 @@
     <div class="container">
         <footer class="pt-5">
             <div class="pt-4 border-top text-center text-white">
-                <p>&copy; 2022 Axborot Tizimlari va Texnologiyalari kafedrasi. Barcha huquqlar himoyalangan</p>
+                <p>&copy; <span id="change_date"></span> Axborot Tizimlari va Texnologiyalari kafedrasi. Barcha huquqlar himoyalangan</p>
             </div>
         </footer>
     </div>
 </section>
+
+<script>
+    let now_year = new Date();
+    let change_date = document.querySelector('#change_date');
+    change_date.textContent = now_year.getFullYear();
+</script>

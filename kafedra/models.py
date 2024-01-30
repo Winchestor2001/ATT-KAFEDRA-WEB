@@ -41,3 +41,18 @@ class ArticleGallery(models.Model):
 
     def __str__(self):
         return str(self.article)
+
+
+class KafedraHistory(models.Model):
+    context = RichTextUploadingField()
+
+    def __str__(self):
+        return "Kafedra tarixi"
+
+
+class IqdidorliStudents(models.Model):
+    context = RichTextUploadingField()
+
+    def __str__(self):
+        return "Iqdidorli Talabalar"
+

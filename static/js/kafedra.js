@@ -64,3 +64,5 @@ function makeImgBlocks(data) {
 //   center: true,
 //   items: 1,
 // });
+
+

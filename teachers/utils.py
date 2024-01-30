@@ -381,7 +381,7 @@ def text_to_slugify(text: str):
 
 def crop_site_intro(img):
     print(os.getcwd())
-    filename = f"ATT-KAFEDRA-WEB/media/site_pic/{img}"
+    filename = f"media/site_pic/{img}"
     image = Image.open(filename)
     origin_height = 894
     top = 0

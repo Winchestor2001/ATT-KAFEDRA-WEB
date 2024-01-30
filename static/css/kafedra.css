@@ -9,6 +9,24 @@ body {
 
 /* *-========== header menu section end ==========-* */
 
+.skiptranslate {
+        display: none;
+      }
+      .goog-te-gadget {
+        display: block !important;
+      }
+      body {
+        position: relative;
+        top: 0 !important;
+        left: 0 !important;
+      }
+      .none {
+        display: none !important;
+      }
+      .icon {
+        width: 20px;
+      }
+
 .bg_text {
   position: absolute;
   left: 50%;

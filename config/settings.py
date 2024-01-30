@@ -14,6 +14,8 @@ SECRET_KEY = 'django-insecure-f#%#f$^9m)3)(9uw7zi@25n1r(lxn_)jx15vf3hlzy8+=mvlan
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+CSRF_TRUSTED_ORIGINS = ['https://cb37-37-110-215-11.ngrok-free.app']
+
 ALLOWED_HOSTS = ['*']
 
 
@@ -140,26 +142,26 @@ CKEDITOR_CONFIGS = {
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'attkafedra$attkafedra_db',
-        'USER': 'attkafedra',
-        'PASSWORD': 'B123456789b',
-        'HOST': 'attkafedra.mysql.pythonanywhere-services.com',
-        'PORT': '3306',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'attkafedra$attkafedra_db',
+#         'USER': 'attkafedra',
+#         'PASSWORD': 'B123456789b',
+#         'HOST': 'attkafedra.mysql.pythonanywhere-services.com',
+#         'PORT': '3306',
+#         'OPTIONS': {
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+#         }
+#     }
+# }
 
 
 # Password validation

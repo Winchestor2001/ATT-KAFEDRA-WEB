@@ -1,91 +1,79 @@
 {% load static %}
-<section class="menu">
-    <nav class="navbar navbar-expand-lg">
+ <section class="menu">
+      <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <div class="psevdo_left_right d-none d-sm-block"></div>
-            <div class="row">
-                <div class="col-12  justify-content-beetwen">
-                    <div class="row align-items-center">
-                        <div class="col-9 col-lg-5 align-items-center">
-                            <div class="brand_div">
-                                <a class="brand_link gap-2" href="{% url 'home' %}">
-                                    <img class="brand_img brand_im" src="{% static 'img/att_logo.png' %}" alt="">
-                                    <p
-                                        class="text-uppercase border-start fw-semibold ps-2 border-2 fs-6 mt-4 brand_text  d-none d-sm-block">
-                                        Axborot tizimlari va
-                                        texnologiyalari kafedrasi
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-3 order-1 order-lg-2">
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                        </div>
-                        <div
-                            class="col-12 col-lg-7 gap-3 align_items_center text-center  justify-content-between justify-content-lg-end order-2 order-lg-1 d-block d-sm-flex">
-                            <div class="language d-flex justify-content-center mt-3 mt-sm-0">
-                                <button class="brr-50 btn_language language_active uz">UZ</button>
-                                <button class="brr-50 btn_language py">Py</button>
-                                <button class="brr-50 btn_language eng">ENG</button>
-                            </div>
-                            <div class="number_namqi mt-3 mt-sm-0">
-                                <p class="mb-0 fs-13">Ishonch telefonlari</p>
-                                <a class="first_color fs-13" href="tel:+998692341523">(+99 869) 234-15-23</a>
-                            </div>
-                            <div class="search_inp mt-3 mt-sm-0">
-                                <i data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop"
-                                    aria-controls="offcanvasTop"
-                                    class="fa-solid fa-magnifying-glass fs-4 first_color cursor_pointer"></i>
-                            </div>
-                            <div class="ms-5 d-none d-lg-block mt-3 mt-sm-0">
-                                <a class="brand_link gap-3" href="https://nammqi.uz/">
-                                    <img class="brand_img" src="{% static 'img/logotip NamMQI.jpg' %}" alt="">
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
+          <div class="psevdo_left_right d-none d-sm-block"></div>
+          <div class="row">
+            <div class="col-12 justify-content-beetwen">
+              <div class="row align-items-center">
+                <div class="col-9 col-lg-5 align-items-center">
+                  <div class="brand_div">
+                    <a class="brand_link gap-2" href="{% url 'home' %}">
+                      <img class="brand_img brand_im" src="{% static 'img/att_logo.png' %}" alt="" />
+                      <p class="text-uppercase border-start fw-semibold ps-2 border-2 fs-6 mt-4 brand_text d-none d-sm-block">Axborot tizimlari va texnologiyalari kafedrasi</p>
+                    </a>
+                  </div>
                 </div>
-                <div class="col-12 mt-3 border-bottom">
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 gap-0 gap-lg-3 mb-lg-0 col justify-content-center">
-                            <li class="nav-item">
-                                <a class="nav-link text-uppercase" aria-current="page" href="{% url 'tarixi' %}">KAFEDRA
-                                    TARIXI</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-uppercase" aria-current="page"
-                                    href="{% url 'teachers' %}">Kafedra
-                                    tarkibi</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-uppercase" aria-current="page"
-                                    href="{% url 'subjects' %}">O'qitiladigan
-                                    fanlar</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-uppercase" aria-current="page"
-                                    href="{% url 'edars' %}">Elektron
-                                    darsliklar</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-uppercase" aria-current="page"
-                                    href="{% url 'best_students' %}">Iqtidorli
-                                    talabalar</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-uppercase" href="{% url 'contact' %}">BOG'LANISH</a>
-                            </li>
-
-                        </ul>
-
-                    </div>
+                <div class="col-3 order-1 order-lg-2">
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
                 </div>
+                <div class="col-12 col-lg-7 gap-3 align_items_center text-center justify-content-between justify-content-lg-end order-2 order-lg-1 d-block d-sm-flex">
+                  <div class="language d-flex justify-content-center mt-3 mt-sm-0">
+                    <div id="translate" class="none">
+                      <div id="google_tanslate_element"></div>
+                    </div>
+                    <button id="btn_translater" class="brr-50 btn_language language_active uz">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="m10.5 21 5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 0 1 6-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 0 1-3.827-5.802"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                  <div class="number_namqi mt-3 mt-sm-0">
+                    <p class="mb-0 fs-13">Ishonch telefonlari</p>
+                    <a class="first_color fs-13" href="tel:+998692341523">(+99 869) 234-15-23</a>
+                  </div>
+<!--                  <div class="search_inp mt-3 mt-sm-0">-->
+<!--                    <i data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop" class="fa-solid fa-magnifying-glass fs-4 first_color cursor_pointer"></i>-->
+<!--                  </div>-->
+                  <div class="ms-5 d-none d-lg-block mt-3 mt-sm-0">
+                    <a class="brand_link gap-3" href="https://nammqi.uz/">
+                      <img class="brand_img" src="{% static 'img/logotip NamMQI.jpg' %}" alt="" />
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
+            <div class="col-12 mt-3 border-bottom">
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 gap-0 gap-lg-3 mb-lg-0 col justify-content-center">
+                  <li class="nav-item">
+                    <a class="nav-link text-uppercase" aria-current="page" href="{% url 'tarixi' %}">KAFEDRA TARIXI</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-uppercase" aria-current="page" href="{% url 'teachers' %}">Kafedra tarkibi</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-uppercase" aria-current="page" href="{% url 'subjects' %}">O'qitiladigan fanlar</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-uppercase" aria-current="page" href="{% url 'edars' %}">Elektron darsliklar</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-uppercase" aria-current="page" href="{% url 'best_students' %}">Iqtidorli talabalar</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-uppercase" href="{% url 'contact' %}">BOG'LANISH</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-    </nav>
-</section>
+      </nav>
+    </section>

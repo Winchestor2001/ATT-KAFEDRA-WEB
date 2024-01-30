@@ -71,7 +71,8 @@ def subjects_page(request):
 
 
 def tarixi_page(request):
-    context = {}
+    tarix = KafedraHistory.objects.all()
+    context = {"tarix": tarix}
     return render(request, 'kafedra/tarix.html', context)
 
 
