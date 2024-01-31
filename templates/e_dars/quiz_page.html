@@ -80,7 +80,7 @@
 <script>
     async function QuizApi(){
     let result;
-    let request = await fetch('https://cb37-37-110-215-11.ngrok-free.app/e-darslik/{{ subject.subject_slug }}/quiz_api')
+    let request = await fetch('https://att.nammqi.uz/e-darslik/{{ subject.subject_slug }}/quiz_api')
     .then((response) => response.json())
     .then((data) => result =  data);
     return result
